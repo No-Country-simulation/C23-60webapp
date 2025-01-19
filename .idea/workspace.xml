@@ -5,26 +5,19 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/PurchaseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/Projects.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/diff-generator.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/jpb-settings.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/.idea/.gitignore" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/exceptions/GenericException.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/exceptions/GenericException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Coupon.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Coupon.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SecurityConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GenericException.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GenericException.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/GenericDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/GenericDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/TravelBundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/TravelBundle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/ResourceNotFoundException.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/ResourceNotFoundException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Address.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Address.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Coupon.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Coupon.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Rating.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Rating.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/TravelBundle.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/TravelBundle.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/image.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/image.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -67,13 +60,23 @@
     "Application.ViajesApplication.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "git-widget-placeholder": "crudPurchase",
+    "Spring Boot.AgencyAPI.executor": "Run",
+    "git-widget-placeholder": "ModelChange",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
     "project.structure.last.edited": "Project",
     "project.structure.proportion": "0.0",
     "project.structure.side.proportion": "0.0",
     "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  },
+  "keyToStringList": {
+    "DatabaseDriversLRU": [
+      "mysql"
+    ]
   }
 }]]></component>
   <component name="RecentsManager">
@@ -81,6 +84,16 @@
       <recent name="C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API" />
       <recent name="C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\resources" />
     </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="AgencyAPI" type="SpringBootApplicationConfigurationType" factoryName="Spring Boot" nameIsGenerated="true">
+      <option name="FRAME_DEACTIVATION_UPDATE_POLICY" value="UpdateClassesAndResources" />
+      <module name="viajes" />
+      <option name="SPRING_BOOT_MAIN_CLASS" value="com.travel.agency.AgencyAPI" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">

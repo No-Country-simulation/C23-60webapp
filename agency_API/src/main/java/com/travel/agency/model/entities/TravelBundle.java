@@ -32,11 +32,9 @@ public class TravelBundle {
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<image> images;
-    @OneToMany(mappedBy = "travelBundle",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    private List<Coupon> coupon;
+    @OneToOne
+    @JoinColumn(name = "coupon_id", nullable = false)
+    private Coupon coupon;
     private Integer amountToBuy;
     private Double unitaryPrice;
     private Double totalPrice;

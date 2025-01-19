@@ -24,11 +24,6 @@ public class Purchase {
             orphanRemoval = true,
             fetch = FetchType.LAZY)
     private List<TravelBundle> travelBundles;
-    @OneToMany(mappedBy = "purchase",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    private List<Coupon> coupon;
     private Double totalPrice;
     private LocalDateTime purchaseDate;
     private String paymentMethod;
