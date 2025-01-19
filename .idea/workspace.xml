@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/PurchaseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Projects.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/diff-generator.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/encodings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jarRepositories.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/jpb-settings.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/.idea/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/.idea/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/exceptions/GenericException.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/exceptions/GenericException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SecurityConfig.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GenericException.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GenericException.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/GenericDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/GenericDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CompilerWorkspaceConfiguration">
+    <option name="MAKE_PROJECT_ON_SAVE" value="true" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+        <option value="Record" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" root0="SKIP_INSPECTION" />
+    <setting file="file://$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/PurchaseService.java" root0="SKIP_INSPECTION" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 3
+}</component>
+  <component name="ProjectId" id="2rmck8bi1A15eSa014H0Q5FkrGf" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AgencyAPI.executor": "Run",
+    "Application.ViajesApplication.executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "crudPurchase",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.0",
+    "project.structure.side.proportion": "0.0",
+    "settings.editor.selected.configurable": "reference.projectsettings.compiler.annotationProcessors"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API" />
+      <recent name="C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\resources" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="" />
+      <created>1737167831427</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1737167831427</updated>
+    </task>
+    <servers />
+  </component>
+</project>

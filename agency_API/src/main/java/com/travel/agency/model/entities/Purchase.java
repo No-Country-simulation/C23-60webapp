@@ -2,10 +2,7 @@ package com.travel.agency.model.entities;
 
 import com.travel.agency.enums.Status;
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,9 +11,9 @@ import java.util.List;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Purchase {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
