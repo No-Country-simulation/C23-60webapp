@@ -24,9 +24,11 @@ public class User implements UserDetails {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    private String name;
-    @Column(unique = true)
+    private String firstName;
+    private String lastName;
+    @Column(unique = true, nullable = false)
     private String email;
+    @Column(unique = true, nullable = false)
     private String username;
     private String password;
     private Integer phoneNumber;
@@ -40,6 +42,11 @@ public class User implements UserDetails {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
     private List<Purchase> purchases;
+
+    public User(String email, String password) {
+        this.email = email;
+        this.password = password;
+    }
 
     /**
      * Returns the authorities granted to the user. Cannot return <code>null</code>.
