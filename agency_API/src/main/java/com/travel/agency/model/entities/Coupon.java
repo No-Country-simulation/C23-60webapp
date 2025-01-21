@@ -23,10 +23,5 @@ public class Coupon {
     private LocalDateTime creationDate;
     private LocalDateTime expirationDate;
     private Boolean isActive;
-    @ManyToOne
-    @JoinColumn(name = "purchase_id")
-    private Purchase purchase;
-    @ManyToOne
-    @JoinColumn(name = "travel_bundle_id")
-    private TravelBundle travelBundle;
 }
+
