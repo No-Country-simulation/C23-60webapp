@@ -1,6 +1,5 @@
 package com.travel.agency.model.entities;
 
-
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -45,6 +44,37 @@ public class TravelBundle {
     private List<Rating> rating;
 
 
+    //Calcular el precio del paquete seleccionado
+    public Double getTotalPrice() {
+        Double total = unitaryPrice * amountToBuy;
+        //Si hay Cupon, aplicar
+        if (coupon != null && coupon.getDiscount() != null) {
+            total -= (total * coupon.getDiscount() / 100);
+        }
+        return total;
+    }
 
+    //Restar del inventario (cuando se suma al carrito)
+    public void decreaseAvaliableBundles(Integer quantity) {
+        if (availableBundles >= quantity) {
+            availableBundles -= quantity;
+        } else {
+            throw new RuntimeException("Not enough avaliable boundles");
+        }
+    }
+
+    //Aumentar inventario, devolver paquete a stock
+    public void increaseAvailableBundles(Integer quantity) {
+        availableBundles += quantity;
+    }
+
+    //Incrementar cantidad seleccionada
+    public void increaseAmountToBuy(Integer quantity) {
+        this.amountToBuy += quantity;
+    }
+
+    public void setAmountToBuy(int quantity) {
+        this.amountToBuy = quantity;
+    }
 
 }

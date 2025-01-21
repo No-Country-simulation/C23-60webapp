@@ -24,3 +24,4 @@ public class Coupon {
     private LocalDateTime expirationDate;
     private Boolean isActive;
 }
+
