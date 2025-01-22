@@ -1,8 +1,8 @@
 package com.travel.agency.controller;
 
 
+import com.travel.agency.model.DTO.user.UserLoginDTO;
 import com.travel.agency.model.DTO.user.UserRegisterDTO;
-import com.travel.agency.model.entities.User;
 import com.travel.agency.service.UserService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,8 +25,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-        public ResponseEntity<?> login() {
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
+        public ResponseEntity<?> login(@RequestBody @Valid UserLoginDTO userLoginDTO) {
+        String jwtToken = this.userService.verify(userLoginDTO);
+        return ResponseEntity.status(HttpStatus.OK).body(jwtToken);
     }
 
     @PostMapping("/register")
