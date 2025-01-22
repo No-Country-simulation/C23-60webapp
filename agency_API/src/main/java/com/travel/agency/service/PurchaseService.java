@@ -3,6 +3,7 @@ package com.travel.agency.service;
 import com.travel.agency.enums.Status;
 import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.model.DTO.purchase.CartRequest;
+import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.model.entities.Purchase;
 import com.travel.agency.model.entities.TravelBundle;
 
@@ -59,6 +60,21 @@ public class PurchaseService {
         return purchaseRepository.save(purchase);
     }
     // 2 - Finalizar compra activa, cambiando estado a COMPLETED
+    public PurchaseDTO finalizePurchase(Long idPurchase, String paymentMethod){
+        Purchase purchase = purchaseRepository.findById(idPurchase)
+                .orElseThrow(() -> new ResourceNotFoundException("Purchase", "ID", idPurchase));
+
+        if(purchase.getStatus() != Status.PENDING) {
+          throw new IllegalStateException("Purchase isn´t in PENDING status and cannot be finalized");
+        }
+        //Setear la forma de pago y cambiar el estado a confirmed
+        purchase.setPaymentMethod(paymentMethod);
+        purchase.setStatus(Status.CONFIRMED);
+
+        //Guardar en la base de datos
+        Purchase updatedPurchase = purchaseRepository.save(purchase);
+        return new PurchaseDTO(updatedPurchase);
+    }
 
     //3 - Ver todas las compras
     public List<Purchase> getAllPurchases() {
@@ -97,6 +113,7 @@ public class PurchaseService {
 
     }
     //7 - Pasar estado a CANCELADO (despues de estar pending un cierto tienpo?) Y/O si el usuario la cancela
+
 
     // 8 - eliminar yn paquete de la compra
 
