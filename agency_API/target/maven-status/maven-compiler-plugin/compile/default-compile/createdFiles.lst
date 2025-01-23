@@ -1,9 +1,0 @@
-com\travel\agency\enums\Role.class
-com\travel\agency\persistence\other\Address.class
-com\travel\agency\persistence\other\Voucher.class
-com\travel\agency\persistence\entities\image.class
-com\travel\agency\persistence\entities\User.class
-com\travel\agency\persistence\entities\Purchase.class
-com\travel\agency\ViajesApplication.class
-com\travel\agency\persistence\entities\TravelBundle.class
-com\travel\agency\enums\Status.class
