@@ -1,5 +1,6 @@
 package com.travel.agency.model.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -7,6 +8,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -26,25 +28,22 @@ public class TravelBundle {
     private LocalDate endDate;
     private Integer availableBundles;
     private Integer totalBundles;
-    @OneToMany(mappedBy = "travelBundle",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    private List<image> images;
-    @OneToOne
-    @JoinColumn(name = "coupon_id", nullable = false)
-    private Coupon coupon;
     private Integer amountToBuy;
     private Double unitaryPrice;
     private Double totalPrice;
-    @OneToMany(mappedBy = "travelBundle",
-            cascade = CascadeType.ALL,
-            orphanRemoval = true,
-            fetch = FetchType.LAZY)
-    private List<Rating> rating;
-
+    @OneToMany(mappedBy = "travelBundle", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<Rating> rating = new ArrayList();
+    @OneToMany(mappedBy = "travelBundle", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
+    private List<image> images = new ArrayList();
+    @OneToMany(mappedBy = "travelBundle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DetailsPurchase> purchaseTravelBundle = new ArrayList();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "user_id", nullable = false)
+    @JsonIgnore
+    private User user;
 
     //Calcular el precio del paquete seleccionado
+    /*
     public Double getTotalPrice() {
         Double total = unitaryPrice * amountToBuy;
         //Si hay Cupon, aplicar
@@ -53,7 +52,7 @@ public class TravelBundle {
         }
         return total;
     }
-
+    */
     //Restar del inventario (cuando se suma al carrito)
     public void decreaseAvaliableBundles(Integer quantity) {
         if (availableBundles >= quantity) {
