@@ -1,6 +1,7 @@
 package com.travel.agency.controller;
 
 
+import com.travel.agency.model.DTO.user.GeneratedTokenDTO;
 import com.travel.agency.model.DTO.user.UserLoginDTO;
 import com.travel.agency.model.DTO.user.UserRegisterDTO;
 import com.travel.agency.service.UserService;
@@ -25,9 +26,9 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-        public ResponseEntity<?> login(@RequestBody @Valid UserLoginDTO userLoginDTO) {
+        public ResponseEntity<GeneratedTokenDTO> login(@RequestBody @Valid UserLoginDTO userLoginDTO) {
         String jwtToken = this.userService.verify(userLoginDTO);
-        return ResponseEntity.status(HttpStatus.OK).body(jwtToken);
+        return ResponseEntity.status(HttpStatus.OK).body(new GeneratedTokenDTO(jwtToken));
     }
 
     @PostMapping("/register")
