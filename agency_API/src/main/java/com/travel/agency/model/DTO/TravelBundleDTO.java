@@ -7,21 +7,17 @@ public record TravelBundleDTO(
         String title,
         String destiny,
         Double unitaryPrice,
-        Integer amountToBuy,
-        String couponInfo // Cambiar a String para manejar mensajes personalizados
+        Integer amountToBuy
 
 ) {
+    
     public TravelBundleDTO (TravelBundle travelBundle){
         this(
                 travelBundle.getId(),
                 travelBundle.getTitle(),
                 travelBundle.getDestiny(),
                 travelBundle.getUnitaryPrice(),
-                travelBundle.getAmountToBuy(),
-                //manejo de info de cupon, para mostar si tiene o no descuento
-                travelBundle.getCoupon() != null
-                        ? "Descuento: " + travelBundle.getCoupon().getDiscount() + "% - Código: " + travelBundle.getCoupon().getCode()
-                        : "Sin descuento disponible" // Mensaje predeterminado
+                travelBundle.getAmountToBuy()
         );
     }
 }

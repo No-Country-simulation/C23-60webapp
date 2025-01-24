@@ -21,13 +21,15 @@ public class Purchase {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User user;
-    @OneToMany(cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    private List<TravelBundle> travelBundles;
     private Double totalPrice;
     private LocalDateTime purchaseDate;
     private String paymentMethod;
     private Status status;
+    @OneToMany(cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<TravelBundle> travelBundles;
+    @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<DetailsPurchase> purchaseTravelBundle;
 
 
     //Inicializo la lista de paquetes y el precio en 0, para evitar nullPoniterException

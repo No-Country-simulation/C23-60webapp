@@ -52,6 +52,9 @@ public class JwtUtil {
     }
 
     public String extractUsername(String token) {
+        if (token != null && token.startsWith("Bearer ")) {
+            token = token.substring(7).trim();
+        }
         return extractClaim(token, Claims::getSubject);
     }
 

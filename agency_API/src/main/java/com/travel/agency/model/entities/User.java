@@ -44,7 +44,11 @@ public class User implements UserDetails {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
     private List<Purchase> purchases;
-
+    @OneToMany(mappedBy = "user",
+            cascade = CascadeType.ALL,
+            fetch = FetchType.LAZY)
+    private List<TravelBundle> travelBundle;
+    
     public User(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
         this.lastName = lastName;

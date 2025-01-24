@@ -1,36 +1,53 @@
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\AgencyAPI.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\config\SecurityConfig.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AuthController.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\GenericController.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\PurchaseController.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\enums\Role.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\enums\Status.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\GenericException.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\GlobalExceptionHandler.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\ResourceNotFoundException.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\interfaces\Converter.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\GenericDTO.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\CartRequest.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\PurchaseDTO.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundleDTO.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserLoginDTO.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserRegisterDTO.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Address.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Coupon.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\image.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Purchase.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Rating.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\TravelBundle.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\User.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\GenericRepository.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\PurchaseRepository.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\TravelBundleRepository.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\UserRepository.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\CustomUserDetailsService.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\GenericService.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\PurchaseService.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\UserService.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtFilter.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtUtil.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\AtLeastOneNotEmpty.java
-C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\AtLeastOneNotEmptyValidator.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\AgencyAPI.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\config\SecurityConfig.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AuthController.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\DetailsPurchaseController.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\GenericController.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\PurchaseController.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\TravelBundleController.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\enums\Role.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\enums\Status.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\ErrorResponse.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\GenericException.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\GlobalExceptionHandler.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\ResourceNotFoundException.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\interfaces\Converter.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\DetailsPurchaseMapper.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\TravelBundleMapper.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseRequestDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\ErrorDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\GenericDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\CartRequest.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\PurchaseDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\UpdatePurchase.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleRequestDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundleDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\GeneratedTokenDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserLoginDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserRegisterDTO.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Address.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Coupon.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\DetailsPurchase.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\image.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Purchase.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Rating.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\TravelBundle.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\User.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\DetailsPurchaseRepository.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\GenericRepository.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\PurchaseRepository.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\TravelBundleRepository.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\UserRepository.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\CustomUserDetailsService.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\DetailsPurchaseService.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\GenericService.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\PurchaseService.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\TravelBundleService.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\UserService.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtFilter.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtUtil.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\PurchaseUtils.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\AtLeastOneNotEmpty.java
+D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\AtLeastOneNotEmptyValidator.java

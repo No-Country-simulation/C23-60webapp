@@ -1,5 +1,6 @@
 package com.travel.agency.exceptions;
 
+import com.travel.agency.model.DTO.ErrorDTO;
 import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.http.HttpStatus;
@@ -11,7 +12,9 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.time.LocalDateTime;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
+import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
@@ -46,6 +49,19 @@ public class GlobalExceptionHandler {
         });
         return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
     }
+    
+    @ExceptionHandler(RuntimeException.class)
+    public ResponseEntity<ErrorDTO> handleRuntimeException(Exception ex) {
+        System.out.println("hi2");
+        ErrorDTO errorDTO = new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage(), ex.getClass().getSimpleName());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDTO);
+    }
 
+    @ExceptionHandler(Exception.class)
+    public ResponseEntity<ErrorDTO> handleGeneralException(Exception ex) {
+        System.out.println("hi");
+        ErrorDTO errorDTO = new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unexpected error occurred.", ex.getClass().getSimpleName());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDTO);
+    }
 }
 
