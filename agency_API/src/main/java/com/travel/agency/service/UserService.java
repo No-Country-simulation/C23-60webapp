@@ -10,6 +10,7 @@ import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
+import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.crypto.password.PasswordEncoder;
@@ -65,7 +66,7 @@ public class UserService {
                     new UsernamePasswordAuthenticationToken(username, userLoginDTO.password())
             );
         } catch (AuthenticationException e) {
-            throw new RuntimeException(e);
+            throw new BadCredentialsException("User does not exists or credentials are wrong");
             }
         return this.jwtUtil.generateToken(this.userDetailsService.loadUserByUsername(username));
     }
