@@ -41,7 +41,13 @@ public class UserService {
     //implementing the register method
     @Transactional
     public void register(UserRegisterDTO userRegisterDTO) {
-        User user = new User(userRegisterDTO.email(), userRegisterDTO.password());
+        User user = new User(
+                userRegisterDTO.firstName(),
+                userRegisterDTO.lastName(),
+                userRegisterDTO.email(),
+                userRegisterDTO.email(),
+                userRegisterDTO.password()
+        );
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRoles(Set.of(Role.USER));
         user.setRegisterDate(LocalDate.now());

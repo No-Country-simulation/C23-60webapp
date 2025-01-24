@@ -18,17 +18,19 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private final String SECRET_KEY;
+    private static final String SECRET_KEY = generateSecretKey();
 
-    public JwtUtil() {
+    //This method belongs to the class. It is only used to generate the secret key.
+    private static String generateSecretKey() {
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
             SecretKey sk = keyGen.generateKey();
-            this.SECRET_KEY = Base64.getEncoder().encodeToString(sk.getEncoded());
+            return Base64.getEncoder().encodeToString(sk.getEncoded());
         } catch (NoSuchAlgorithmException e) {
             throw new RuntimeException(e);
         }
     }
+
 
     public String generateToken(UserDetails userDetails) {
         Map<String,Object> claims = new HashMap<>();

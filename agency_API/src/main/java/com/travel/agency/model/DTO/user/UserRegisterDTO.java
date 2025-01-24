@@ -5,6 +5,10 @@ import jakarta.validation.constraints.NotEmpty;
 
 public record UserRegisterDTO(
         @NotEmpty
+        String firstName,
+        @NotEmpty
+        String lastName,
+        @NotEmpty
         @Email
         String email,
         @NotEmpty

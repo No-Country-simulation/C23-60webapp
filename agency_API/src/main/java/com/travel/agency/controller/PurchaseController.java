@@ -43,7 +43,7 @@ public class PurchaseController {
     }
 
     //aCTUALIZAR
-    @PutMapping("/cart/update/purchaseId")
+    @PutMapping("/cart/update/{purchaseId}")
     public ResponseEntity<PurchaseDTO> updatePurchaseController(@PathVariable Long purchaseId,
                                                                 @RequestBody UpdatePurchase updatePurchase) {
         PurchaseDTO purchaseDTO = purchaseService.updatePurchase(purchaseId, updatePurchase);
