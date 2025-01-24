@@ -5,17 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/utils/PurchaseUtils.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/CartRequest.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/CartRequest.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/PurchaseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/PurchaseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/PurchaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SecurityConfig.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SecurityConfig.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/PurchaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/PurchaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/purchase/CartRequest.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/purchase/CartRequest.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/purchase/PurchaseDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/purchase/PurchaseDTO.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/PurchaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/PurchaseService.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -28,9 +20,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Interface" />
         <option value="Class" />
         <option value="Record" />
+        <option value="Interface" />
       </list>
     </option>
   </component>
@@ -59,29 +51,27 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AgencyAPI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViajesApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.agency [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.agency [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-clean-plugin:3.4.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install-file].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;crudPurchase&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AgencyAPI.executor": "Run",
+    "Application.ViajesApplication.executor": "Run",
+    "Maven.viajes [clean].executor": "Run",
+    "Maven.viajes [compile].executor": "Run",
+    "Maven.viajes [install].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-clean-plugin:3.4.0:clean].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install-file].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "crudPurchase",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "preferences.pluginManager"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API" />

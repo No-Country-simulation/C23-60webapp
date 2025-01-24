@@ -2,7 +2,7 @@ package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.purchase.CartRequest;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
-import com.travel.agency.model.entities.Purchase;
+import com.travel.agency.model.DTO.purchase.UpdatePurchase;
 import com.travel.agency.service.PurchaseService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,7 +10,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/purchases")
@@ -22,14 +21,12 @@ public class PurchaseController {
         this.purchaseService = purchaseService;
     }
 
-
     //CREAR compra
     @PostMapping("/cart")
     public ResponseEntity<PurchaseDTO> addTravelBundleToCart(@RequestBody CartRequest cartRequest) {
         try {
-            Purchase updatePurchase = purchaseService.addTravelBundleToCart(cartRequest);
+            PurchaseDTO purchaseDTO = purchaseService.addTravelBundleToCart(cartRequest);
             //convertir a DTO
-            PurchaseDTO purchaseDTO = new PurchaseDTO(updatePurchase);
             return ResponseEntity.ok(purchaseDTO);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(null);
@@ -45,28 +42,34 @@ public class PurchaseController {
 
     }
 
+    //aCTUALIZAR
+    @PutMapping("/cart/update/purchaseId")
+    public ResponseEntity<PurchaseDTO> updatePurchaseController(@PathVariable Long purchaseId,
+                                                                @RequestBody UpdatePurchase updatePurchase) {
+        PurchaseDTO purchaseDTO = purchaseService.updatePurchase(purchaseId, updatePurchase);
+        return ResponseEntity.ok(purchaseDTO);
+    }
+
     //Ver todas las compras, ADMIN?
-    @GetMapping
+    @GetMapping("")
     public ResponseEntity<List<PurchaseDTO>> getAllPurchaseController() {
-        List<PurchaseDTO> purchaseDTOs = purchaseService.getAllPurchases()
-                .stream()
-                .map(PurchaseDTO::new) // Convertir cada Purchase a PurchaseDTO
-                .collect(Collectors.toList());
-        return ResponseEntity.ok(purchaseDTOs);
+        List<PurchaseDTO> purchasesDTOs = purchaseService.getAllPurchases();
+        return ResponseEntity.ok(purchasesDTOs);
     }
 
     //ver compra por ID
     @GetMapping("/{idPurchase}")
-    public PurchaseDTO findPurchaseByIdController(@PathVariable Long idPurchase) {
-        Purchase purchaseFinded = purchaseService.searchPurchaseById(idPurchase);
-        PurchaseDTO purchaseDTO = new PurchaseDTO(purchaseFinded);
-        return purchaseDTO;
+    public PurchaseDTO searchPurchaseByIdController(@PathVariable Long idPurchase) {
+        return purchaseService.searchPurchaseById(idPurchase);
+
     }
 
-    //ver compras por usuario / por estado?
-
-
-    //actualizar compra
+    //ver compra por usuario
+    @GetMapping("/user/{username}")
+    public ResponseEntity<List<PurchaseDTO>> getPurchasesByUsernameController(@PathVariable String username) {
+        List<PurchaseDTO> purchaseDTOs = purchaseService.searchPurchaseByUser(username);
+        return ResponseEntity.ok(purchaseDTOs);
+    }
 
     //Eliminar compra por ID
     @Transactional
