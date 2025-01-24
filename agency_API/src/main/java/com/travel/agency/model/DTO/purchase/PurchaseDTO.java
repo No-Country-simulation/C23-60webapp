@@ -26,7 +26,7 @@ public record PurchaseDTO(
                         .toList(),
                 purchase.getTotalPrice(),
                 purchase.getPurchaseDate(),
-                purchase.getPaymentMethod() != null ? purchase.getPaymentMethod().toString() : null,
+                purchase.getPaymentMethod() != null ? purchase.getPaymentMethod().toString() : "Elegir a continuación",
                 purchase.getStatus()
 
         );
