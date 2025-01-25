@@ -3,7 +3,10 @@ package com.travel.agency.model.entities;
 
 import com.travel.agency.enums.Status;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.AllArgsConstructor;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.Setter;
 
 import java.time.LocalDateTime;
 import java.util.ArrayList;
@@ -88,5 +91,13 @@ public class Purchase {
         this.totalPrice = travelBundles.stream()
                 .mapToDouble(TravelBundle::getTotalPrice)
                 .sum();
+    }
+
+    //Cambiar estado de la compra a CANCELED
+    public void cancelPurchase() {
+        this.status = Status.CANCELLED;
+        this.travelBundles.forEach(
+                travelBundle -> travelBundle.increaseAvailableBundles(travelBundle.getAmountToBuy())
+        );
     }
 }
