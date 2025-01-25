@@ -8,13 +8,14 @@ import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
 
+import java.time.LocalDateTime;
+import java.util.List;
 import java.util.Optional;
 
 public interface PurchaseRepository extends JpaRepository <Purchase,Long> {
     Optional<Purchase> findByUserIdAndStatus(Long userId, Status status);
 
-//    //eliminar la relación entre la compra y el paquete.
-//    @Modifying
-//    @Query("DELETE FROM PurchaseTravelBundle ptb WHERE ptb.purchase.id = :purchaseId AND ptb.travelBundle.id = :travelBundleId")
-//    void deleteByPurchaseIdAndTravelBundleId(@Param("purchaseId") Long purchaseId, @Param("travelBundleId") Long travelBundleId);
+    List<Purchase> findByStatusAndPurchaseDateBefore(Status status, LocalDateTime timeoutLimit);
+
+    List<Purchase> findByStatus(Status status);
 }

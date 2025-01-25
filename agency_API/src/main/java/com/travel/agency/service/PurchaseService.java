@@ -14,6 +14,7 @@ import com.travel.agency.repository.UserRepository;
 import com.travel.agency.utils.PurchaseUtils;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -111,7 +112,7 @@ public class PurchaseService {
 
     }
 
-    //CTUALIZAR COMPRA (VER STATUS, TIENE QUE E3STAR PENDING)
+    //ACTUALIZAR COMPRA (VER STATUS, TIENE QUE E3STAR PENDING)
     @Transactional
     public PurchaseDTO updatePurchase(Long purchaseId, UpdatePurchase updatePurchase) {
         //Existe la compra con ese ID?
@@ -127,6 +128,10 @@ public class PurchaseService {
                 .filter(tb -> tb.getId().equals(updatePurchase.travelBundleId()))
                 .findFirst()
                 .orElseThrow(() -> new ResourceNotFoundException("Travel bundle", "ID", updatePurchase.travelBundleId()));
+        // Validar que la nueva cantidad sea válida (mayor que 0)
+        if (updatePurchase.newAmountToBuy() <= 0) {
+            throw new IllegalArgumentException("Amount to buy must be greater than 0");
+        }
         //obtener cantidad actual
         int currentAmount = travelBundle.getAmountToBuy();
         //si la nueva cantidad es mayor, restar del stock disponible
@@ -144,7 +149,9 @@ public class PurchaseService {
         travelBundle.setAmountToBuy(updatePurchase.newAmountToBuy());
         //recalcular el precio total
         purchase.updateTotalPrice();
+        //guardar en la compra actual
         purchaseRepository.save(purchase);
+        //Coonvierto a dto y retorno
         return  purchaseUtils.convertToPurchaseDto(purchase);
     }
 
@@ -171,7 +178,31 @@ public class PurchaseService {
         purchaseRepository.deleteById(purchaseId);
 
     }
-    //Pasar estado a CANCELADO (despues de estar pending un cierto tienpo?
+    //Pasar estado a CANCELADO (despues de estar pending un cierto tiempo)
+
+    //@Scheduled es una anotacion que permite ejecutar metodos de manera programada en intervalos
+    //de tiempo definido
+    // Método programado para revisar compras pendientes y cancelarlas si pasan 2 horas
+    @Scheduled(fixedRate = 7200000)
+    @Transactional
+    public void checkPendingPurchases(){
+  //Obtener todas las compras PENDING que fueron crreadas hace mas de 2 hs
+        LocalDateTime twoHoursAgo = LocalDateTime.now().minusHours(2);
+        //Buscar compras PENDING donde la creacion sea anterior al limite de compra
+        List<Purchase> pendingPurchases = purchaseRepository.findByStatusAndPurchaseDateBefore(Status.PENDING, twoHoursAgo);
+        //cancelar las compras que no se han confirmado a tiempo
+        for (Purchase purchase : pendingPurchases){
+            //Cencelo compra y devuelvo paquetes al stock
+            purchase.cancelPurchase();
+            //guardo la compra con estado CANCELADO
+            purchaseRepository.save(purchase);
+        }
+    }
+//Corroborar compras canceladas
+    public List<PurchaseDTO> getCancelledPurchases(){
+        List<Purchase> purchaseList = purchaseRepository.findByStatus(Status.CANCELLED);
+        return  purchaseUtils.purchaseMapperDto(purchaseList);
+    }
 
 
 }
