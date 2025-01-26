@@ -1,0 +1,40 @@
+#Servicios para la bases de datos
+services:
+  mysql:
+    image: mysql:8.4
+    container_name: mysql
+    ports:
+      - "3306:3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=root_password
+      - MYSQL_ALLOW_EMPTY_PASSWORD=true
+      - MYSQL_USER=agency_user
+      - MYSQL_PASSWORD=agency
+      - MYSQL_DATABASE=agency
+    volumes:
+      - "./conf.d:/etc/mysql/conf.d:ro"
+    networks:
+      - agency-network
+
+  # Servicio para Java
+  app:
+    build:
+      context: . #Docker construye la imagen usando el Dockerfile
+    ports:
+      - "8080:8080"
+    container_name: app-back
+    depends_on:
+      - mysql #La aplicacion deénde de mysql por eso mysql se inciia primero
+    networks:
+      - agency-network
+    environment:
+      - AGENCY_DATASOURCE=jdbc:mysql://mysql:3306/agency
+      - DATASOURCE_USERNAME=agency_user
+      - DATASOURCE_PASSWORD=agency
+
+volumes:
+  mysql-data:
+
+networks:
+  agency-network:
+    driver: bridge
