@@ -5,54 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/DetailsShoppingCart.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Discount.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/ShoppingCart.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/DetailsPurchaseMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/DetailsPurchaseMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundleDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/PurchaseDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/purchase/PurchaseDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserLoginDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserLoginDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserRegisterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserRegisterDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Coupon.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/DetailsPurchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/DetailsPurchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Rating.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Rating.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/TravelBundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/TravelBundle.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundleDTO.java" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/PurchaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/PurchaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/PurchaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/db/migration/V1__CREATE_TABLES.sql" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/resources/db/migration/V1__CREATE_TABLES.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/db/migration/V2__ALTER_TABLES.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/db/migration/V3__ALTER_USER_TABLE.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/db/migration/V4__ALTER_USERNAME.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/db/migration/V5__ALTER_PURCHASE_TRAVEL_TABLE.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SecurityConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/AuthController.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/PurchaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/PurchaseController.class" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/TravelBundleDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/purchase/PurchaseDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/user/UserRegisterDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Coupon.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Rating.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/TravelBundle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/image.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/PurchaseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/PurchaseRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/TravelBundleRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/CustomUserDetailsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/PurchaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/PurchaseService.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/UserService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/utils/JwtFilter.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/utils/PurchaseUtils.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/db/migration/V1__CREATE_TABLES.sql" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/db/migration/V1__CREATE_TABLES.sql" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/db/migration/V2__ALTER_TABLES.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/db/migration/V3__ALTER_USER_TABLE.sql" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/db/migration/V4__ALTER_USERNAME.sql" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -96,29 +53,29 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AgencyAPI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViajesApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.agency [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.agency [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-clean-plugin:3.4.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install-file].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install].executor&quot;: &quot;Run&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;Merging crudPurchase&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AgencyAPI.executor": "Run",
+    "Application.ViajesApplication.executor": "Run",
+    "Maven.agency [clean].executor": "Run",
+    "Maven.agency [compile].executor": "Run",
+    "Maven.viajes [clean].executor": "Run",
+    "Maven.viajes [compile].executor": "Run",
+    "Maven.viajes [install].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-clean-plugin:3.4.0:clean].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install-file].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install].executor": "Run",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "git-widget-placeholder": "crudPurchase",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "project.structure.last.edited": "Artifacts",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API" />
