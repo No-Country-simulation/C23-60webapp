@@ -19,11 +19,10 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    @Value(value = "${SECRET_KEY}")
-    private static String SECRET_KEY;
+   // @Value(value = "${jwt.secret.key}")
+    private final static String SECRET_KEY = generateSecretKey();
 
     //This method belongs to the class. It is only used to generate the secret key.
-    /*Temporalmente desactivado durante desarrollo.
     private static String generateSecretKey() {
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
@@ -33,8 +32,6 @@ public class JwtUtil {
             throw new RuntimeException(e);
         }
     }
-     */
-
 
     public String generateToken(UserDetails userDetails) {
         Map<String,Object> claims = new HashMap<>();
