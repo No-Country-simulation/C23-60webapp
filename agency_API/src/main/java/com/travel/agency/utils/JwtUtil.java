@@ -3,6 +3,7 @@ package com.travel.agency.utils;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -18,9 +19,11 @@ import java.util.function.Function;
 @Component
 public class JwtUtil {
 
-    private static final String SECRET_KEY = generateSecretKey();
+    @Value(value = "${SECRET_KEY}")
+    private static String SECRET_KEY;
 
     //This method belongs to the class. It is only used to generate the secret key.
+    /*Temporalmente desactivado durante desarrollo.
     private static String generateSecretKey() {
         try {
             KeyGenerator keyGen = KeyGenerator.getInstance("HmacSHA256");
@@ -30,6 +33,7 @@ public class JwtUtil {
             throw new RuntimeException(e);
         }
     }
+     */
 
 
     public String generateToken(UserDetails userDetails) {

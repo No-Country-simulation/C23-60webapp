@@ -5,17 +5,25 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SchedulingConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SchedulingConfig.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Purchase.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/PurchaseRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/PurchaseRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/PurchaseService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/PurchaseService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/PurchaseController.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/PurchaseController.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/PurchaseRepository.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/PurchaseRepository.class" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/PurchaseService.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/PurchaseService.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/ErrorResponseDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/exceptions/ErrorResponse.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/exceptions/GlobalExceptionHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/exceptions/GlobalExceptionHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/ErrorDTO.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserRegisterDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserRegisterDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/utils/JwtUtil.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/resources/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/ErrorResponse.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GlobalExceptionHandler.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GlobalExceptionHandler.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/user/UserRegisterDTO.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/user/UserRegisterDTO.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/User.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/User.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/UserService.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/UserService.class" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/utils/JwtUtil.class" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/utils/JwtUtil.class" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -78,8 +86,9 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "Spring Boot.AgencyAPI.executor": "Run",
+    "Spring Boot.Explora+.executor": "Run",
     "Spring Boot.Explora6.executor": "Run",
-    "git-widget-placeholder": "Merging main",
+    "git-widget-placeholder": "security",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "node.js.selected.package.tslint": "(autodetect)",

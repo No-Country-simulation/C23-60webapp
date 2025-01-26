@@ -1,6 +1,6 @@
 package com.travel.agency.exceptions;
 
-import com.travel.agency.model.DTO.ErrorDTO;
+import com.travel.agency.model.DTO.ErrorResponseDTO;
 import org.apache.tomcat.websocket.AuthenticationException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.http.HttpStatus;
@@ -12,31 +12,43 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import java.time.LocalDateTime;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 @ControllerAdvice
 public class GlobalExceptionHandler {
 
     @ExceptionHandler(ResourceNotFoundException.class)
-    public ResponseEntity handleResourcedNotFound(ResourceNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(e.getMessage());
+    public ResponseEntity<ErrorResponseDTO> handleResourcedNotFound(ResourceNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                new ErrorResponseDTO(HttpStatus.NOT_FOUND.value(),
+                        e.getMessage(),
+                        e.getClass().getSimpleName())
+        );
     }
 
     @ExceptionHandler(AuthenticationException.class)
-    public ResponseEntity<String> handleAuthenticationException(AuthenticationException e) {
-        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body("Authentication failed: " + e.getMessage());
+    public ResponseEntity<ErrorResponseDTO> handleAuthenticationException(AuthenticationException e) {
+        return ResponseEntity.status(HttpStatus.UNAUTHORIZED).body(
+                    new ErrorResponseDTO(HttpStatus.UNAUTHORIZED.value(),
+                            e.getMessage(),
+                            e.getClass().getSimpleName())
+                )
+                ;
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
-    public ResponseEntity<String> handleUsernameNotFoundException(UsernameNotFoundException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("User not found: " + e.getMessage());
+    public ResponseEntity<ErrorResponseDTO> handleUsernameNotFoundException(UsernameNotFoundException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                new ErrorResponseDTO(HttpStatus.NOT_FOUND.value(),
+                        e.getMessage(),
+                        e.getClass().getSimpleName())
+        );
     }
 
     @ExceptionHandler(BadCredentialsException.class)
-    public ResponseEntity<ErrorResponse> handleBadCredentials(BadCredentialsException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponse(LocalDateTime.now(),e.getMessage()));
+    public ResponseEntity<ErrorResponseDTO> handleBadCredentials(BadCredentialsException e) {
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponseDTO
+                (HttpStatus.NOT_FOUND.value(),e.getMessage(),e.getClass().getSimpleName()));
     }
 
     @ExceptionHandler(MethodArgumentNotValidException.class)
@@ -47,21 +59,21 @@ public class GlobalExceptionHandler {
             String errorMessage = error.getDefaultMessage();
             errors.put(fieldName, errorMessage);
         });
-        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(errors);
+        return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(
+                new ErrorResponseDTO(HttpStatus.BAD_REQUEST.value(), errors.toString() ,e.getClass().getSimpleName())
+        );
     }
     
     @ExceptionHandler(RuntimeException.class)
-    public ResponseEntity<ErrorDTO> handleRuntimeException(Exception ex) {
-        System.out.println("hi2");
-        ErrorDTO errorDTO = new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage(), ex.getClass().getSimpleName());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDTO);
+    public ResponseEntity<ErrorResponseDTO> handleRuntimeException(Exception ex) {
+        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), ex.getMessage(), ex.getClass().getSimpleName());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponseDTO);
     }
 
     @ExceptionHandler(Exception.class)
-    public ResponseEntity<ErrorDTO> handleGeneralException(Exception ex) {
-        System.out.println("hi");
-        ErrorDTO errorDTO = new ErrorDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unexpected error occurred.", ex.getClass().getSimpleName());
-        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorDTO);
+    public ResponseEntity<ErrorResponseDTO> handleGeneralException(Exception ex) {
+        ErrorResponseDTO errorResponseDTO = new ErrorResponseDTO(HttpStatus.INTERNAL_SERVER_ERROR.value(), "An unexpected error occurred.", ex.getClass().getSimpleName());
+        return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(errorResponseDTO);
     }
 }
 
