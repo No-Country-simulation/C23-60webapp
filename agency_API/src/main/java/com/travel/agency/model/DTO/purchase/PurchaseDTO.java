@@ -9,18 +9,19 @@ import java.util.List;
 
 public record PurchaseDTO(
         Long id,
-        Double totalPrice,
         LocalDateTime purchaseDate,
-        List<DetailsPurchase> detailsPurchase
+        List<DetailsPurchase> detailsPurchase,
+        //total price de la suma de todos los pquetes
+        Double totalPrice
 
 ) {
     // Constructor para convertir de Purchase a PurchaseDTO
     public PurchaseDTO(Purchase purchase) {
         this(
                 purchase.getId(),
-                purchase.getTotalPrice(),
                 purchase.getPurchaseDate(),
-                purchase.getDetailsPurchase()
+                purchase.getDetailsPurchase(),
+                purchase.getTotalPrice()
         );
     }
 }
