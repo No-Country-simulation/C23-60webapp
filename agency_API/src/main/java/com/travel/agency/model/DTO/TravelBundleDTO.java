@@ -6,8 +6,7 @@ public record TravelBundleDTO(
         Long id,
         String title,
         String destiny,
-        Double unitaryPrice,
-        Integer amountToBuy
+        Double unitaryPrice
 
 ) {
     
@@ -16,8 +15,7 @@ public record TravelBundleDTO(
                 travelBundle.getId(),
                 travelBundle.getTitle(),
                 travelBundle.getDestiny(),
-                travelBundle.getUnitaryPrice(),
-                travelBundle.getAmountToBuy()
+                travelBundle.getUnitaryPrice()
         );
     }
 }

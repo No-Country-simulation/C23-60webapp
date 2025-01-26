@@ -15,7 +15,7 @@ public class DetailsPurchaseMapper {
         }
         DetailsPurchase detailsPurchase = new DetailsPurchase();
         detailsPurchase.setQuantity(detailsPurchaseRequestDTO.getQuantity());
-        detailsPurchase.setTotal_price(detailsPurchaseRequestDTO.getTotalPrice());
+        detailsPurchase.setTotalPrice((detailsPurchaseRequestDTO.getTotalPrice()));
         detailsPurchase.setTravelBundle(travelBundle);
         return detailsPurchase;
     }
@@ -27,8 +27,7 @@ public class DetailsPurchaseMapper {
         DetailsPurchaseDTO dto = new DetailsPurchaseDTO();
         dto.setId(detailsPurchase.getId());
         dto.setQuantity(detailsPurchase.getQuantity());
-        dto.setTotalPrice(detailsPurchase.getTotal_price());      
-        dto.setCouponId(detailsPurchase.getCoupon() != null ? detailsPurchase.getCoupon().getId() : null);
+        dto.setTotalPrice(detailsPurchase.getTotalPrice());
         return dto;
     }
 
