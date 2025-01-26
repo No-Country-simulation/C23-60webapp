@@ -14,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/purchases")
 public class PurchaseController {
+    /*
     private final PurchaseService purchaseService;
 
     @Autowired
@@ -78,6 +79,6 @@ public class PurchaseController {
         purchaseService.deletePurchaseById(purchaseId);
         return ResponseEntity.noContent().build();
     }
-
+*/
 
 }

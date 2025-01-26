@@ -2,14 +2,18 @@ package com.travel.agency.model.entities;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-import lombok.*;
+import lombok.EqualsAndHashCode;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class DetailsPurchase {
+public class DetailsShoppingCart {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -21,8 +25,9 @@ public class DetailsPurchase {
     //Almacena el paquete de viaje unitario que el usuario quiere comprar.
     private TravelBundle travelBundle;
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "purchase_id", nullable = false)
+    @JoinColumn(name = "shopping_cart_id", nullable = false)
     @JsonIgnore
     //Vincula detailsPurchase con la compra a la que pertenece. No hace falta mostrarla al usuario.
-    private Purchase purchase;
+    private ShoppingCart shoppingCart;
+
 }

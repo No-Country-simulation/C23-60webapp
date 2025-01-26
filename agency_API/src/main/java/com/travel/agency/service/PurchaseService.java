@@ -32,7 +32,7 @@ public class PurchaseService {
     UserRepository userRepository;
     @Autowired
     PurchaseUtils purchaseUtils;
-
+/*
     //CREAR / AGREGAR paquete a la compra
     @Transactional
     public PurchaseDTO addTravelBundleToCart(CartRequest cartRequest) {
@@ -173,6 +173,6 @@ public class PurchaseService {
     }
     //Pasar estado a CANCELADO (despues de estar pending un cierto tienpo?
 
-
+*/
 }
 

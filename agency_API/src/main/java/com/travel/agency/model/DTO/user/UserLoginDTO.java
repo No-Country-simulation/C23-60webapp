@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotEmpty;
 
 @AtLeastOneNotEmpty
 public record UserLoginDTO(
+        //DEJAR SOLO EMIAL
         @Email
         String email,
         String username,

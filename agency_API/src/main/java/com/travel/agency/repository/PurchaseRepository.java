@@ -11,7 +11,7 @@ import org.springframework.data.repository.query.Param;
 import java.util.Optional;
 
 public interface PurchaseRepository extends JpaRepository <Purchase,Long> {
-    Optional<Purchase> findByUserIdAndStatus(Long userId, Status status);
+   // Optional<Purchase> findByUserIdAndStatus(Long userId, Status status);
 
 //    //eliminar la relación entre la compra y el paquete.
 //    @Modifying

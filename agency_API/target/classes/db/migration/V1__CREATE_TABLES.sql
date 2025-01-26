@@ -1,16 +1,21 @@
-CREATE TABLE IF NOT EXISTS coupon
+CREATE TABLE IF NOT EXISTS details_purchase
 (
-    id               BIGINT AUTO_INCREMENT NOT NULL,
-    code             VARCHAR(255) NULL,
-    name             VARCHAR(255) NULL,
-    discount         INT NULL,
-    `description`    VARCHAR(255) NULL,
-    creation_date    datetime NULL,
-    expiration_date  datetime NULL,
-    is_active        BIT(1) NULL,
-    purchase_id      BIGINT NULL,
-    travel_bundle_id BIGINT NULL,
-    CONSTRAINT pk_coupon PRIMARY KEY (id)
+    id                BIGINT AUTO_INCREMENT NOT NULL,
+    quantity          INT    NOT NULL,
+    total_price DOUBLE NULL,
+    travel_bundles_id BIGINT NOT NULL,
+    purchase_id       BIGINT NOT NULL,
+    CONSTRAINT pk_detailspurchase PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS details_shopping_cart
+(
+    id                BIGINT AUTO_INCREMENT NOT NULL,
+    quantity          INT    NOT NULL,
+    total_price DOUBLE NULL,
+    travel_bundles_id BIGINT NOT NULL,
+    shopping_cart_id  BIGINT NOT NULL,
+    CONSTRAINT pk_detailsshoppingcart PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS image
@@ -23,29 +28,30 @@ CREATE TABLE IF NOT EXISTS image
 
 CREATE TABLE IF NOT EXISTS purchase
 (
-    id             BIGINT AUTO_INCREMENT NOT NULL,
-    user_id        BIGINT NULL,
+    id            BIGINT AUTO_INCREMENT NOT NULL,
+    user_id       BIGINT NULL,
     total_price DOUBLE NULL,
-    purchase_date  datetime NULL,
-    payment_method VARCHAR(255) NULL,
-    status         SMALLINT NULL,
+    purchase_date datetime NULL,
     CONSTRAINT pk_purchase PRIMARY KEY (id)
-);
-
-CREATE TABLE IF NOT EXISTS purchase_travel_bundles
-(
-    purchase_id       BIGINT NOT NULL,
-    travel_bundles_id BIGINT NOT NULL
 );
 
 CREATE TABLE IF NOT EXISTS rating
 (
     id               BIGINT AUTO_INCREMENT NOT NULL,
-    rating           INT NULL,
+    rating DOUBLE NULL,
     user_id          BIGINT NULL,
     travel_bundle_id BIGINT NULL,
     comment          VARCHAR(255) NULL,
     CONSTRAINT pk_rating PRIMARY KEY (id)
+);
+
+CREATE TABLE IF NOT EXISTS shopping_cart
+(
+    id            BIGINT AUTO_INCREMENT NOT NULL,
+    user_id       BIGINT NULL,
+    total_price DOUBLE NULL,
+    purchase_date datetime NULL,
+    CONSTRAINT pk_shoppingcart PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS travel_bundle
@@ -57,36 +63,45 @@ CREATE TABLE IF NOT EXISTS travel_bundle
     start_date        date NULL,
     end_date          date NULL,
     available_bundles INT NULL,
-    total_bundles     INT NULL,
-    amount_to_buy     INT NULL,
     unitary_price DOUBLE NULL,
-    total_price DOUBLE NULL,
+    user_id           BIGINT NOT NULL,
     CONSTRAINT pk_travelbundle PRIMARY KEY (id)
 );
 
 CREATE TABLE IF NOT EXISTS user
 (
     id            BIGINT AUTO_INCREMENT NOT NULL,
-    name          VARCHAR(255) NULL,
-    email         VARCHAR(255) NULL,
-    username      VARCHAR(255) NULL,
-    password      VARCHAR(255) NULL,
+    first_name    VARCHAR(255) NULL,
+    last_name     VARCHAR(255) NULL,
+    identity_card INT          NOT NULL,
+    email         VARCHAR(255) NOT NULL,
+    username      VARCHAR(255) NOT NULL,
+    password      VARCHAR(255) NOT NULL,
     phone_number  INT NULL,
     register_date date NULL,
     CONSTRAINT pk_user PRIMARY KEY (id)
 );
 
-ALTER TABLE purchase_travel_bundles
-    ADD CONSTRAINT uc_purchase_travel_bundles_travelbundles UNIQUE (travel_bundles_id);
-
 ALTER TABLE user
     ADD CONSTRAINT uc_user_email UNIQUE (email);
 
-ALTER TABLE coupon
-    ADD CONSTRAINT FK_COUPON_ON_PURCHASE FOREIGN KEY (purchase_id) REFERENCES purchase (id);
+ALTER TABLE user
+    ADD CONSTRAINT uc_user_identitycard UNIQUE (identity_card);
 
-ALTER TABLE coupon
-    ADD CONSTRAINT FK_COUPON_ON_TRAVEL_BUNDLE FOREIGN KEY (travel_bundle_id) REFERENCES travel_bundle (id);
+ALTER TABLE user
+    ADD CONSTRAINT uc_user_username UNIQUE (username);
+
+ALTER TABLE details_purchase
+    ADD CONSTRAINT FK_DETAILSPURCHASE_ON_PURCHASE FOREIGN KEY (purchase_id) REFERENCES purchase (id);
+
+ALTER TABLE details_purchase
+    ADD CONSTRAINT FK_DETAILSPURCHASE_ON_TRAVEL_BUNDLES FOREIGN KEY (travel_bundles_id) REFERENCES travel_bundle (id);
+
+ALTER TABLE details_shopping_cart
+    ADD CONSTRAINT FK_DETAILSSHOPPINGCART_ON_SHOPPING_CART FOREIGN KEY (shopping_cart_id) REFERENCES shopping_cart (id);
+
+ALTER TABLE details_shopping_cart
+    ADD CONSTRAINT FK_DETAILSSHOPPINGCART_ON_TRAVEL_BUNDLES FOREIGN KEY (travel_bundles_id) REFERENCES travel_bundle (id);
 
 ALTER TABLE image
     ADD CONSTRAINT FK_IMAGE_ON_TRAVEL_BUNDLE FOREIGN KEY (travel_bundle_id) REFERENCES travel_bundle (id);
@@ -100,8 +115,8 @@ ALTER TABLE rating
 ALTER TABLE rating
     ADD CONSTRAINT FK_RATING_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-ALTER TABLE purchase_travel_bundles
-    ADD CONSTRAINT fk_purtrabun_on_purchase FOREIGN KEY (purchase_id) REFERENCES purchase (id);
+ALTER TABLE shopping_cart
+    ADD CONSTRAINT FK_SHOPPINGCART_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);
 
-ALTER TABLE purchase_travel_bundles
-    ADD CONSTRAINT fk_purtrabun_on_travel_bundle FOREIGN KEY (travel_bundles_id) REFERENCES travel_bundle (id);
+ALTER TABLE travel_bundle
+    ADD CONSTRAINT FK_TRAVELBUNDLE_ON_USER FOREIGN KEY (user_id) REFERENCES user (id);

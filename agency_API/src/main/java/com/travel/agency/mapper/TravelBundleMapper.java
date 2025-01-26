@@ -21,7 +21,7 @@ public class TravelBundleMapper {
         travelBundle.setEndDate(travelBundleRequestDTO.getEndDate());
         travelBundle.setAvailableBundles(travelBundleRequestDTO.getAvailableBundles());
         travelBundle.setUnitaryPrice(travelBundleRequestDTO.getUnitaryPrice());
-        travelBundle.setUser(user);
+        travelBundle.setUserAdmin(user);
 
         return travelBundle;
     }

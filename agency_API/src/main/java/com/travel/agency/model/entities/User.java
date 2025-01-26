@@ -28,10 +28,14 @@ public class User implements UserDetails {
     private Long id;
     private String firstName;
     private String lastName;
+    //Campo de DNI
+    @Column(unique = true, nullable = false)
+    private Integer identityCard;
     @Column(unique = true, nullable = false)
     private String email;
-    @Column(unique = true)
+    @Column(unique = true, nullable = false)
     private String username;
+    @Column(nullable = false)
     private String password;
     private Integer phoneNumber;
     @Embedded
@@ -44,10 +48,7 @@ public class User implements UserDetails {
             cascade = CascadeType.ALL,
             fetch = FetchType.LAZY)
     private List<Purchase> purchases;
-    @OneToMany(mappedBy = "user",
-            cascade = CascadeType.ALL,
-            fetch = FetchType.LAZY)
-    private List<TravelBundle> travelBundle;
+
     
     public User(String firstName, String lastName, String email, String username, String password) {
         this.firstName = firstName;
