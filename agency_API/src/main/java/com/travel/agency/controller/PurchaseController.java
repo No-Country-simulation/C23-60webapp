@@ -5,7 +5,6 @@ import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.model.DTO.purchase.UpdatePurchase;
 import com.travel.agency.service.PurchaseService;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,6 +14,7 @@ import java.util.List;
 @RestController
 @RequestMapping("/purchases")
 public class PurchaseController {
+    /*
     private final PurchaseService purchaseService;
 
     @Autowired
@@ -46,11 +46,10 @@ public class PurchaseController {
     //aCTUALIZAR
     @PutMapping("/cart/update/{purchaseId}")
     public ResponseEntity<PurchaseDTO> updatePurchaseController(@PathVariable Long purchaseId,
-                                                                @RequestBody @Valid UpdatePurchase updatePurchase) {
+                                                                @RequestBody UpdatePurchase updatePurchase) {
         PurchaseDTO purchaseDTO = purchaseService.updatePurchase(purchaseId, updatePurchase);
         return ResponseEntity.ok(purchaseDTO);
     }
-
 
     //Ver todas las compras, ADMIN?
     @GetMapping("")
@@ -80,12 +79,6 @@ public class PurchaseController {
         purchaseService.deletePurchaseById(purchaseId);
         return ResponseEntity.noContent().build();
     }
-
-    //Para obtener compras canceladas
-    @GetMapping("/cancelled")
-    public List<PurchaseDTO> getCancelledPurchases() {
-        return purchaseService.getCancelledPurchases();
-    }
-
+*/
 
 }

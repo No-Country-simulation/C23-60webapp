@@ -4,6 +4,7 @@ import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
 public record UserRegisterDTO(
+        //AGREGAR CAMPO DE DNI
         @NotEmpty
         String firstName,
         @NotEmpty

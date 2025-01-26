@@ -1,6 +1,5 @@
 package com.travel.agency.model.entities;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -27,32 +26,18 @@ public class TravelBundle {
     private LocalDate startDate;
     private LocalDate endDate;
     private Integer availableBundles;
-    private Integer totalBundles;
-    private Integer amountToBuy;
     private Double unitaryPrice;
-    private Double totalPrice;
     @OneToMany(mappedBy = "travelBundle", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<Rating> rating = new ArrayList();
+    private List<Rating> rating = new ArrayList<>();
     @OneToMany(mappedBy = "travelBundle", cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.LAZY)
-    private List<image> images = new ArrayList();
-    @OneToMany(mappedBy = "travelBundle", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    private List<DetailsPurchase> purchaseTravelBundle = new ArrayList();
+    private List<image> images = new ArrayList<>();
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", nullable = false)
-    @JsonIgnore
-    private User user;
+    //Este campo almacena el usuario que creo el paquete viaje
+    private User userAdmin;
+    @Embedded
+    private Discount discount;
 
-    //Calcular el precio del paquete seleccionado
-    /*
-    public Double getTotalPrice() {
-        Double total = unitaryPrice * amountToBuy;
-        //Si hay Cupon, aplicar
-        if (coupon != null && coupon.getDiscount() != null) {
-            total -= (total * coupon.getDiscount() / 100);
-        }
-        return total;
-    }
-    */
     //Restar del inventario (cuando se suma al carrito)
     public void decreaseAvaliableBundles(Integer quantity) {
         if (availableBundles >= quantity) {
@@ -67,13 +52,5 @@ public class TravelBundle {
         availableBundles += quantity;
     }
 
-    //Incrementar cantidad seleccionada
-    public void increaseAmountToBuy(Integer quantity) {
-        this.amountToBuy += quantity;
-    }
-
-    public void setAmountToBuy(int quantity) {
-        this.amountToBuy = quantity;
-    }
 
 }
