@@ -1,10 +1,12 @@
 package com.travel.agency.model.entities;
 
 
+import com.travel.agency.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity

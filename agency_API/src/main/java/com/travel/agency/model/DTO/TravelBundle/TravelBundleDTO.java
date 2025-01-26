@@ -1,23 +1,17 @@
 package com.travel.agency.model.DTO.TravelBundle;
 
 import java.time.LocalDate;
-import lombok.Getter;
-import lombok.Setter;
 
-@Getter
-@Setter
-public class TravelBundleDTO {
-    
-    private Long id;
-    private String title;
-    private String description;
-    private String destiny;
-    private LocalDate startDate;
-    private LocalDate endDate;
-    private Integer availableBundles;
-    private Double unitaryPrice;
 
-    public TravelBundleDTO() {
-    }    
+public record TravelBundleDTO(
+        Long id,
+        String title,
+        String description,
+        String destiny,
+        LocalDate startDate,
+        LocalDate endDate,
+        Integer availableBundles,
+        Double unitaryPrice
+) {
         
 }

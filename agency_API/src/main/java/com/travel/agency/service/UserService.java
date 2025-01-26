@@ -13,6 +13,7 @@ import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.AuthenticationException;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -45,12 +46,18 @@ public class UserService {
         User user = new User(
                 userRegisterDTO.firstName(),
                 userRegisterDTO.lastName(),
+                Integer.parseInt(userRegisterDTO.identityCard()),
                 userRegisterDTO.email(),
                 userRegisterDTO.email(),
                 userRegisterDTO.password()
         );
         user.setPassword(passwordEncoder.encode(user.getPassword()));
-        user.setRoles(Set.of(Role.USER));
+        Optional<User> isAdminRegistered = userRepository.findByEmail("admin@gmail.com");
+        if(!isAdminRegistered.isPresent() && userRegisterDTO.email().equals("admin@gmail.com")){
+            user.setRoles(Set.of(Role.ADMIN));
+        }else {
+            user.setRoles(Set.of(Role.USER));
+        }
         user.setRegisterDate(LocalDate.now());
         this.userRepository
                 .save(user);

@@ -1,5 +1,5 @@
 package com.travel.agency.controller;
-
+/*
 import com.travel.agency.model.DTO.purchase.CartRequest;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.model.DTO.purchase.UpdatePurchase;
@@ -7,9 +7,8 @@ import com.travel.agency.service.PurchaseService;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+*/import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
 
 @RestController
 @RequestMapping("/purchases")

@@ -30,16 +30,16 @@ public class TravelBundleMapper {
         if (travelBundle == null) {
             return null;
         }
-        TravelBundleDTO travelBundleDTO = new TravelBundleDTO();
-        travelBundleDTO.setId(travelBundle.getId());
-        travelBundleDTO.setTitle(travelBundle.getTitle());
-        travelBundleDTO.setDescription(travelBundle.getDescription());
-        travelBundleDTO.setDestiny(travelBundle.getDestiny());
-        travelBundleDTO.setStartDate(travelBundle.getStartDate());
-        travelBundleDTO.setEndDate(travelBundle.getEndDate());
-        travelBundleDTO.setAvailableBundles(travelBundle.getAvailableBundles());
-        travelBundleDTO.setUnitaryPrice(travelBundle.getUnitaryPrice());
-        return travelBundleDTO;
+        return new TravelBundleDTO(
+                travelBundle.getId(),
+                travelBundle.getTitle(),
+                travelBundle.getDescription(),
+                travelBundle.getDestiny(),
+                travelBundle.getStartDate(),
+                travelBundle.getEndDate(),
+                travelBundle.getAvailableBundles(),
+                travelBundle.getUnitaryPrice()
+        );
     }
 
     public static List<TravelBundleDTO> toDTOList(List<TravelBundle> travelBundles) {
