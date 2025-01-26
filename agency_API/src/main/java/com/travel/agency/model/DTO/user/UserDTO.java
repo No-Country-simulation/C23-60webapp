@@ -1,0 +1,15 @@
+package com.travel.agency.model.DTO.user;
+
+import java.time.LocalDate;
+
+public record UserDTO(
+        Long id,
+        String firstName,
+        String lastName,
+        Integer identityCard,
+        String email,
+        String username,
+        Integer phoneNumber,
+        LocalDate registerDate
+) {
+}

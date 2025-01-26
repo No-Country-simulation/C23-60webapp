@@ -24,10 +24,13 @@ public class DetailsPurchaseMapper {
         if (detailsPurchase == null) {
             return null;
         }
-        DetailsPurchaseDTO dto = new DetailsPurchaseDTO();
-        dto.setId(detailsPurchase.getId());
-        dto.setQuantity(detailsPurchase.getQuantity());
-        dto.setTotalPrice(detailsPurchase.getTotalPrice());
+        DetailsPurchaseDTO dto = new DetailsPurchaseDTO(
+                detailsPurchase.getId(),
+                detailsPurchase.getQuantity(),
+                detailsPurchase.getTotalPrice(),
+                null,
+                null
+        );
         return dto;
     }
 

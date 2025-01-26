@@ -5,14 +5,11 @@ import com.travel.agency.model.entities.TravelBundle;
 import lombok.Getter;
 import lombok.Setter;
 
-@Getter
-@Setter
-public class DetailsPurchaseDTO {
-    private Long id;
-    private int quantity;
-    private Double totalPrice;
-    private TravelBundle travelBundle;
-    private Purchase purchase;
-    private Long couponId;
-    
+public record DetailsPurchaseDTO (
+        Long id,
+        int quantity,
+        Double totalPrice,
+        TravelBundle travelBundle,
+        Purchase purchase
+) {
 }

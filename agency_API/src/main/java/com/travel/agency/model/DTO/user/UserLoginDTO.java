@@ -1,15 +1,13 @@
 package com.travel.agency.model.DTO.user;
 
-import com.travel.agency.validation.AtLeastOneNotEmpty;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
 
-@AtLeastOneNotEmpty
 public record UserLoginDTO(
         //DEJAR SOLO EMIAL
+        @NotEmpty
         @Email
         String email,
-        String username,
         @NotEmpty
         String password
 ) {
