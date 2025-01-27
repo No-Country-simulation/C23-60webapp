@@ -2,8 +2,10 @@ package com.travel.agency.utils;
 
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.model.entities.Purchase;
+import org.hibernate.sql.ast.tree.expression.Collation;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -14,7 +16,7 @@ public class PurchaseUtils {
     public List<PurchaseDTO> purchaseMapperDto(List<Purchase> purchaseList) {
         if (purchaseList == null || purchaseList.isEmpty()) {
             //VER RETORNO
-            return null;
+            return Collections.emptyList();
         }
         return purchaseList.stream()
                 .map(PurchaseDTO::new)

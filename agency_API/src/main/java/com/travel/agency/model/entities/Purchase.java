@@ -1,6 +1,8 @@
 package com.travel.agency.model.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.travel.agency.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
@@ -21,6 +23,7 @@ public class Purchase {
     private Long id;
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonIgnore
     private User user;
     //Precio total deducido de cada uno de los paquetes de viaje en detailsPurchase
     private Double totalPrice;
@@ -28,6 +31,5 @@ public class Purchase {
     @OneToMany(mappedBy = "purchase", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     //Almacena la cantidad de paquetes de viaje que ha comprado el usuario.
     private List<DetailsPurchase> detailsPurchase;
-
 
 }
