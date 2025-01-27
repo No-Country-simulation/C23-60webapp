@@ -1,21 +1,10 @@
 package com.travel.agency.controller;
-/*
-import com.travel.agency.model.DTO.purchase.CartRequest;
-import com.travel.agency.model.DTO.purchase.PurchaseDTO;
-import com.travel.agency.model.DTO.purchase.UpdatePurchase;
-import com.travel.agency.service.PurchaseService;
-import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-*/
 
 import com.travel.agency.model.DTO.ErrorResponseDTO;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
-import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.service.PurchaseService;
 import com.travel.agency.utils.JwtUtil;
 import jakarta.transaction.Transactional;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -41,11 +30,10 @@ public class PurchaseController {
     //CREAR compra
     @PostMapping("/create")
     public ResponseEntity<?> createPurchaseController(
-            @RequestHeader("Authotization") String token,
-            @Valid @RequestBody ShoppingCart shoppingCart) {
+            @RequestHeader("Authorization") String token) {
         try {
-            String username = jwtUtil.extractUsername(token.substring(7));
-            PurchaseDTO purchaseDTO = purchaseService.createPurchase(shoppingCart, username);
+            String username = jwtUtil.extractUsername(token);
+            PurchaseDTO purchaseDTO = purchaseService.createPurchase(username);
             return ResponseEntity.ok(purchaseDTO);
             //ver Excepciones
         } catch (AuthenticationException e) {
@@ -53,23 +41,6 @@ public class PurchaseController {
                     .body(new ErrorResponseDTO(HttpStatus.UNAUTHORIZED.value(), e.getMessage(), e.getClass().getSimpleName()));
         }
     }
-
-    //FINALIZAR COMPRA
-//    @PostMapping("/finalize/{idPurchase}")
-//    public ResponseEntity<PurchaseDTO> finalizePurchaseController(@PathVariable Long idPurchase,
-//                                                                  @RequestParam String paymentMethod) {
-//        PurchaseDTO purchaseDTO = purchaseService.finalizePurchase(idPurchase, paymentMethod);
-//        return ResponseEntity.ok(purchaseDTO);
-//
-//    }
-
-    //aCTUALIZAR
-//    @PutMapping("/cart/update/{purchaseId}")
-//    public ResponseEntity<PurchaseDTO> updatePurchaseController(@PathVariable Long purchaseId,
-//                                                                @RequestBody UpdatePurchase updatePurchase) {
-//        PurchaseDTO purchaseDTO = purchaseService.updatePurchase(purchaseId, updatePurchase);
-//        return ResponseEntity.ok(purchaseDTO);
-//    }
 
     //Ver todas las compras, ADMIN?
     @GetMapping("")
@@ -80,20 +51,26 @@ public class PurchaseController {
 
     //ver compra por ID
     @GetMapping("/{idPurchase}")
-    public PurchaseDTO searchPurchaseByIdController(@PathVariable Long idPurchase) {
-        return purchaseService.searchPurchaseById(idPurchase);
-
+    public ResponseEntity<PurchaseDTO> searchPurchaseByIdController(@PathVariable Long idPurchase) {
+        PurchaseDTO purchaseDTO = purchaseService.searchPurchaseById(idPurchase);
+        return ResponseEntity.ok(purchaseDTO);
     }
 
+
     //ver compra por usuario
-//    @GetMapping("/user/{username}")
-//    public ResponseEntity<List<PurchaseDTO>> getPurchasesByUsernameController(@PathVariable String username) {
-//        List<PurchaseDTO> purchaseDTOs = purchaseService.searchPurchaseByUser(username);
-//        return ResponseEntity.ok(purchaseDTOs);
-//    }
+    @GetMapping("/user-purchases")
+    public ResponseEntity<?> getPurchasesByUsernameController(@RequestHeader("Authorization") String token) {
+        try {
+            String username = jwtUtil.extractUsername(token);
+            List<PurchaseDTO> userPurchases = purchaseService.searchPurchaseByUser(username);
+            return ResponseEntity.ok(userPurchases);
+        } catch (AuthenticationException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(new ErrorResponseDTO(HttpStatus.UNAUTHORIZED.value(), e.getMessage(), e.getClass().getSimpleName()));
+        }
+    }
 
     //Eliminar compra por ID
-    @Transactional
     @DeleteMapping("/{purchaseId}")
     public ResponseEntity<Void> deletePurchaseController(@PathVariable Long purchaseId) {
         purchaseService.deletePurchaseById(purchaseId);
