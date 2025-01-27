@@ -1,9 +1,9 @@
 package com.travel.agency.service;
 
 import com.travel.agency.enums.Role;
+import com.travel.agency.model.DTO.user.UserDTO;
 import com.travel.agency.model.DTO.user.UserLoginDTO;
 import com.travel.agency.model.DTO.user.UserRegisterDTO;
-import com.travel.agency.model.DTO.user.UserDTO;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.UserRepository;
 import com.travel.agency.utils.JwtUtil;
@@ -22,7 +22,6 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Optional;
 import java.util.Set;
-import java.util.stream.Collectors;
 
 @Service
 public class UserService {
@@ -82,7 +81,7 @@ public class UserService {
     public List<UserDTO> users() {
         List<User> users = this.userRepository.findAll();
         return users.stream().map(user ->
-                MapperUtil.mapperEntity(user, userEntity ->
+                MapperUtil.mapperEntity(user1 ->
                         new UserDTO(
                                 user.getId(),
                                 user.getFirstName(),
