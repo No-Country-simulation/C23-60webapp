@@ -34,9 +34,5 @@ public class AuthController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
-    @GetMapping("/logout")
-    public ResponseEntity<?> logout(){
-        return ResponseEntity.status(HttpStatus.NOT_IMPLEMENTED).build();
-    }
 
 }
