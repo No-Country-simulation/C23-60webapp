@@ -9,7 +9,6 @@ import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.RatingRepository;
 import com.travel.agency.repository.TravelBundleRepository;
 import com.travel.agency.repository.UserRepository;
-import com.travel.agency.utils.MapperUtil;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -18,8 +17,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
-
-import static java.util.Arrays.stream;
 
 @Service
 
@@ -58,28 +55,27 @@ public class RatingService {
         );
         //guardar
         Rating savedRating = ratingRepository.save(rating);
-        // Convertir a RatingDTO usando MapperUtil y devolverlo
-        return MapperUtil.mapperEntity(savedRating, rating1 -> new RatingDTO(
+        return new RatingDTO(
                 rating.getId(),
                 rating.getUser().getUsername(),
                 rating.getRating(),
                 rating.getTravelBundle().getId(),
                 rating.getComment(),
                 rating.getCreationDate()
-        ));
+        );
     }
 
     public RatingDTO searchRatingByID(Long ratingId) {
         Rating rating = ratingRepository.findById(ratingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Rating", "ID", ratingId));
-        return MapperUtil.mapperEntity(rating, r -> new RatingDTO(
-                r.getId(),
-                r.getUser().getUsername(),
-                r.getRating(),
-                r.getTravelBundle().getId(),
-                r.getComment(),
-                r.getCreationDate()
-        ));
+        return new RatingDTO(
+                rating.getId(),
+                rating.getUser().getUsername(),
+                rating.getRating(),
+                rating.getTravelBundle().getId(),
+                rating.getComment(),
+                rating.getCreationDate()
+        );
     }
 
     public List<RatingDTO> getAllRatings() {
@@ -95,7 +91,8 @@ public class RatingService {
                 ))
                 .collect(Collectors.toList());
     }
-    public List<RatingDTO>  searchRatingsByUser(String username){
+
+    public List<RatingDTO> searchRatingsByUser(String username) {
         //Buscar el usuario por username
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));

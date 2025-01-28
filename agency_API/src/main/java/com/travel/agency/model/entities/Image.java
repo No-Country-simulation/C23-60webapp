@@ -1,6 +1,5 @@
 package com.travel.agency.model.entities;
 
-
 import jakarta.persistence.*;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -12,7 +11,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class image {
+public class Image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -27,5 +26,4 @@ public class image {
     @ManyToOne
     @JoinColumn(name = "travel_bundle_id")
     private TravelBundle travelBundle;
-
 }
