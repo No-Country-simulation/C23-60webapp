@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class TravelBundleMapper {
-
+/*
     public static TravelBundle toEntity(TravelBundleRequestDTO travelBundleRequestDTO, User user) {
         if (travelBundleRequestDTO == null) {
             return null;
@@ -29,7 +29,7 @@ public class TravelBundleMapper {
         travelBundle.setUserAdmin(user);
 
         return travelBundle;
-    }
+    }*/
 
     public static TravelBundleDTO toDTO(TravelBundle travelBundle) {
         if (travelBundle == null) {
@@ -47,13 +47,19 @@ public class TravelBundleMapper {
                 //Mapea cada Rating entity y la convierte en una lista de RatingDTO
                 travelBundle.getRating().stream().map(rating ->
                         MapperUtil.mapperEntity(rating1->new RatingDTO(
-                                rating.getRating(), new MinUserDTO(
-                                        rating.getUser().getFirstName(),
-                                        rating.getUser().getLastName(),
-                                        rating.getUser().getEmail()), rating.getComment()))).toList(),
+                                rating.getId(),
+                                rating.getUser().getUsername(),
+                                rating.getRating(),
+                                rating.getTravelBundle().getId(),
+                                rating.getComment(),
+                                rating.getCreationDate()))).toList(),
                 //Mapean cada imagen entity y la convierte en lista de ImageDTO
                 travelBundle.getImages().stream().map(image -> MapperUtil
-                        .mapperEntity(image1 -> new ImageDTO(image.getImage()))).toList()
+                        .mapperEntity(image1 -> new ImageDTO(
+                                image.getFilename(),
+                                image.getContentType(),
+                                image.getImageData()))).toList(),
+                travelBundle.getDiscount()
         );
     }
 
