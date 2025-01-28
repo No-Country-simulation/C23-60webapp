@@ -1,7 +1,5 @@
 package com.travel.agency.utils;
 
-import com.travel.agency.model.entities.DetailsPurchase;
-
 import java.util.function.Function;
 
 
