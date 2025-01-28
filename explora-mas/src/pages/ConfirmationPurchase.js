@@ -73,7 +73,7 @@ const ConfirmationPurchase = () => {
 
           <p><strong>Paquete:</strong> {booking.name}</p>
           <p><strong>Cantidad de pasajes:</strong> {quantity}</p>
-          <p><strong>Precio total:</strong> {totalPrice ? totalPrice.toFixed(2) : 'N/A'} {booking.currency}</p>
+          <p><strong>Precio total: $</strong> {totalPrice ? totalPrice.toFixed(2) : 'N/A'} {booking.currency}</p>
 
           {isLoggedIn && transactionId ? (
             <p><strong>ID de transacción:</strong> {transactionId}</p>

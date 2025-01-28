@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { MagnifyingGlassIcon } from "@heroicons/react/20/solid"; // Asegúrate de que la ruta sea correcta
-import FeaturedDestinations from "../components/FeaturedDestinations"; // Asegúrate de que la ruta sea correcta
-import { Footer } from "../components/Footer"; // Asegúrate de que la ruta sea correcta
+import FeaturedDestinations from "../components/destinations/FeaturedDestinations"; // Asegúrate de que la ruta sea correcta
+import { Footer } from "../components/common/Footer"; // Asegúrate de que la ruta sea correcta
 
 const HomePage = () => {
   const [currentSection, setCurrentSection] = useState(0); // Para controlar el índice del carrusel

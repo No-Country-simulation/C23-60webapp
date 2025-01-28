@@ -1,6 +1,6 @@
 // src/pages/DestinationsPage.js
 import React, { useState } from 'react';
-import { Footer } from "../components/Footer"; // Asegúrate de que la ruta sea correcta
+import { Footer } from "../components/common/Footer"; // Asegúrate de que la ruta sea correcta
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'; // Importamos los íconos de flechas
 
 const destinos = [

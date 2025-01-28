@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-export const Footer = () => {
+export const Footer = ({ isAuthenticated }) => {
   return (
     <footer className="bg-gray-900 text-white mt-auto">
       <div className="container mx-auto px-6 py-8">
@@ -44,6 +44,18 @@ export const Footer = () => {
             </div>
           </div>
         </div>
+
+        {/* Botón de acceso al Admin */}
+        {!isAuthenticated && (
+          <div className="text-center mt-6">
+            <Link 
+              to="/login-admin"  
+              className="inline-block py-2 px-6 bg-blue-600 text-white rounded-full hover:bg-blue-700 transition-all"
+            >
+              Acceder al Admin
+            </Link>
+          </div>
+        )}
 
         {/* Línea divisoria */}
         <div className="border-t border-white/10 mt-8 pt-8 text-center text-sm">
