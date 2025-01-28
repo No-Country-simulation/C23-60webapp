@@ -34,12 +34,7 @@ public class PurchaseController {
 
     }
 
-    //Ver todas las compras, ADMIN?
-    @GetMapping("")
-    public ResponseEntity<List<PurchaseDTO>> getAllPurchaseController() {
-        List<PurchaseDTO> purchasesDTOs = purchaseService.getAllPurchases();
-        return ResponseEntity.ok(purchasesDTOs);
-    }
+
 
     //ver compra por ID
     @GetMapping("/{idPurchase}")

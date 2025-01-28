@@ -2,17 +2,12 @@ package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseRequestDTO;
-import com.travel.agency.model.DTO.TravelBundle.TravelBundleDTO;
-import com.travel.agency.model.DTO.TravelBundle.TravelBundleRequestDTO;
 import com.travel.agency.service.DetailsPurchaseService;
 import com.travel.agency.utils.JwtUtil;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/details")
@@ -21,6 +16,7 @@ public class DetailsPurchaseController {
     private final DetailsPurchaseService detailsPurchaseService;
     private final JwtUtil jwtUtil;
 
+    @Autowired
     public DetailsPurchaseController(DetailsPurchaseService detailsPurchaseService, JwtUtil jwtUtil) {
         this.detailsPurchaseService = detailsPurchaseService;
         this.jwtUtil = jwtUtil;

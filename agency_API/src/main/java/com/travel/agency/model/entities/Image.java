@@ -12,12 +12,13 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Image {
+public class image {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    //@Lob
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] image;
     //VER PARA EL MANEJO DE LLEVAR Y TRAER LAS IMGS DE BACK A FRONT Y VICEVERSA
     //private String contentType;  // tipo de la imagen (por ejemplo, "image/jpeg", "image/png")
