@@ -17,6 +17,8 @@ public class image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    @Lob
+    @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] image;
     @ManyToOne
     @JoinColumn(name = "travel_bundle_id")

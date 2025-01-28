@@ -1,6 +1,10 @@
 package com.travel.agency.model.DTO.TravelBundle;
 
+import com.travel.agency.model.DTO.image.ImageDTO;
+import com.travel.agency.model.DTO.rating.RatingDTO;
+
 import java.time.LocalDate;
+import java.util.List;
 
 
 public record TravelBundleDTO(
@@ -11,7 +15,10 @@ public record TravelBundleDTO(
         LocalDate startDate,
         LocalDate endDate,
         Integer availableBundles,
-        Double unitaryPrice
+        Double unitaryPrice,
+        List<RatingDTO> rating,
+        List<ImageDTO> images
+
 ) {
         
 }
