@@ -18,18 +18,22 @@ import java.util.stream.Collectors;
 
 @Service
 public class PurchaseService {
-    @Autowired
-    PurchaseRepository purchaseRepository;
-    @Autowired
-    TravelBundleRepository travelBundleRepository;
-    @Autowired
-    UserRepository userRepository;
-    @Autowired
-    PurchaseUtils purchaseUtils;
-    @Autowired
-    ShoppingCartRepository shoppingCartRepository;
-    @Autowired
-    DetailsPurchaseRepository detailsPurchaseRepository;
+
+    private final PurchaseRepository purchaseRepository;
+    private final TravelBundleRepository travelBundleRepository;
+    private final UserRepository userRepository;
+    private final PurchaseUtils purchaseUtils;
+    private final ShoppingCartRepository shoppingCartRepository;
+    private final DetailsPurchaseRepository detailsPurchaseRepository;
+
+    public PurchaseService(PurchaseRepository purchaseRepository, TravelBundleRepository travelBundleRepository, UserRepository userRepository, PurchaseUtils purchaseUtils, ShoppingCartRepository shoppingCartRepository, DetailsPurchaseRepository detailsPurchaseRepository) {
+        this.purchaseRepository = purchaseRepository;
+        this.travelBundleRepository = travelBundleRepository;
+        this.userRepository = userRepository;
+        this.purchaseUtils = purchaseUtils;
+        this.shoppingCartRepository = shoppingCartRepository;
+        this.detailsPurchaseRepository = detailsPurchaseRepository;
+    }
 
     //CREAR COMPRA O "FACTURA DE COMPRA"
     @Transactional

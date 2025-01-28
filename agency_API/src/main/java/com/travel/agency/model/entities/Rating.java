@@ -1,15 +1,15 @@
 package com.travel.agency.model.entities;
 
 import jakarta.persistence.*;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
+import java.time.LocalDateTime;
 
 @Entity
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class Rating {
 
@@ -24,4 +24,15 @@ public class Rating {
     @JoinColumn(name = "travel_bundle_id")
     private TravelBundle travelBundle;
     private String comment;
+    private LocalDateTime creationDate;
+
+    public Rating(Double rating, User user, TravelBundle travelBundle, String comment, LocalDateTime creationDate) {
+        this.rating = rating;
+        this.user = user;
+        this.travelBundle = travelBundle;
+        this.comment = comment;
+        this.creationDate = creationDate;
+    }
+
+
 }

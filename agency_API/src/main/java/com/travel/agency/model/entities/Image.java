@@ -20,6 +20,10 @@ public class image {
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
     private byte[] image;
+    //VER PARA EL MANEJO DE LLEVAR Y TRAER LAS IMGS DE BACK A FRONT Y VICEVERSA
+    //private String contentType;  // tipo de la imagen (por ejemplo, "image/jpeg", "image/png")
+    // private String filename;
+
     @ManyToOne
     @JoinColumn(name = "travel_bundle_id")
     private TravelBundle travelBundle;
