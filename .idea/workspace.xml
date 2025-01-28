@@ -6,23 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AuthController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AuthController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/DetailsPurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/DetailsPurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/TravelBundleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/TravelBundleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/UserController.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/user/UserDTO.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/image.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/image.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/UserService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/controller/PurchaseController.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Image.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/GenericRepository.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/RatingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/RatingRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/RatingService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/AgencyAPI.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SchedulingConfig.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/enums/Role.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/enums/Status.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GlobalExceptionHandler.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/ResourceNotFoundException.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/user/GeneratedTokenDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/user/UserLoginDTO.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Address.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/image.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Rating.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/TravelBundle.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/User.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/GenericRepository.class" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/PurchaseRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/UserService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/TravelBundleRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/UserRepository.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/CustomUserDetailsService.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/target/test-classes/com/travel/agency/AgencyAPITests.class" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -36,8 +42,8 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Interface" />
-        <option value="Class" />
         <option value="Record" />
+        <option value="Class" />
       </list>
     </option>
   </component>
@@ -66,42 +72,43 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Application.AgencyAPI.executor&quot;: &quot;Run&quot;,
-    &quot;Application.ViajesApplication.executor&quot;: &quot;Run&quot;,
-    &quot;Maven.agency [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.agency [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [compile].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [install].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-clean-plugin:3.4.0:clean].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install-file].executor&quot;: &quot;Run&quot;,
-    &quot;Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install].executor&quot;: &quot;Run&quot;,
-    &quot;RequestMappingsPanelOrder0&quot;: &quot;0&quot;,
-    &quot;RequestMappingsPanelOrder1&quot;: &quot;1&quot;,
-    &quot;RequestMappingsPanelWidth0&quot;: &quot;75&quot;,
-    &quot;RequestMappingsPanelWidth1&quot;: &quot;75&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.git.unshallow&quot;: &quot;true&quot;,
-    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
-    &quot;Spring Boot.AgencyAPI.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.Explora+.executor&quot;: &quot;Run&quot;,
-    &quot;Spring Boot.Explora6.executor&quot;: &quot;Run&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;security&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;project.structure.last.edited&quot;: &quot;Artifacts&quot;,
-    &quot;project.structure.proportion&quot;: &quot;0.15&quot;,
-    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;configurable.group.appearance&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.AgencyAPI.executor": "Run",
+    "Application.ViajesApplication.executor": "Run",
+    "Maven.agency [clean].executor": "Run",
+    "Maven.agency [compile].executor": "Run",
+    "Maven.viajes [clean].executor": "Run",
+    "Maven.viajes [compile].executor": "Run",
+    "Maven.viajes [install].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-clean-plugin:3.4.0:clean].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install-file].executor": "Run",
+    "Maven.viajes [org.apache.maven.plugins:maven-install-plugin:3.1.3:install].executor": "Run",
+    "RequestMappingsPanelOrder0": "0",
+    "RequestMappingsPanelOrder1": "1",
+    "RequestMappingsPanelWidth0": "75",
+    "RequestMappingsPanelWidth1": "75",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "RunOnceActivity.git.unshallow": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Spring Boot.AgencyAPI.executor": "Run",
+    "Spring Boot.Explora+.executor": "Run",
+    "Spring Boot.Explora6.executor": "Run",
+    "git-widget-placeholder": "rating",
+    "ignore.virus.scanning.warn.message": "true",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Flor/OneDrive/Documents/FLOR/C23-60webapp",
+    "node.js.detected.package.eslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "settings.editor.selected.configurable": "MavenSettings",
+    "vue.rearranger.settings.migration": "true"
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CreateClassDialog.RecentsKey">
       <recent name="com.travel.agency.model" />
@@ -132,14 +139,6 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-  </component>
-  <component name="SharedIndexes">
-    <attachedChunks>
-      <set>
-        <option value="bundled-jdk-9823dce3aa75-fdfe4dae3a2d-intellij.indexing.shared.core-IU-243.22562.218" />
-        <option value="bundled-js-predefined-d6986cc7102b-deb605915726-JavaScript-IU-243.22562.218" />
-      </set>
-    </attachedChunks>
   </component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
