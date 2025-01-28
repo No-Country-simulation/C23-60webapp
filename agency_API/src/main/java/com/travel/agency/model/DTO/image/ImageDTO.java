@@ -1,6 +1,8 @@
 package com.travel.agency.model.DTO.image;
 
 public record ImageDTO(
-        byte[] image
+        String filename,
+        String imageType,
+        byte[] imageData
 ) {
 }

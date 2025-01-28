@@ -996,7 +996,7 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     </collation>
     <schema id="288" parent="1" name="agency">
       <Current>1</Current>
-      <LastIntrospectionLocalTimestamp>2025-01-19.23:18:19</LastIntrospectionLocalTimestamp>
+      <LastIntrospectionLocalTimestamp>2025-01-28.14:27:19</LastIntrospectionLocalTimestamp>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </schema>
     <schema id="289" parent="1" name="forohub">
@@ -1065,23 +1065,23 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
     <user id="308" parent="1" name="root">
       <Host>localhost</Host>
     </user>
-    <table id="309" parent="288" name="coupon">
+    <table id="309" parent="288" name="details_purchase">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="310" parent="288" name="flyway_schema_history">
+    <table id="310" parent="288" name="details_shopping_cart">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="311" parent="288" name="image">
+    <table id="311" parent="288" name="flyway_schema_history">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="312" parent="288" name="purchase">
+    <table id="312" parent="288" name="image">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="313" parent="288" name="purchase_travel_bundles">
+    <table id="313" parent="288" name="purchase">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
@@ -1089,177 +1089,184 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="315" parent="288" name="travel_bundle">
+    <table id="315" parent="288" name="shopping_cart">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="316" parent="288" name="user">
+    <table id="316" parent="288" name="travel_bundle">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <table id="317" parent="288" name="user_roles">
+    <table id="317" parent="288" name="user">
       <Engine>InnoDB</Engine>
       <CollationName>utf8mb4_0900_ai_ci</CollationName>
     </table>
-    <column id="318" parent="309" name="id">
+    <table id="318" parent="288" name="user_roles">
+      <Engine>InnoDB</Engine>
+      <CollationName>utf8mb4_0900_ai_ci</CollationName>
+    </table>
+    <column id="319" parent="309" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="319" parent="309" name="code">
+    <column id="320" parent="309" name="quantity">
+      <NotNull>1</NotNull>
       <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="320" parent="309" name="name">
-      <Position>3</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="321" parent="309" name="discount">
-      <Position>4</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="322" parent="309" name="description">
+    <column id="321" parent="309" name="total_price">
+      <Position>3</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="322" parent="309" name="travel_bundles_id">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="323" parent="309" name="purchase_id">
+      <NotNull>1</NotNull>
       <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="323" parent="309" name="creation_date">
-      <Position>6</Position>
-      <StoredType>datetime|0s</StoredType>
-    </column>
-    <column id="324" parent="309" name="expiration_date">
-      <Position>7</Position>
-      <StoredType>datetime|0s</StoredType>
-    </column>
-    <column id="325" parent="309" name="is_active">
-      <Position>8</Position>
-      <StoredType>bit(1)|0s</StoredType>
-    </column>
-    <column id="326" parent="309" name="purchase_id">
-      <Position>9</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="327" parent="309" name="travel_bundle_id">
-      <Position>10</Position>
-      <StoredType>bigint|0s</StoredType>
-    </column>
-    <foreign-key id="328" parent="309" name="FK_COUPON_ON_PURCHASE">
+    <foreign-key id="324" parent="309" name="FK_DETAILSPURCHASE_ON_TRAVEL_BUNDLES">
+      <ColNames>travel_bundles_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>travel_bundle</RefTableName>
+    </foreign-key>
+    <foreign-key id="325" parent="309" name="FK_DETAILSPURCHASE_ON_PURCHASE">
       <ColNames>purchase_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>purchase</RefTableName>
     </foreign-key>
-    <foreign-key id="329" parent="309" name="FK_COUPON_ON_TRAVEL_BUNDLE">
-      <ColNames>travel_bundle_id</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>travel_bundle</RefTableName>
-    </foreign-key>
-    <index id="330" parent="309" name="PRIMARY">
+    <index id="326" parent="309" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="331" parent="309" name="FK_COUPON_ON_PURCHASE">
+    <index id="327" parent="309" name="FK_DETAILSPURCHASE_ON_TRAVEL_BUNDLES">
+      <ColNames>travel_bundles_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="328" parent="309" name="FK_DETAILSPURCHASE_ON_PURCHASE">
       <ColNames>purchase_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="332" parent="309" name="FK_COUPON_ON_TRAVEL_BUNDLE">
-      <ColNames>travel_bundle_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="333" parent="309" name="PRIMARY">
+    <key id="329" parent="309" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="334" parent="310" name="installed_rank">
+    <column id="330" parent="310" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="331" parent="310" name="quantity">
+      <NotNull>1</NotNull>
+      <Position>2</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="332" parent="310" name="total_price">
+      <Position>3</Position>
+      <StoredType>double|0s</StoredType>
+    </column>
+    <column id="333" parent="310" name="travel_bundles_id">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="334" parent="310" name="shopping_cart_id">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <foreign-key id="335" parent="310" name="FK_DETAILSSHOPPINGCART_ON_TRAVEL_BUNDLES">
+      <ColNames>travel_bundles_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>travel_bundle</RefTableName>
+    </foreign-key>
+    <foreign-key id="336" parent="310" name="FK_DETAILSSHOPPINGCART_ON_SHOPPING_CART">
+      <ColNames>shopping_cart_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>shopping_cart</RefTableName>
+    </foreign-key>
+    <index id="337" parent="310" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="338" parent="310" name="FK_DETAILSSHOPPINGCART_ON_TRAVEL_BUNDLES">
+      <ColNames>travel_bundles_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <index id="339" parent="310" name="FK_DETAILSSHOPPINGCART_ON_SHOPPING_CART">
+      <ColNames>shopping_cart_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="340" parent="310" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="341" parent="311" name="installed_rank">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="335" parent="310" name="version">
+    <column id="342" parent="311" name="version">
       <Position>2</Position>
       <StoredType>varchar(50)|0s</StoredType>
     </column>
-    <column id="336" parent="310" name="description">
+    <column id="343" parent="311" name="description">
       <NotNull>1</NotNull>
       <Position>3</Position>
       <StoredType>varchar(200)|0s</StoredType>
     </column>
-    <column id="337" parent="310" name="type">
+    <column id="344" parent="311" name="type">
       <NotNull>1</NotNull>
       <Position>4</Position>
       <StoredType>varchar(20)|0s</StoredType>
     </column>
-    <column id="338" parent="310" name="script">
+    <column id="345" parent="311" name="script">
       <NotNull>1</NotNull>
       <Position>5</Position>
       <StoredType>varchar(1000)|0s</StoredType>
     </column>
-    <column id="339" parent="310" name="checksum">
+    <column id="346" parent="311" name="checksum">
       <Position>6</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="340" parent="310" name="installed_by">
+    <column id="347" parent="311" name="installed_by">
       <NotNull>1</NotNull>
       <Position>7</Position>
       <StoredType>varchar(100)|0s</StoredType>
     </column>
-    <column id="341" parent="310" name="installed_on">
+    <column id="348" parent="311" name="installed_on">
       <DefaultExpression>CURRENT_TIMESTAMP</DefaultExpression>
       <NotNull>1</NotNull>
       <Position>8</Position>
       <StoredType>timestamp|0s</StoredType>
     </column>
-    <column id="342" parent="310" name="execution_time">
+    <column id="349" parent="311" name="execution_time">
       <NotNull>1</NotNull>
       <Position>9</Position>
       <StoredType>int|0s</StoredType>
     </column>
-    <column id="343" parent="310" name="success">
+    <column id="350" parent="311" name="success">
       <NotNull>1</NotNull>
       <Position>10</Position>
       <StoredType>tinyint(1)|0s</StoredType>
     </column>
-    <index id="344" parent="310" name="PRIMARY">
+    <index id="351" parent="311" name="PRIMARY">
       <ColNames>installed_rank</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="345" parent="310" name="flyway_schema_history_s_idx">
+    <index id="352" parent="311" name="flyway_schema_history_s_idx">
       <ColNames>success</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="346" parent="310" name="PRIMARY">
-      <NameSurrogate>1</NameSurrogate>
-      <Primary>1</Primary>
-      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
-    </key>
-    <column id="347" parent="311" name="id">
-      <AutoIncrement>1</AutoIncrement>
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>bigint|0s</StoredType>
-    </column>
-    <column id="348" parent="311" name="image">
-      <Position>2</Position>
-      <StoredType>varbinary(255)|0s</StoredType>
-    </column>
-    <column id="349" parent="311" name="travel_bundle_id">
-      <Position>3</Position>
-      <StoredType>bigint|0s</StoredType>
-    </column>
-    <foreign-key id="350" parent="311" name="FK_IMAGE_ON_TRAVEL_BUNDLE">
-      <ColNames>travel_bundle_id</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>travel_bundle</RefTableName>
-    </foreign-key>
-    <index id="351" parent="311" name="PRIMARY">
-      <ColNames>id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="352" parent="311" name="FK_IMAGE_ON_TRAVEL_BUNDLE">
-      <ColNames>travel_bundle_id</ColNames>
       <Type>btree</Type>
     </index>
     <key id="353" parent="311" name="PRIMARY">
@@ -1273,270 +1280,338 @@ sys|schema||mysql.sys|localhost|TRIGGER|G</Grants>
       <Position>1</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="355" parent="312" name="user_id">
+    <column id="355" parent="312" name="image">
+      <Position>2</Position>
+      <StoredType>mediumblob|0s</StoredType>
+    </column>
+    <column id="356" parent="312" name="travel_bundle_id">
+      <Position>3</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <foreign-key id="357" parent="312" name="FK_IMAGE_ON_TRAVEL_BUNDLE">
+      <ColNames>travel_bundle_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>travel_bundle</RefTableName>
+    </foreign-key>
+    <index id="358" parent="312" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="359" parent="312" name="FK_IMAGE_ON_TRAVEL_BUNDLE">
+      <ColNames>travel_bundle_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="360" parent="312" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="361" parent="313" name="id">
+      <AutoIncrement>1</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="362" parent="313" name="user_id">
       <Position>2</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="356" parent="312" name="total_price">
+    <column id="363" parent="313" name="total_price">
       <Position>3</Position>
       <StoredType>double|0s</StoredType>
     </column>
-    <column id="357" parent="312" name="purchase_date">
+    <column id="364" parent="313" name="purchase_date">
       <Position>4</Position>
       <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="358" parent="312" name="payment_method">
-      <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="359" parent="312" name="status">
-      <Position>6</Position>
-      <StoredType>smallint|0s</StoredType>
-    </column>
-    <foreign-key id="360" parent="312" name="FK_PURCHASE_ON_USER">
+    <foreign-key id="365" parent="313" name="FK_PURCHASE_ON_USER">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="361" parent="312" name="PRIMARY">
+    <index id="366" parent="313" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="362" parent="312" name="FK_PURCHASE_ON_USER">
+    <index id="367" parent="313" name="FK_PURCHASE_ON_USER">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="363" parent="312" name="PRIMARY">
+    <key id="368" parent="313" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="364" parent="313" name="purchase_id">
-      <NotNull>1</NotNull>
-      <Position>1</Position>
-      <StoredType>bigint|0s</StoredType>
-    </column>
-    <column id="365" parent="313" name="travel_bundles_id">
-      <NotNull>1</NotNull>
-      <Position>2</Position>
-      <StoredType>bigint|0s</StoredType>
-    </column>
-    <foreign-key id="366" parent="313" name="fk_purtrabun_on_purchase">
-      <ColNames>purchase_id</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>purchase</RefTableName>
-    </foreign-key>
-    <foreign-key id="367" parent="313" name="fk_purtrabun_on_travel_bundle">
-      <ColNames>travel_bundles_id</ColNames>
-      <RefColNames>id</RefColNames>
-      <RefTableName>travel_bundle</RefTableName>
-    </foreign-key>
-    <index id="368" parent="313" name="uc_purchase_travel_bundles_travelbundles">
-      <ColNames>travel_bundles_id</ColNames>
-      <Type>btree</Type>
-      <Unique>1</Unique>
-    </index>
-    <index id="369" parent="313" name="fk_purtrabun_on_purchase">
-      <ColNames>purchase_id</ColNames>
-      <Type>btree</Type>
-    </index>
-    <key id="370" parent="313" name="uc_purchase_travel_bundles_travelbundles">
-      <UnderlyingIndexName>uc_purchase_travel_bundles_travelbundles</UnderlyingIndexName>
-    </key>
-    <column id="371" parent="314" name="id">
+    <column id="369" parent="314" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="372" parent="314" name="rating">
+    <column id="370" parent="314" name="rating">
       <Position>2</Position>
-      <StoredType>int|0s</StoredType>
+      <StoredType>double|0s</StoredType>
     </column>
-    <column id="373" parent="314" name="user_id">
+    <column id="371" parent="314" name="user_id">
       <Position>3</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="374" parent="314" name="travel_bundle_id">
+    <column id="372" parent="314" name="travel_bundle_id">
       <Position>4</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="375" parent="314" name="comment">
+    <column id="373" parent="314" name="comment">
       <Position>5</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <foreign-key id="376" parent="314" name="FK_RATING_ON_USER">
+    <foreign-key id="374" parent="314" name="FK_RATING_ON_USER">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <foreign-key id="377" parent="314" name="FK_RATING_ON_TRAVEL_BUNDLE">
+    <foreign-key id="375" parent="314" name="FK_RATING_ON_TRAVEL_BUNDLE">
       <ColNames>travel_bundle_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>travel_bundle</RefTableName>
     </foreign-key>
-    <index id="378" parent="314" name="PRIMARY">
+    <index id="376" parent="314" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="379" parent="314" name="FK_RATING_ON_USER">
+    <index id="377" parent="314" name="FK_RATING_ON_USER">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>
-    <index id="380" parent="314" name="FK_RATING_ON_TRAVEL_BUNDLE">
+    <index id="378" parent="314" name="FK_RATING_ON_TRAVEL_BUNDLE">
       <ColNames>travel_bundle_id</ColNames>
       <Type>btree</Type>
     </index>
-    <key id="381" parent="314" name="PRIMARY">
+    <key id="379" parent="314" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="382" parent="315" name="id">
+    <column id="380" parent="315" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="383" parent="315" name="title">
+    <column id="381" parent="315" name="user_id">
       <Position>2</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="384" parent="315" name="description">
+    <column id="382" parent="315" name="total_price">
       <Position>3</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>double|0s</StoredType>
     </column>
-    <column id="385" parent="315" name="destiny">
+    <column id="383" parent="315" name="purchase_date">
       <Position>4</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>datetime|0s</StoredType>
     </column>
-    <column id="386" parent="315" name="start_date">
-      <Position>5</Position>
-      <StoredType>date|0s</StoredType>
-    </column>
-    <column id="387" parent="315" name="end_date">
-      <Position>6</Position>
-      <StoredType>date|0s</StoredType>
-    </column>
-    <column id="388" parent="315" name="available_bundles">
-      <Position>7</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="389" parent="315" name="total_bundles">
-      <Position>8</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="390" parent="315" name="amount_to_buy">
-      <Position>9</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="391" parent="315" name="unitary_price">
-      <Position>10</Position>
-      <StoredType>double|0s</StoredType>
-    </column>
-    <column id="392" parent="315" name="total_price">
-      <Position>11</Position>
-      <StoredType>double|0s</StoredType>
-    </column>
-    <index id="393" parent="315" name="PRIMARY">
+    <foreign-key id="384" parent="315" name="FK_SHOPPINGCART_ON_USER">
+      <ColNames>user_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>user</RefTableName>
+    </foreign-key>
+    <index id="385" parent="315" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="394" parent="315" name="PRIMARY">
+    <index id="386" parent="315" name="FK_SHOPPINGCART_ON_USER">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="387" parent="315" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <column id="395" parent="316" name="id">
+    <column id="388" parent="316" name="id">
       <AutoIncrement>1</AutoIncrement>
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="396" parent="316" name="name">
+    <column id="389" parent="316" name="title">
       <Position>2</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="397" parent="316" name="email">
+    <column id="390" parent="316" name="description">
       <Position>3</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="398" parent="316" name="username">
+    <column id="391" parent="316" name="destiny">
       <Position>4</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="399" parent="316" name="password">
+    <column id="392" parent="316" name="start_date">
       <Position>5</Position>
-      <StoredType>varchar(255)|0s</StoredType>
-    </column>
-    <column id="400" parent="316" name="phone_number">
-      <Position>6</Position>
-      <StoredType>int|0s</StoredType>
-    </column>
-    <column id="401" parent="316" name="register_date">
-      <Position>7</Position>
       <StoredType>date|0s</StoredType>
     </column>
-    <column id="402" parent="316" name="city">
+    <column id="393" parent="316" name="end_date">
+      <Position>6</Position>
+      <StoredType>date|0s</StoredType>
+    </column>
+    <column id="394" parent="316" name="available_bundles">
+      <Position>7</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="395" parent="316" name="unitary_price">
       <Position>8</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>double|0s</StoredType>
     </column>
-    <column id="403" parent="316" name="country">
+    <column id="396" parent="316" name="user_id">
+      <NotNull>1</NotNull>
       <Position>9</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="404" parent="316" name="state">
+    <column id="397" parent="316" name="discount">
       <Position>10</Position>
-      <StoredType>varchar(255)|0s</StoredType>
+      <StoredType>double|0s</StoredType>
     </column>
-    <column id="405" parent="316" name="street">
+    <column id="398" parent="316" name="name_discount">
       <Position>11</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="406" parent="316" name="street_number">
+    <foreign-key id="399" parent="316" name="FK_TRAVELBUNDLE_ON_USER">
+      <ColNames>user_id</ColNames>
+      <RefColNames>id</RefColNames>
+      <RefTableName>user</RefTableName>
+    </foreign-key>
+    <index id="400" parent="316" name="PRIMARY">
+      <ColNames>id</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="401" parent="316" name="FK_TRAVELBUNDLE_ON_USER">
+      <ColNames>user_id</ColNames>
+      <Type>btree</Type>
+    </index>
+    <key id="402" parent="316" name="PRIMARY">
+      <NameSurrogate>1</NameSurrogate>
+      <Primary>1</Primary>
+      <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
+    </key>
+    <column id="403" parent="317" name="id">
+      <AutoIncrement>5</AutoIncrement>
+      <NotNull>1</NotNull>
+      <Position>1</Position>
+      <StoredType>bigint|0s</StoredType>
+    </column>
+    <column id="404" parent="317" name="first_name">
+      <Position>2</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="405" parent="317" name="last_name">
+      <Position>3</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="406" parent="317" name="identity_card">
+      <NotNull>1</NotNull>
+      <Position>4</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="407" parent="317" name="email">
+      <NotNull>1</NotNull>
+      <Position>5</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="408" parent="317" name="username">
+      <NotNull>1</NotNull>
+      <Position>6</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="409" parent="317" name="password">
+      <NotNull>1</NotNull>
+      <Position>7</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="410" parent="317" name="phone_number">
+      <Position>8</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="411" parent="317" name="register_date">
+      <Position>9</Position>
+      <StoredType>date|0s</StoredType>
+    </column>
+    <column id="412" parent="317" name="city">
+      <Position>10</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="413" parent="317" name="country">
+      <Position>11</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <column id="414" parent="317" name="state">
       <Position>12</Position>
-      <StoredType>int|0s</StoredType>
+      <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <column id="407" parent="316" name="zip_code">
+    <column id="415" parent="317" name="street">
       <Position>13</Position>
       <StoredType>varchar(255)|0s</StoredType>
     </column>
-    <index id="408" parent="316" name="PRIMARY">
+    <column id="416" parent="317" name="street_number">
+      <Position>14</Position>
+      <StoredType>int|0s</StoredType>
+    </column>
+    <column id="417" parent="317" name="zip_code">
+      <Position>15</Position>
+      <StoredType>varchar(255)|0s</StoredType>
+    </column>
+    <index id="418" parent="317" name="PRIMARY">
       <ColNames>id</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <index id="409" parent="316" name="uc_user_email">
+    <index id="419" parent="317" name="uc_user_identitycard">
+      <ColNames>identity_card</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <index id="420" parent="317" name="uc_user_email">
       <ColNames>email</ColNames>
       <Type>btree</Type>
       <Unique>1</Unique>
     </index>
-    <key id="410" parent="316" name="PRIMARY">
+    <index id="421" parent="317" name="uc_user_username">
+      <ColNames>username</ColNames>
+      <Type>btree</Type>
+      <Unique>1</Unique>
+    </index>
+    <key id="422" parent="317" name="PRIMARY">
       <NameSurrogate>1</NameSurrogate>
       <Primary>1</Primary>
       <UnderlyingIndexName>PRIMARY</UnderlyingIndexName>
     </key>
-    <key id="411" parent="316" name="uc_user_email">
+    <key id="423" parent="317" name="uc_user_identitycard">
+      <UnderlyingIndexName>uc_user_identitycard</UnderlyingIndexName>
+    </key>
+    <key id="424" parent="317" name="uc_user_email">
       <UnderlyingIndexName>uc_user_email</UnderlyingIndexName>
     </key>
-    <column id="412" parent="317" name="user_id">
+    <key id="425" parent="317" name="uc_user_username">
+      <UnderlyingIndexName>uc_user_username</UnderlyingIndexName>
+    </key>
+    <column id="426" parent="318" name="user_id">
       <NotNull>1</NotNull>
       <Position>1</Position>
       <StoredType>bigint|0s</StoredType>
     </column>
-    <column id="413" parent="317" name="roles">
+    <column id="427" parent="318" name="roles">
       <Position>2</Position>
       <StoredType>enum(&apos;ADMIN&apos;, &apos;USER&apos;)|0e</StoredType>
     </column>
-    <foreign-key id="414" parent="317" name="FK55itppkw3i07do3h7qoclqd4k">
+    <foreign-key id="428" parent="318" name="FK55itppkw3i07do3h7qoclqd4k">
       <ColNames>user_id</ColNames>
       <RefColNames>id</RefColNames>
       <RefTableName>user</RefTableName>
     </foreign-key>
-    <index id="415" parent="317" name="FK55itppkw3i07do3h7qoclqd4k">
+    <index id="429" parent="318" name="FK55itppkw3i07do3h7qoclqd4k">
       <ColNames>user_id</ColNames>
       <Type>btree</Type>
     </index>

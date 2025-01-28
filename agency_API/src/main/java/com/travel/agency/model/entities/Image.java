@@ -16,14 +16,23 @@ public class Image {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String filename;
+    private String contentType;
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
-    private byte[] image;
+    private byte[] imageData;
     //VER PARA EL MANEJO DE LLEVAR Y TRAER LAS IMGS DE BACK A FRONT Y VICEVERSA
-    //private String contentType;  // tipo de la imagen (por ejemplo, "image/jpeg", "image/png")
-    // private String filename;
+     // tipo de la imagen (por ejemplo, "image/jpeg", "image/png")
+
 
     @ManyToOne
     @JoinColumn(name = "travel_bundle_id")
     private TravelBundle travelBundle;
+
+    public Image(String filename, String contentType, byte[] imageData, TravelBundle travelBundle) {
+        this.filename = filename;
+        this.contentType = contentType;
+        this.imageData = imageData;
+        this.travelBundle = travelBundle;
+    }
 }

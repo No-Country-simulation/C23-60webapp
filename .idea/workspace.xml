@@ -5,30 +5,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources.local.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources.local.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/dataSources/c231bcc1-8fd8-42ba-a337-fe30ed9982a9.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/dataSources/c231bcc1-8fd8-42ba-a337-fe30ed9982a9.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Image.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/GenericRepository.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/RatingRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/RatingRepository.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/RatingService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/RatingService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/AgencyAPI.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/config/SchedulingConfig.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/enums/Role.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/enums/Status.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/GlobalExceptionHandler.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/exceptions/ResourceNotFoundException.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/user/GeneratedTokenDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/DTO/user/UserLoginDTO.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Address.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Purchase.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/Rating.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/TravelBundle.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/model/entities/User.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/GenericRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/PurchaseRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/TravelBundleRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/repository/UserRepository.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/com/travel/agency/service/CustomUserDetailsService.class" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/test-classes/com/travel/agency/AgencyAPITests.class" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AdminController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/TravelBundleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/TravelBundleController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/mapper/TravelBundleMapper.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleRequestDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/TravelBundle/TravelBundleRequestDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/image/ImageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/image/ImageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/rating/RatingDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/rating/RatingDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/TravelBundle.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/TravelBundle.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/TravelBundleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/TravelBundleService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/validation/AtLeastOneNotEmpty.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/validation/ValidDateRange.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/validation/AtLeastOneNotEmptyValidator.java" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -94,7 +86,7 @@
     "Spring Boot.AgencyAPI.executor": "Run",
     "Spring Boot.Explora+.executor": "Run",
     "Spring Boot.Explora6.executor": "Run",
-    "git-widget-placeholder": "rating",
+    "git-widget-placeholder": "imageImp",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Flor/OneDrive/Documents/FLOR/C23-60webapp",
@@ -172,5 +164,30 @@
   </component>
   <component name="VcsManagerConfiguration">
     <option name="LAST_COMMIT_MESSAGE" value="" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-method">
+          <url>file://$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AdminController.java</url>
+          <line>52</line>
+          <properties class="com.travel.agency.controller.AdminController" method="createTravelBundle">
+            <option name="EMULATED" value="true" />
+            <option name="WATCH_EXIT" value="false" />
+          </properties>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AdminController.java</url>
+          <line>54</line>
+          <option name="timeStamp" value="2" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AdminController.java</url>
+          <line>51</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

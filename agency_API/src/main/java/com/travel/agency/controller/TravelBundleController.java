@@ -4,6 +4,7 @@ import com.travel.agency.model.DTO.TravelBundle.*;
 import com.travel.agency.service.TravelBundleService;
 import com.travel.agency.utils.JwtUtil;
 import jakarta.validation.Valid;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -35,7 +36,7 @@ public class TravelBundleController {
         return ResponseEntity.ok(travelBundleDTO);
 
     }
-
+/*
     @PostMapping("/create")
     public ResponseEntity<?> createTravelBundle(
             @RequestHeader("Authorization") String token,
@@ -44,6 +45,11 @@ public class TravelBundleController {
         String userName = jwtUtil.extractUsername(token);
         TravelBundleDTO travelBundleDTO = travelBundleService.createTravelBundle(travelBundleRequestDTO,userName);
         return ResponseEntity.ok(travelBundleDTO);
+    }*/
+
+    @GetMapping("/all")
+    public ResponseEntity<?> getAll(){
+        return ResponseEntity.status(HttpStatus.OK).body(this.travelBundleService.getAllTravelBundles());
     }
 
 }

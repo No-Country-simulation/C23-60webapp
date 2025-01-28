@@ -38,6 +38,17 @@ public class TravelBundle {
     @Embedded
     private Discount discount;
 
+    public TravelBundle(String title, String description, String destiny, LocalDate startDate, LocalDate endDate, Integer availableBundles, Double unitaryPrice, Discount discount) {
+        this.title = title;
+        this.description = description;
+        this.destiny = destiny;
+        this.startDate = startDate;
+        this.endDate = endDate;
+        this.availableBundles = availableBundles;
+        this.unitaryPrice = unitaryPrice;
+        this.discount = discount;
+    }
+
     //Restar del inventario (cuando se suma al carrito)
     public void decreaseAvaliableBundles(Integer quantity) {
         if (availableBundles >= quantity) {
