@@ -1,5 +1,7 @@
 package com.travel.agency.model.DTO.rating;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.time.LocalDateTime;
 
 public record RatingDTO(
@@ -8,14 +10,7 @@ public record RatingDTO(
         Double rating,
         Long travelBundleId,
         String comment,
+        @JsonFormat(pattern = "dd/MM/yyyy HH:mm:ss")
         LocalDateTime creationDate
 ) {
-    public RatingDTO(Long id, String username, Double rating, Long travelBundleId, String comment, LocalDateTime creationDate) {
-        this.id = id;
-        this.username = username;
-        this.rating = rating;
-        this.travelBundleId = travelBundleId;
-        this.comment = comment;
-        this.creationDate = creationDate;
-    }
 }

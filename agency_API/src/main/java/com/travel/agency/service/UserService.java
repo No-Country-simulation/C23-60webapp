@@ -32,14 +32,16 @@ public class UserService {
     private final AuthenticationManager authManager;
     private final JwtUtil jwtUtil;
     private final CustomUserDetailsService userDetailsService;
+    private final ShoppingCartService ShoppingCartService;
 
     @Autowired
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authManager, JwtUtil jwtUtil, CustomUserDetailsService userDetailsService) {
+    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authManager, JwtUtil jwtUtil, CustomUserDetailsService userDetailsService, ShoppingCartService ShoppingCartService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authManager = authManager;
         this.jwtUtil = jwtUtil;
         this.userDetailsService = userDetailsService;
+        this.ShoppingCartService = ShoppingCartService;
     }
 
 
@@ -64,6 +66,7 @@ public class UserService {
         user.setRegisterDate(LocalDate.now());
         this.userRepository
                 .save(user);
+        ShoppingCartService.createShoppingCart(user);
     }
 
     //Verify method authenticates the User and creates a JWT TOKEN.

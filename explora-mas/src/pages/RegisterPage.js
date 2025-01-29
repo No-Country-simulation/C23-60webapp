@@ -1,7 +1,7 @@
 // src/pages/RegisterPage.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../components/AuthContext'; // Importar el hook de autenticación
+import { useAuth } from '../components/auth/AuthContext'; // Importar el hook de autenticación
 
 const RegisterPage = () => {
   const [email, setEmail] = useState('');

@@ -5,6 +5,10 @@ const MyBookings = () => {
   const location = useLocation();
   const navigate = useNavigate();
   const [bookings, setBookings] = useState([]);
+  const [showLoginAlert, setShowLoginAlert] = useState(false); // Estado para mostrar el mensaje
+
+  // Comprobación si el usuario está logueado
+  const isLoggedIn = !!localStorage.getItem('user');
 
   useEffect(() => {
     const savedBookings = JSON.parse(localStorage.getItem('bookings')) || [];
@@ -29,6 +33,13 @@ const MyBookings = () => {
   };
 
   const handleSelectBooking = (booking) => {
+    if (!isLoggedIn) {
+      setShowLoginAlert(true); // Mostrar el cartel si no está logueado
+      setTimeout(() => {
+        setShowLoginAlert(false); // Ocultar el cartel después de un tiempo
+      }, 5000); // El cartel desaparece después de 5 segundos
+      return;
+    }
     navigate('/seleccion-pasajes', { state: { booking } });
   };
 
@@ -56,6 +67,13 @@ const MyBookings = () => {
   return (
     <div className="min-h-screen bg-gray-50 flex flex-col px-4">
       <div className="container mx-auto py-8 flex-grow">
+        {/* Banner de alerta si el usuario no está logueado */}
+        {showLoginAlert && (
+          <div className="bg-red-500 text-white text-center py-3 rounded-md mb-6">
+            <p>Debes estar logueado para poder realizar una compra. <strong><a href="/login" className="underline">Iniciar sesión</a></strong></p>
+          </div>
+        )}
+
         <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8">Tus Reservas</h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {bookings.map((booking, index) => (
@@ -80,7 +98,7 @@ const MyBookings = () => {
               <div className="p-6 flex flex-col gap-4">
                 <button
                   className="w-full py-3 bg-[rgb(26,54,93)] text-white rounded-md hover:bg-[rgb(26,54,93,0.8)] min-w-[220px]"
-                  onClick={() => handleSelectBooking(booking)}
+                  onClick={() => handleSelectBooking(booking)} // Verificación antes de proceder a comprar
                 >
                   Comprar
                 </button>

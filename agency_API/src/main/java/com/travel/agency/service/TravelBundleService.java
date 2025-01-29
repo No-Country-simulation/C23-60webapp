@@ -2,14 +2,22 @@ package com.travel.agency.service;
 
 import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.mapper.TravelBundleMapper;
-import com.travel.agency.model.DTO.TravelBundle.*;
+import com.travel.agency.model.DTO.TravelBundle.TravelBundleDTO;
+import com.travel.agency.model.DTO.TravelBundle.TravelBundleRequestDTO;
+import com.travel.agency.model.entities.Image;
 import com.travel.agency.model.entities.TravelBundle;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.TravelBundleRepository;
 import com.travel.agency.repository.UserRepository;
-import java.util.List;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
+import java.util.List;
 
 @Service
 public class TravelBundleService {
@@ -17,6 +25,7 @@ public class TravelBundleService {
     private final TravelBundleRepository travelBundleRepository;
     private final UserRepository userRepository;
 
+    @Autowired
     public TravelBundleService(TravelBundleRepository travelBundleRepository, UserRepository userRepository) {
         this.travelBundleRepository = travelBundleRepository;
         this.userRepository = userRepository;
@@ -27,22 +36,53 @@ public class TravelBundleService {
         return TravelBundleMapper.toDTO(travelBundle);
     }
 
-    public List<TravelBundleDTO> getListTravelBundle() {
+    public List<TravelBundleDTO> getListTravelBundleByAvailability() {
         List<TravelBundle> travelBundles = travelBundleRepository.findByAvailableBundlesGreaterThan(0);
         return TravelBundleMapper.toDTOList(travelBundles);
     }
 
-    public TravelBundleDTO createTravelBundle(TravelBundleRequestDTO travelBundleRequestDTO, String userName) {
-        User user = userRepository.findByUsername(userName)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + userName));
-        TravelBundle travelBundle = TravelBundleMapper.toEntity(travelBundleRequestDTO, user);
-        travelBundleRepository.save(travelBundle);
-        return TravelBundleMapper.toDTO(travelBundle);
+    @Transactional
+    public void createTravelBundle(TravelBundleRequestDTO travelBundleRequestDTO,
+                                   List<MultipartFile> images) {
+        //Se obtiene el usuario admin logueado en ese momento.
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        User adminUser = userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
+        //Se crea provisoriamene la nueva entidad
+        TravelBundle travelBundle = new TravelBundle(
+                travelBundleRequestDTO.title(),
+                travelBundleRequestDTO.description(),
+                travelBundleRequestDTO.destiny(),
+                travelBundleRequestDTO.startDate(),
+                travelBundleRequestDTO.endDate(),
+                travelBundleRequestDTO.availableBundles(),
+                travelBundleRequestDTO.unitaryPrice(),
+                travelBundleRequestDTO.discount()
+        );
+        //Mapea los datos de MultipartFile en objetos de tipo Image
+        List<Image> imageList = images.stream().map(images1 -> {
+            try {
+                return new Image(
+                        images1.getOriginalFilename(),
+                        images1.getContentType(),
+                        images1.getBytes(),
+                        travelBundle
+                );
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
+        }).toList();
+        travelBundle.setImages(imageList);
+        travelBundle.setUserAdmin(adminUser);
+        this.travelBundleRepository.save(travelBundle);
     }
 
     public TravelBundle findById(Long id) {
-        TravelBundle travelBundle = travelBundleRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Travel Bundle", "Id", id));
-        return travelBundle;
+        return travelBundleRepository.findById(id).orElseThrow(() -> new ResourceNotFoundException("Travel Bundle", "Id", id));
+    }
+
+    public List<TravelBundleDTO> getAllTravelBundles() {
+        List<TravelBundle> travelBundleList = this.travelBundleRepository.findAll();
+        return travelBundleList.stream().map(TravelBundleMapper::toDTO).toList();
     }
 
 }

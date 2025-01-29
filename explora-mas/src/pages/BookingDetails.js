@@ -101,7 +101,7 @@ const BookingDetails = () => {
             />
           </div>
 
-          <p className="mt-4 text-gray-700"><strong>Precio Total:</strong> {totalPrice.toFixed(2)} {booking.currency}</p>
+          <p className="mt-4 text-gray-700"><strong>Precio Total: $</strong> {totalPrice.toFixed(2)} {booking.currency}</p>
 
           <button
             onClick={handleBuyNow}

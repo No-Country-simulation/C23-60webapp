@@ -3,20 +3,21 @@ package com.travel.agency.service;
 import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.model.DTO.rating.CreateRatingDTO;
 import com.travel.agency.model.DTO.rating.RatingDTO;
+import com.travel.agency.model.DTO.rating.UpdateRating;
 import com.travel.agency.model.entities.Rating;
 import com.travel.agency.model.entities.TravelBundle;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.RatingRepository;
 import com.travel.agency.repository.TravelBundleRepository;
 import com.travel.agency.repository.UserRepository;
+import com.travel.agency.utils.MapperUtil;
 import jakarta.persistence.EntityNotFoundException;
 import jakarta.transaction.Transactional;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
-import java.time.LocalDateTime;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 
@@ -46,67 +47,53 @@ public class RatingService {
             throw new IllegalStateException("User has already rated this travel");
         }
         // Crear la entidad Rating usando el MapperUtil
-        Rating rating = new Rating(
-                createRatingDTO.rating(),
-                user,
-                travelBundle,
-                createRatingDTO.comment(),
-                LocalDateTime.now()
-        );
+        Rating rating = MapperUtil.toRating(createRatingDTO, user, travelBundle);
         //guardar
         Rating savedRating = ratingRepository.save(rating);
-        return new RatingDTO(
-                rating.getId(),
-                rating.getUser().getUsername(),
-                rating.getRating(),
-                rating.getTravelBundle().getId(),
-                rating.getComment(),
-                rating.getCreationDate()
-        );
+        return MapperUtil.toRatingDTO(savedRating);
     }
 
     public RatingDTO searchRatingByID(Long ratingId) {
         Rating rating = ratingRepository.findById(ratingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Rating", "ID", ratingId));
-        return new RatingDTO(
-                rating.getId(),
-                rating.getUser().getUsername(),
-                rating.getRating(),
-                rating.getTravelBundle().getId(),
-                rating.getComment(),
-                rating.getCreationDate()
-        );
+        return MapperUtil.toRatingDTO(rating);
     }
 
     public List<RatingDTO> getAllRatings() {
         List<Rating> ratingList = ratingRepository.findAll();
-        return ratingList.stream()
-                .map(rating -> new RatingDTO(
-                        rating.getId(),
-                        rating.getUser().getUsername(),
-                        rating.getRating(),
-                        rating.getTravelBundle().getId(),
-                        rating.getComment(),
-                        rating.getCreationDate()
-                ))
-                .collect(Collectors.toList());
+        return MapperUtil.toRatingDtoList(ratingList);
     }
 
     public List<RatingDTO> searchRatingsByUser(String username) {
         //Buscar el usuario por username
         User user = userRepository.findByUsername(username)
                 .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
+
         List<Rating> ratingList = ratingRepository.findByUser(user);
-        //pasar a dto
-        return ratingList.stream()
-                .map(rating -> new RatingDTO(
-                        rating.getId(),
-                        rating.getUser().getUsername(),
-                        rating.getRating(),
-                        rating.getTravelBundle().getId(),
-                        rating.getComment(),
-                        rating.getCreationDate()
-                ))
-                .collect(Collectors.toList());
+        return MapperUtil.toRatingDtoList(ratingList);
+    }
+
+    @Transactional
+    public void deleteRatingByIc(Long ratingId) {
+        Rating rating = ratingRepository.findById(ratingId)
+                .orElseThrow(() -> new ResourceNotFoundException("Rating", "ID", ratingId));
+        ratingRepository.deleteById(ratingId);
+    }
+
+    public List<RatingDTO> getRatingByTravelBundle(Long travelBundleId) {
+        TravelBundle travelBundle = travelBundleRepository.findById(travelBundleId)
+                .orElseThrow(() -> new EntityNotFoundException("Travel bundle not found with ID: " + travelBundleId));
+        List<Rating> ratingList = travelBundle.getRating();
+        return MapperUtil.toRatingDtoList(ratingList);
+    }
+
+    @Transactional
+    public RatingDTO updateRating(UpdateRating updateRating, String username) {
+        Rating rating = ratingRepository.getReferenceById(updateRating.id());
+        TravelBundle travelBundle = travelBundleRepository.findById(updateRating.travelBundleId())
+                        .orElse(null);
+        rating.updateRating(updateRating, travelBundle);
+        Rating updatedRating = ratingRepository.save(rating);
+        return MapperUtil.toRatingDTO(updatedRating);
     }
 }

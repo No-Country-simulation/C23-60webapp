@@ -1,0 +1,3 @@
+ALTER TABLE image ADD COLUMN filename VARCHAR(255);
+ALTER TABLE image ADD COLUMN content_type VARCHAR(255);
+ALTER TABLE image CHANGE COLUMN image image_data MEDIUMBLOB;

@@ -1,5 +1,6 @@
 package com.travel.agency.model.entities;
 
+import com.travel.agency.model.DTO.rating.UpdateRating;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -34,5 +35,18 @@ public class Rating {
         this.creationDate = creationDate;
     }
 
+    public void updateRating(UpdateRating updateRating, TravelBundle travelBundle) {
+        if (updateRating.rating() != null) {
+            this.rating = updateRating.rating();
+            this.creationDate = LocalDateTime.now();
+        }
+        if (updateRating.travelBundleId() != null && travelBundle != null && updateRating.travelBundleId().equals(travelBundle.getId())) {
+            this.travelBundle = travelBundle;
+        }
+        if (updateRating.comment() != null) {
+            this.comment = updateRating.comment();
+            this.creationDate = LocalDateTime.now();
+        }
+    }
 
 }

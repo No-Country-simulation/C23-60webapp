@@ -1,12 +1,13 @@
 // src/components/Navbar.js
 import React, { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
-import { useAuth } from './AuthContext'; // Importar el hook
+import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { useAuth } from '../auth/AuthContext'; // Importar el hook
 
 const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const { user, logout } = useAuth(); // Obtener el usuario y logout desde el AuthContext
   const navigate = useNavigate();
+  const location = useLocation(); // Obtenemos la ruta actual
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -17,10 +18,15 @@ const Navbar = () => {
     navigate('/login'); // Redirigir a la página de login
   };
 
+  const isActiveLink = (path) => location.pathname === path; // Función para verificar si el link está activo
+
   return (
     <nav className="bg-white shadow-md">
       <div className="container mx-auto px-4 py-4 flex justify-between items-center">
-        <Link to="/" className="text-2xl font-heading font-bold text-primary">
+        <Link 
+          to="/" 
+          className={`text-2xl font-heading font-bold ${isActiveLink('/') ? 'text-primary' : 'text-gray-600'} transition-colors duration-300`}
+        >
           Explora+Más
         </Link>
 
@@ -40,9 +46,29 @@ const Navbar = () => {
         </button>
 
         <div className="hidden md:flex gap-6 items-center">
-          <Link to="/destinations" className="text-gray-600 hover:text-gray-800 transition-colors duration-300">Destinos</Link>
-          <Link to="/packages" className="text-gray-600 hover:text-gray-800 transition-colors duration-300">Paquetes</Link>
-          <Link to="/mis-viajes" className="text-gray-600 hover:text-gray-800 font-semibold transition-colors duration-300">Mis Viajes</Link>
+          <Link 
+            to="/destinations" 
+            className={`text-gray-600 hover:text-gray-800 transition-colors duration-300 ${isActiveLink('/destinations') ? 'font-semibold' : ''}`}
+          >
+            Destinos
+            {isActiveLink('/destinations') && <span className="ml-2">✈️</span>} {/* Logo de avión */}
+          </Link>
+
+          <Link 
+            to="/packages" 
+            className={`text-gray-600 hover:text-gray-800 transition-colors duration-300 ${isActiveLink('/packages') ? 'font-semibold' : ''}`}
+          >
+            Paquetes
+            {isActiveLink('/packages') && <span className="ml-2">✈️</span>} {/* Logo de avión */}
+          </Link>
+
+          <Link 
+            to="/mis-viajes" 
+            className={`text-gray-600 hover:text-gray-800 transition-colors duration-300 ${isActiveLink('/mis-viajes') ? 'font-semibold' : ''}`}
+          >
+            Mis Viajes
+            {isActiveLink('/mis-viajes') && <span className="ml-2">✈️</span>} {/* Logo de avión */}
+          </Link>
 
           {user ? (
             <>
@@ -61,9 +87,29 @@ const Navbar = () => {
       {isMenuOpen && (
         <div className="md:hidden bg-white shadow-lg rounded-lg p-4 mt-2 transform transition-all duration-300 ease-in-out">
           <div className="flex flex-col gap-4">
-            <Link to="/destinations" className="text-gray-600 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition-colors duration-200">Destinos</Link>
-            <Link to="/packages" className="text-gray-600 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition-colors duration-200">Paquetes</Link>
-            <Link to="/mis-viajes" className="text-gray-600 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition-colors duration-200">Mis Viajes</Link>
+            <Link 
+              to="/destinations" 
+              className={`text-gray-600 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition-colors duration-200 ${isActiveLink('/destinations') ? 'font-semibold' : ''}`}
+            >
+              Destinos
+              {isActiveLink('/destinations') && <span className="ml-2">✈️</span>}
+            </Link>
+
+            <Link 
+              to="/packages" 
+              className={`text-gray-600 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition-colors duration-200 ${isActiveLink('/packages') ? 'font-semibold' : ''}`}
+            >
+              Paquetes
+              {isActiveLink('/packages') && <span className="ml-2">✈️</span>}
+            </Link>
+
+            <Link 
+              to="/mis-viajes" 
+              className={`text-gray-600 hover:bg-gray-100 hover:text-gray-900 rounded-lg px-4 py-2 transition-colors duration-200 ${isActiveLink('/mis-viajes') ? 'font-semibold' : ''}`}
+            >
+              Mis Viajes
+              {isActiveLink('/mis-viajes') && <span className="ml-2">✈️</span>}
+            </Link>
 
             {user ? (
               <>
