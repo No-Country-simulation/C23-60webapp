@@ -1,6 +1,7 @@
 com\travel\agency\enums\Role.class
 com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseDTO.class
 com\travel\agency\model\DTO\user\UpdateUserRolesDTO.class
+com\travel\agency\validation\DateRangeValidator.class
 com\travel\agency\controller\AdminController.class
 com\travel\agency\controller\AuthController.class
 com\travel\agency\service\ShoppingCartService.class
@@ -32,9 +33,11 @@ com\travel\agency\model\entities\TravelBundle.class
 com\travel\agency\AgencyAPI.class
 com\travel\agency\exceptions\GlobalExceptionHandler.class
 com\travel\agency\controller\PurchaseController.class
+com\travel\agency\model\DTO\rating\UpdateRating.class
 com\travel\agency\controller\TravelBundleController.class
 com\travel\agency\model\DTO\user\MinUserDTO.class
 com\travel\agency\model\DTO\ErrorResponseDTO.class
+com\travel\agency\validation\ValidDateRange.class
 com\travel\agency\config\SecurityConfig.class
 com\travel\agency\model\DTO\user\UserLoginDTO.class
 com\travel\agency\service\PurchaseService.class
@@ -44,7 +47,6 @@ com\travel\agency\model\DTO\user\UpdateUserDTO.class
 com\travel\agency\model\DTO\user\UserDTO.class
 com\travel\agency\repository\TravelBundleRepository.class
 com\travel\agency\repository\DetailsPurchaseRepository.class
-com\travel\agency\config\SchedulingConfig.class
 com\travel\agency\model\entities\Rating.class
 com\travel\agency\model\entities\Purchase.class
 com\travel\agency\repository\ShoppingCartRepository.class
@@ -55,7 +57,6 @@ com\travel\agency\utils\JwtUtil.class
 com\travel\agency\repository\RatingRepository.class
 com\travel\agency\model\entities\ShoppingCart.class
 com\travel\agency\utils\MapperUtil.class
-com\travel\agency\utils\PurchaseUtils.class
 com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseRequestDTO.class
 com\travel\agency\model\DTO\purchase\PurchaseDTO.class
 com\travel\agency\exceptions\ResourceNotFoundException.class

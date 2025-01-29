@@ -50,13 +50,12 @@ public class User implements UserDetails {
     private List<Purchase> purchases;
 
     
-    public User(String firstName, String lastName, Integer identityCard, String email, String username, String password) {
+    public User(String firstName, String lastName, Integer identityCard, String email, String username) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.identityCard = identityCard;
         this.email = email;
         this.username = username;
-        this.password = password;
     }
 
     /**
