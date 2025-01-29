@@ -4,9 +4,8 @@ import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.model.entities.*;
 import com.travel.agency.repository.*;
-import com.travel.agency.utils.PurchaseUtils;
+import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
@@ -22,15 +21,13 @@ public class PurchaseService {
     private final PurchaseRepository purchaseRepository;
     private final TravelBundleRepository travelBundleRepository;
     private final UserRepository userRepository;
-    private final PurchaseUtils purchaseUtils;
     private final ShoppingCartRepository shoppingCartRepository;
     private final DetailsPurchaseRepository detailsPurchaseRepository;
 
-    public PurchaseService(PurchaseRepository purchaseRepository, TravelBundleRepository travelBundleRepository, UserRepository userRepository, PurchaseUtils purchaseUtils, ShoppingCartRepository shoppingCartRepository, DetailsPurchaseRepository detailsPurchaseRepository) {
+    public PurchaseService(PurchaseRepository purchaseRepository, TravelBundleRepository travelBundleRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository, DetailsPurchaseRepository detailsPurchaseRepository) {
         this.purchaseRepository = purchaseRepository;
         this.travelBundleRepository = travelBundleRepository;
         this.userRepository = userRepository;
-        this.purchaseUtils = purchaseUtils;
         this.shoppingCartRepository = shoppingCartRepository;
         this.detailsPurchaseRepository = detailsPurchaseRepository;
     }
@@ -72,7 +69,7 @@ public class PurchaseService {
     //Ver todas las compras
     public List<PurchaseDTO> getAllPurchases() {
         List<Purchase> purchaseList = purchaseRepository.findAll();
-        return purchaseUtils.purchaseMapperDto(purchaseList);
+        return MapperUtil.purchaseMapperDto(purchaseList);
     }
 
     // Ver compra por ID
@@ -90,43 +87,17 @@ public class PurchaseService {
             throw new UsernameNotFoundException("No purchases available for the user: " + username);
         }
         List<Purchase> purchaseList = user.get().getPurchases();
-        return purchaseUtils.purchaseMapperDto(purchaseList);
+        return MapperUtil.purchaseMapperDto(purchaseList);
     }
 
     //  ELIMINAR  compra entera  o VACIAR CARRITO
     @Transactional
-    public void deletePurchaseById(Long purchaseId) throws ResourceNotFoundException {
+    public void deletePurchaseById(Long purchaseId) {
         //Existe la compra con ese ID?
         Purchase purchase = purchaseRepository.findById(purchaseId)
                 .orElseThrow(() -> new ResourceNotFoundException("Purchase", "ID", purchaseId));
         purchaseRepository.deleteById(purchaseId);
     }
-
-    //Pasar estado a CANCELADO (despues de estar pending un cierto tiempo)
-    //@Scheduled es una anotacion que permite ejecutar metodos de manera programada en intervalos
-    //de tiempo definido
-    // Método programado para revisar compras pendientes y cancelarlas si pasan 2 horas
-//    @Scheduled(fixedRate = 7200000)
-//    @Transactional
-//    public void checkPendingPurchases(){
-//  //Obtener todas las compras PENDING que fueron crreadas hace mas de 2 hs
-//        LocalDateTime twoHoursAgo = LocalDateTime.now().minusHours(2);
-//        //Buscar compras PENDING donde la creacion sea anterior al limite de compra
-//        List<Purchase> pendingPurchases = purchaseRepository.findByStatusAndPurchaseDateBefore(Status.PENDING, twoHoursAgo);
-//        //cancelar las compras que no se han confirmado a tiempo
-//        for (Purchase purchase : pendingPurchases){
-//            //Cencelo compra y devuelvo paquetes al stock
-//            purchase.cancelPurchase();
-//            //guardo la compra con estado CANCELADO
-//            purchaseRepository.save(purchase);
-//        }
-//    }
-//Corroborar compras canceladas
-//    public List<PurchaseDTO> getCancelledPurchases(){
-//        List<Purchase> purchaseList = purchaseRepository.findByStatus(Status.CANCELLED);
-//        return  purchaseUtils.purchaseMapperDto(purchaseList);
-//    }
-
 
 }
 

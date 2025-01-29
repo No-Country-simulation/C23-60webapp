@@ -23,28 +23,20 @@ public class PurchaseController {
         this.jwtUtil = jwtUtil;
     }
 
-    //CREAR compra
     @PostMapping("/create")
     public ResponseEntity<?> createPurchaseController(
             @RequestHeader("Authorization") String token) {
-
         String username = jwtUtil.extractUsername(token);
         PurchaseDTO purchaseDTO = purchaseService.createPurchase(username);
         return ResponseEntity.ok(purchaseDTO);
-
     }
 
-
-
-    //ver compra por ID
     @GetMapping("/{idPurchase}")
     public ResponseEntity<PurchaseDTO> searchPurchaseByIdController(@PathVariable Long idPurchase) {
         PurchaseDTO purchaseDTO = purchaseService.searchPurchaseById(idPurchase);
         return ResponseEntity.ok(purchaseDTO);
     }
 
-
-    //ver compra por usuario
     @GetMapping("/user-purchases")
     public ResponseEntity<?> getPurchasesByUsernameController(@RequestHeader("Authorization") String token) {
         String username = jwtUtil.extractUsername(token);
@@ -52,7 +44,6 @@ public class PurchaseController {
         return ResponseEntity.ok(userPurchases);
     }
 
-    //Eliminar compra por ID
     @DeleteMapping("/{purchaseId}")
     public ResponseEntity<Void> deletePurchaseController(@PathVariable Long purchaseId) {
         purchaseService.deletePurchaseById(purchaseId);
