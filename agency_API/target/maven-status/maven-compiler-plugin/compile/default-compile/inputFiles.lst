@@ -1,63 +1,62 @@
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\AgencyAPI.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\config\SchedulingConfig.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\config\SecurityConfig.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AdminController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AuthController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\DetailsPurchaseController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\PurchaseController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\RatingController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\ShoppingCartController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\TravelBundleController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\UserPanelController.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\enums\Role.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\enums\Status.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\GlobalExceptionHandler.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\ResourceNotFoundException.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\interfaces\GenericInterface.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\DetailsPurchaseMapper.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\TravelBundleMapper.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseRequestDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\ErrorResponseDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\image\ImageDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\PurchaseDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\rating\CreateRatingDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\rating\RatingDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleRequestDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\GeneratedTokenDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\MinUserDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UpdateUserDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UpdateUserRolesDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserLoginDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserRegisterDTO.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Address.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\DetailsPurchase.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\DetailsShoppingCart.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Discount.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Image.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Purchase.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\Rating.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\ShoppingCart.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\TravelBundle.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\User.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\DetailsPurchaseRepository.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\PurchaseRepository.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\RatingRepository.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\ShoppingCartRepository.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\TravelBundleRepository.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\UserRepository.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\CustomUserDetailsService.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\DetailsPurchaseService.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\PurchaseService.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\RatingService.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\ShoppingCartService.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\TravelBundleService.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\UserService.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtFilter.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtUtil.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\MapperUtil.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\PurchaseUtils.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\AtLeastOneNotEmpty.java
-D:\Nodriza\Programas\Trayectos\Competencias\No Country\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\AtLeastOneNotEmptyValidator.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\AgencyAPI.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\config\SecurityConfig.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\AdminController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\AuthController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\DetailsPurchaseController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\PurchaseController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\RatingController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\ShoppingCartController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\TravelBundleController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\controller\UserPanelController.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\enums\Role.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\enums\Status.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\exceptions\GlobalExceptionHandler.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\exceptions\ResourceNotFoundException.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\interfaces\GenericInterface.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\mapper\DetailsPurchaseMapper.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\mapper\TravelBundleMapper.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseRequestDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\ErrorResponseDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\image\ImageDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\PurchaseDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\rating\CreateRatingDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\rating\RatingDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\rating\UpdateRating.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleRequestDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\user\GeneratedTokenDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\user\MinUserDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\user\UpdateUserDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\user\UpdateUserRolesDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserLoginDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\DTO\user\UserRegisterDTO.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\Address.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\DetailsPurchase.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\DetailsShoppingCart.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\Discount.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\Image.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\Purchase.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\Rating.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\ShoppingCart.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\TravelBundle.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\model\entities\User.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\repository\DetailsPurchaseRepository.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\repository\PurchaseRepository.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\repository\RatingRepository.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\repository\ShoppingCartRepository.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\repository\TravelBundleRepository.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\repository\UserRepository.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\service\CustomUserDetailsService.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\service\DetailsPurchaseService.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\service\PurchaseService.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\service\RatingService.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\service\ShoppingCartService.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\service\TravelBundleService.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\service\UserService.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\utils\JwtFilter.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\utils\JwtUtil.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\utils\MapperUtil.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\validation\DateRangeValidator.java
+D:\Projects\agency_API\src\main\java\com\travel\agency\validation\ValidDateRange.java

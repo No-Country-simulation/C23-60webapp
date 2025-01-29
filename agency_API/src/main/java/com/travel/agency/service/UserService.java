@@ -46,17 +46,10 @@ public class UserService {
     }
 
 
-    //implementing the register method
+    //Metodo registro chequea si el admin no esta registrado en db.
     @Transactional
     public void register(UserRegisterDTO userRegisterDTO) {
-        User user = new User(
-                userRegisterDTO.firstName(),
-                userRegisterDTO.lastName(),
-                Integer.parseInt(userRegisterDTO.identityCard()),
-                userRegisterDTO.email(),
-                userRegisterDTO.email(),
-                userRegisterDTO.password()
-        );
+        User user = MapperUtil.toEntity(userRegisterDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Optional<User> isAdminRegistered = userRepository.findByEmail("admin@gmail.com");
         if(!isAdminRegistered.isPresent() && userRegisterDTO.email().equals("admin@gmail.com")){
@@ -71,7 +64,6 @@ public class UserService {
     }
 
     //Verify method authenticates the User and creates a JWT TOKEN.
-    //I need to create a custom exception error and handle it.
     public String verify(@Valid UserLoginDTO userLoginDTO) {
         try {
             authManager.authenticate(
@@ -85,19 +77,7 @@ public class UserService {
 
     public List<UserDTO> users() {
         List<User> users = this.userRepository.findAll();
-        return users.stream().map(user ->
-                MapperUtil.mapperEntity(user1 ->
-                        new UserDTO(
-                                user.getId(),
-                                user.getFirstName(),
-                                user.getLastName(),
-                                user.getIdentityCard(),
-                                user.getEmail(),
-                                user.getUsername(),
-                                user.getPhoneNumber(),
-                                user.getRegisterDate(),
-                                user.getRoles()
-                        ))).toList();
+        return MapperUtil.toDTO(users);
     }
 
     @Transactional
@@ -110,9 +90,7 @@ public class UserService {
     @Transactional
     public void updateUserDetails(UpdateUserDTO updateUserDTO, Long id){
         User user = this.userRepository.findById(id).orElseThrow();
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User authenticatedUser = userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
-        if(!user.equals(authenticatedUser)){
+        if(!user.equals(getUserInSession())){
             throw new AccessDeniedException("You are not authorized to update this user");
         }else{
             Optional.ofNullable(updateUserDTO.firstName())
@@ -134,14 +112,17 @@ public class UserService {
     @Transactional
     public void deleteUser(Long id){
         User user = this.userRepository.findById(id).orElseThrow();
-        //Estas lineas chequean que el usuario que se quiera eliminar sea el mismo que esta logueado.
-        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
-        User authenticatedUser = userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
-        if(!user.equals(authenticatedUser)){
+        if(!user.equals(getUserInSession())){
             throw new AccessDeniedException("You are not authorized to delete this user");
         }else{
         this.userRepository.delete(user);
         }
+    }
+
+    //Metodo que regresa el usuario logueado en un momento dado.
+    public User getUserInSession(){
+        UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
+        return userRepository.findByEmail(userDetails.getUsername()).orElseThrow();
     }
 
 }
