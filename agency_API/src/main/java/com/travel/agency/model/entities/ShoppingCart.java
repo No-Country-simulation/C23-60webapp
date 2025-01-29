@@ -20,7 +20,7 @@ public class ShoppingCart {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "user_id")
     private User user;
     //Precio total deducido de cada uno de los paquetes de viaje en detailsPurchase

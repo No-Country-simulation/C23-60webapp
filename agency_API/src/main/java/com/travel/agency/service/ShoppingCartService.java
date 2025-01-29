@@ -1,24 +1,29 @@
 package com.travel.agency.service;
 
+import com.travel.agency.mapper.ShoppingCartMapper;
+import com.travel.agency.model.DTO.ShoppingCart.AddToShoppingCartDTO;
+import com.travel.agency.model.DTO.ShoppingCart.ShoppingCartDTO;
+import com.travel.agency.model.entities.DetailsShoppingCart;
 import com.travel.agency.model.entities.ShoppingCart;
+import com.travel.agency.model.entities.TravelBundle;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.ShoppingCartRepository;
-import com.travel.agency.repository.UserRepository;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 @Service
 public class ShoppingCartService {
 
     private final ShoppingCartRepository shoppingCartRepository;
-    private final UserRepository userRepository;
+    private final AuthService authService;
+    private final DetailsShoppingCartService detailsShoppingCartService;
+    private final TravelBundleService travelBundleService;
 
-    public ShoppingCartService(ShoppingCartRepository shoppingCartRepository, UserRepository userRepository) {
+    public ShoppingCartService(ShoppingCartRepository shoppingCartRepository, AuthService authService, DetailsShoppingCartService detailsShoppingCartService, TravelBundleService travelBundleService) {
         this.shoppingCartRepository = shoppingCartRepository;
-        this.userRepository = userRepository;
+        this.authService = authService;
+        this.detailsShoppingCartService = detailsShoppingCartService;
+        this.travelBundleService = travelBundleService;
     }
-
-    
 
     public void createShoppingCart(User user) {
         ShoppingCart shoppingCart = new ShoppingCart();
@@ -27,12 +32,26 @@ public class ShoppingCartService {
         shoppingCart.setPurchaseDate(null);
         shoppingCartRepository.save(shoppingCart);
     }
-    /*
-    public void getShoppingCart(Long id) {
-        User user = userRepository.findByUsername(userName)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + userName));
-        //TravelBundle travelBundle = this.findById(id);
-        //return TravelBundleMapper.toDTO(travelBundle);
+
+    public ShoppingCartDTO getShoppingCart() {
+        User user = authService.getUser();
+        ShoppingCart shoppingCart = user.getShoppingCart();
+        return ShoppingCartMapper.toDTO(shoppingCart);
     }
-    */
+
+    public ShoppingCartDTO AddToShoppingCart(AddToShoppingCartDTO addToShoppingCartDTO) {
+        User user = authService.getUser();
+        ShoppingCart shoppingCart = user.getShoppingCart();
+        TravelBundle travelBundle = travelBundleService.findById(addToShoppingCartDTO.travelBundleId());
+
+        if (travelBundle.getAvailableBundles() < addToShoppingCartDTO.quantity()) {
+            throw new RuntimeException("Not enough available travel bundles");
+        }
+        DetailsShoppingCart details = detailsShoppingCartService.createShoppingCart(shoppingCart, travelBundle, addToShoppingCartDTO);
+
+        shoppingCart.setTotalPrice(details.getTotalPrice() + shoppingCart.getTotalPrice());
+        shoppingCartRepository.save(shoppingCart);
+        return ShoppingCartMapper.toDTO(shoppingCart);
+    }
+
 }

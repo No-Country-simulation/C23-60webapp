@@ -16,7 +16,6 @@ public record TravelBundleRequestDTO(
         String title,
 
         @NotBlank(message = "Description cannot be empty.")
-
         @Size(max = 500, message = "Description cannot be longer than 500 characters.")
         String description,
 
