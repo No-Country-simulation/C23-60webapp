@@ -8,6 +8,7 @@ import lombok.*;
 @Getter
 @Setter
 @NoArgsConstructor
+@AllArgsConstructor
 @EqualsAndHashCode(of = "id")
 public class DetailsPurchase {
     @Id
@@ -25,4 +26,11 @@ public class DetailsPurchase {
     @JsonIgnore
     //Vincula detailsPurchase con la compra a la que pertenece. No hace falta mostrarla al usuario.
     private Purchase purchase;
+
+    public DetailsPurchase(TravelBundle travelBundle, int quantity, Double totalPrice, Purchase purchase) {
+        this.travelBundle = travelBundle;
+        this.quantity = quantity;
+        this.totalPrice = totalPrice;
+        this.purchase = purchase;
+    }
 }

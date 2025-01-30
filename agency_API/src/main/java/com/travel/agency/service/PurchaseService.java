@@ -1,68 +1,67 @@
 package com.travel.agency.service;
 
 import com.travel.agency.exceptions.ResourceNotFoundException;
+import com.travel.agency.mapper.DetailsPurchaseMapper;
+import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
-import com.travel.agency.model.entities.*;
-import com.travel.agency.repository.*;
+import com.travel.agency.model.entities.DetailsPurchase;
+import com.travel.agency.model.entities.Purchase;
+import com.travel.agency.model.entities.ShoppingCart;
+import com.travel.agency.model.entities.User;
+import com.travel.agency.repository.PurchaseRepository;
+import com.travel.agency.repository.ShoppingCartRepository;
+import com.travel.agency.repository.UserRepository;
 import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 import java.util.List;
-import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
 public class PurchaseService {
 
     private final PurchaseRepository purchaseRepository;
-    private final TravelBundleRepository travelBundleRepository;
+    ;
     private final UserRepository userRepository;
     private final ShoppingCartRepository shoppingCartRepository;
-    private final DetailsPurchaseRepository detailsPurchaseRepository;
+    private final AuthService authService;
+    private final ShoppingCartService shoppingCartService;
 
-    public PurchaseService(PurchaseRepository purchaseRepository, TravelBundleRepository travelBundleRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository, DetailsPurchaseRepository detailsPurchaseRepository) {
+    public PurchaseService(PurchaseRepository purchaseRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository, AuthService authService, ShoppingCartService shoppingCartService) {
         this.purchaseRepository = purchaseRepository;
-        this.travelBundleRepository = travelBundleRepository;
         this.userRepository = userRepository;
         this.shoppingCartRepository = shoppingCartRepository;
-        this.detailsPurchaseRepository = detailsPurchaseRepository;
+        this.authService = authService;
+        this.shoppingCartService = shoppingCartService;
     }
+
 
     //CREAR COMPRA O "FACTURA DE COMPRA"
     @Transactional
     public PurchaseDTO createPurchase(String username) {
-        //Buscar el carrito del usuario por username
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-        //Buscar carrito del usuario
-        ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(user.getId());
-        //ver orElseThrow
+        User user = authService.getUser();
+        ShoppingCart shoppingCart = user.getShoppingCart();
+        if (shoppingCart == null || shoppingCart.getDetailsShoppingCarts().isEmpty()) {
+            throw new IllegalStateException("Shopping cart is empty.");
+        }
         //Crear nueva compra
         Purchase purchase = new Purchase();
-        purchase.setUser(shoppingCart.getUser());
+        purchase.setUser(user);
         purchase.setTotalPrice(shoppingCart.getTotalPrice());
         purchase.setPurchaseDate(LocalDateTime.now());
-        //Guardar compra para generar el ID
+        // Crear detalles de compra a partir del carrito
+        List<DetailsPurchase> detailsPurchases = DetailsPurchaseMapper.convertCartDetailsToPurchaseDetails(shoppingCart, purchase);
+        //asociar y guradar compra con detalles
+        purchase.setDetailsPurchase(detailsPurchases);
         Purchase savedPurchase = purchaseRepository.save(purchase);
-
-        //---- ESTO LO REMPLAZO POR LO QUE SE HAGA EN DETAILSPURCHASE
-        List<DetailsShoppingCart> shoppingCartDetails = shoppingCart.getDetailsShoppingCarts();
-        List<DetailsPurchase> detailsPurchases = shoppingCartDetails.stream().map(cartDetail -> {
-            DetailsPurchase detailsPurchase = new DetailsPurchase();
-            detailsPurchase.setQuantity(cartDetail.getQuantity());
-            detailsPurchase.setTotalPrice(cartDetail.getTotalPrice());
-            detailsPurchase.setTravelBundle(cartDetail.getTravelBundle());
-            detailsPurchase.setPurchase(savedPurchase); //SETEO A  LA COMPRA
-            return detailsPurchase;
-        }).collect(Collectors.toList());
-
-        //hasta aca no iria. VER DETAILS PURCHASE
-        //VACIAR CARRITO se crearia en el service de detailsShoppingCart o en ShoppingCart??
-        //detailsShoppingCartService.clearShoppingCart(shoppingCart);
+        // Limpiar el carrito después de realizar la compra
+        shoppingCartService.clearShoppingCart();
+//        shoppingCart.getDetailsShoppingCarts().clear();
+//        shoppingCart.setTotalPrice(0.0);
+//        shoppingCartRepository.save(shoppingCart);
+        List<DetailsPurchaseDTO> detailsPurchaseDTOs = DetailsPurchaseMapper.toDTOList(detailsPurchases);
         return new PurchaseDTO(savedPurchase);
     }
 
@@ -82,18 +81,14 @@ public class PurchaseService {
 
     // Ver compras por user
     public List<PurchaseDTO> searchPurchaseByUser(String username) {
-        Optional<User> user = userRepository.findByUsername(username);
-        if (user.isEmpty() || user.get().getPurchases().isEmpty()) {
-            throw new UsernameNotFoundException("No purchases available for the user: " + username);
-        }
-        List<Purchase> purchaseList = user.get().getPurchases();
+        User user = authService.getUser();
+        List<Purchase> purchaseList = user.getPurchases();
         return MapperUtil.purchaseMapperDto(purchaseList);
     }
 
     //  ELIMINAR  compra entera  o VACIAR CARRITO
     @Transactional
     public void deletePurchaseById(Long purchaseId) {
-        //Existe la compra con ese ID?
         Purchase purchase = purchaseRepository.findById(purchaseId)
                 .orElseThrow(() -> new ResourceNotFoundException("Purchase", "ID", purchaseId));
         purchaseRepository.deleteById(purchaseId);

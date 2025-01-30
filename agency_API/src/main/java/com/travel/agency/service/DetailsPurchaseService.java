@@ -2,43 +2,53 @@ package com.travel.agency.service;
 
 import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.mapper.DetailsPurchaseMapper;
-import com.travel.agency.mapper.TravelBundleMapper;
-import com.travel.agency.model.DTO.DetailsPurchase.*;
+import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.entities.DetailsPurchase;
-import com.travel.agency.model.entities.TravelBundle;
+import com.travel.agency.model.entities.Purchase;
+import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.DetailsPurchaseRepository;
-import com.travel.agency.repository.TravelBundleRepository;
-import com.travel.agency.repository.UserRepository;
-import java.util.Optional;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import com.travel.agency.repository.PurchaseRepository;
+import com.travel.agency.repository.ShoppingCartRepository;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class DetailsPurchaseService {
 
-    private final TravelBundleService travelBundleService;
+
     private final DetailsPurchaseRepository detailsPurchaseRepository;
-    private final TravelBundleRepository travelBundleRepository;
-    private final UserRepository userRepository;
+    private final ShoppingCartService shoppingCartService;
+    private final PurchaseRepository purchaseRepository;
+    private final AuthService authService;
 
-    public DetailsPurchaseService(TravelBundleService travelBundleService, DetailsPurchaseRepository detailsPurchaseRepository, TravelBundleRepository travelBundleRepository, UserRepository userRepository) {
-        this.travelBundleService = travelBundleService;
+    public DetailsPurchaseService(DetailsPurchaseRepository detailsPurchaseRepository, ShoppingCartService shoppingCartService, PurchaseRepository purchaseRepository, AuthService authService) {
         this.detailsPurchaseRepository = detailsPurchaseRepository;
-        this.travelBundleRepository = travelBundleRepository;
-        this.userRepository = userRepository;
+        this.shoppingCartService = shoppingCartService;
+        this.authService = authService;
+
+        this.purchaseRepository = purchaseRepository;
     }
 
-    public DetailsPurchaseDTO addTravelBundle(DetailsPurchaseRequestDTO detailsPurchaseRequestDTO,String userName) {        
-        User user = userRepository.findByUsername(userName)
-        .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + userName));
+    @Transactional
+    public List<DetailsPurchaseDTO> createDetailsFromShoppingCart(Long purchaseId, String username) {
+        User user = authService.getUser();
+        ShoppingCart shoppingCart = user.getShoppingCart();
+        if (shoppingCart == null || shoppingCart.getDetailsShoppingCarts().isEmpty()) {
+            throw new IllegalStateException("Shopping cart is empty");
+        }
+        Purchase purchase = purchaseRepository.findById(purchaseId)
+                .orElseThrow(() -> new ResourceNotFoundException("Purchase", "ID", purchaseId));
+        //Convvertir y guardar cada detaaleCarrito a DetalleCompra
+        List<DetailsPurchase> detailsPurchases = DetailsPurchaseMapper.convertCartDetailsToPurchaseDetails(shoppingCart, purchase);
+        detailsPurchaseRepository.saveAll(detailsPurchases);
 
-        
-        TravelBundle travelBundle = travelBundleService.findById(detailsPurchaseRequestDTO.getTravelBundleId());
-        
-        DetailsPurchase detailsPurchase = DetailsPurchaseMapper.toEntity(detailsPurchaseRequestDTO,travelBundle);
-        detailsPurchaseRepository.save(detailsPurchase);
-        return DetailsPurchaseMapper.toDTO(detailsPurchase);
+        //devolverDTos
+        return DetailsPurchaseMapper.toDTOList(detailsPurchases);
+
     }
+
 
 }
