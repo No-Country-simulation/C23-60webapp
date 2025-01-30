@@ -1,6 +1,9 @@
 package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
+import com.travel.agency.model.entities.DetailsPurchase;
+import com.travel.agency.model.entities.Purchase;
+import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.service.PurchaseService;
 import com.travel.agency.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +32,12 @@ public class PurchaseController {
         String username = jwtUtil.extractUsername(token);
         PurchaseDTO purchaseDTO = purchaseService.createPurchase(username);
         return ResponseEntity.ok(purchaseDTO);
+    }
+
+    @GetMapping("")
+    public ResponseEntity<List<PurchaseDTO>> getAllPurchasesController() {
+        List<PurchaseDTO> purchaseDTOList = purchaseService.getAllPurchases();
+        return ResponseEntity.ok(purchaseDTOList);
     }
 
     @GetMapping("/{idPurchase}")

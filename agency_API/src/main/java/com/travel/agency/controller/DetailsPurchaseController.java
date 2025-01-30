@@ -1,16 +1,17 @@
 package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
-import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseRequestDTO;
+import com.travel.agency.model.entities.DetailsPurchase;
 import com.travel.agency.service.DetailsPurchaseService;
 import com.travel.agency.utils.JwtUtil;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
-@RequestMapping("/details")
+@RequestMapping("/detailsPurchase")
 public class DetailsPurchaseController {
 
     private final DetailsPurchaseService detailsPurchaseService;
@@ -21,15 +22,14 @@ public class DetailsPurchaseController {
         this.detailsPurchaseService = detailsPurchaseService;
         this.jwtUtil = jwtUtil;
     }
-    
-    @PostMapping("/add")
-    public ResponseEntity<?> createTravelBundle(
-            @RequestHeader("Authorization") String token,
-            @Valid @RequestBody DetailsPurchaseRequestDTO detailsPurchaseRequestDTO
-    ) {
-        String userName = jwtUtil.extractUsername(token);
-        DetailsPurchaseDTO detailsPurchaseDTO = detailsPurchaseService.addTravelBundle(detailsPurchaseRequestDTO,userName);
-        return ResponseEntity.ok(detailsPurchaseDTO);
+
+    @PostMapping("/transfer/{purchaseId}")
+    public ResponseEntity<List<DetailsPurchaseDTO>> transferDetailsToPurchase(
+            @PathVariable Long purchaseId,
+            @RequestHeader("Authorization") String token) {
+        String username = jwtUtil.extractUsername(token);
+        List<DetailsPurchaseDTO> detailsPurchase = detailsPurchaseService.createDetailsFromShoppingCart(purchaseId, username);
+        return ResponseEntity.ok(detailsPurchase);
     }
 
 }

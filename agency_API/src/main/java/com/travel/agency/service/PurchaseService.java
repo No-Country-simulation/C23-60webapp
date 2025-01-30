@@ -1,8 +1,13 @@
 package com.travel.agency.service;
 
 import com.travel.agency.exceptions.ResourceNotFoundException;
+import com.travel.agency.mapper.DetailsPurchaseMapper;
+import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
-import com.travel.agency.model.entities.*;
+import com.travel.agency.model.entities.DetailsPurchase;
+import com.travel.agency.model.entities.Purchase;
+import com.travel.agency.model.entities.ShoppingCart;
+import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.*;
 import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
@@ -12,7 +17,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 
 @Service
@@ -23,46 +27,46 @@ public class PurchaseService {
     private final UserRepository userRepository;
     private final ShoppingCartRepository shoppingCartRepository;
     private final DetailsPurchaseRepository detailsPurchaseRepository;
+    private final AuthService authService;
+    private final DetailsPurchaseService detailsPurchaseService;
 
-    public PurchaseService(PurchaseRepository purchaseRepository, TravelBundleRepository travelBundleRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository, DetailsPurchaseRepository detailsPurchaseRepository) {
+    public PurchaseService(PurchaseRepository purchaseRepository, TravelBundleRepository travelBundleRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository, DetailsPurchaseRepository detailsPurchaseRepository, AuthService authService, DetailsPurchaseService detailsPurchaseService) {
         this.purchaseRepository = purchaseRepository;
         this.travelBundleRepository = travelBundleRepository;
         this.userRepository = userRepository;
         this.shoppingCartRepository = shoppingCartRepository;
         this.detailsPurchaseRepository = detailsPurchaseRepository;
+        this.authService = authService;
+        this.detailsPurchaseService = detailsPurchaseService;
     }
 
     //CREAR COMPRA O "FACTURA DE COMPRA"
     @Transactional
     public PurchaseDTO createPurchase(String username) {
-        //Buscar el carrito del usuario por username
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found with username: " + username));
-        //Buscar carrito del usuario
-        ShoppingCart shoppingCart = shoppingCartRepository.findByUserId(user.getId());
-        //ver orElseThrow
+        User user = authService.getUser();
+        ShoppingCart shoppingCart = user.getShoppingCart();
+        if (shoppingCart == null || shoppingCart.getDetailsShoppingCarts().isEmpty()) {
+            throw new IllegalStateException("Shopping cart is empty.");
+        }
         //Crear nueva compra
         Purchase purchase = new Purchase();
-        purchase.setUser(shoppingCart.getUser());
+        purchase.setUser(user);
         purchase.setTotalPrice(shoppingCart.getTotalPrice());
         purchase.setPurchaseDate(LocalDateTime.now());
-        //Guardar compra para generar el ID
+
+        // Crear detalles de compra a partir del carrito
+        List<DetailsPurchase> detailsPurchases = detailsPurchaseService.createDetailsFromShoppingCart(purchase.getId(), purchase.getUser().getUsername());
+
+        //asociar y guradar compra con detalles
+        purchase.setDetailsPurchase(detailsPurchases);
         Purchase savedPurchase = purchaseRepository.save(purchase);
 
-        //---- ESTO LO REMPLAZO POR LO QUE SE HAGA EN DETAILSPURCHASE
-        List<DetailsShoppingCart> shoppingCartDetails = shoppingCart.getDetailsShoppingCarts();
-        List<DetailsPurchase> detailsPurchases = shoppingCartDetails.stream().map(cartDetail -> {
-            DetailsPurchase detailsPurchase = new DetailsPurchase();
-            detailsPurchase.setQuantity(cartDetail.getQuantity());
-            detailsPurchase.setTotalPrice(cartDetail.getTotalPrice());
-            detailsPurchase.setTravelBundle(cartDetail.getTravelBundle());
-            detailsPurchase.setPurchase(savedPurchase); //SETEO A  LA COMPRA
-            return detailsPurchase;
-        }).collect(Collectors.toList());
+        // Limpiar el carrito después de realizar la compra
+        //YA HAY METODO, TRAER PARA LIMPIAR
+        shoppingCart.getDetailsShoppingCarts().clear();
+        shoppingCartRepository.save(shoppingCart);
 
-        //hasta aca no iria. VER DETAILS PURCHASE
-        //VACIAR CARRITO se crearia en el service de detailsShoppingCart o en ShoppingCart??
-        //detailsShoppingCartService.clearShoppingCart(shoppingCart);
+        List<DetailsPurchaseDTO> detailsPurchaseDTOs = DetailsPurchaseMapper.toDTOList(detailsPurchases);
         return new PurchaseDTO(savedPurchase);
     }
 
@@ -93,11 +97,23 @@ public class PurchaseService {
     //  ELIMINAR  compra entera  o VACIAR CARRITO
     @Transactional
     public void deletePurchaseById(Long purchaseId) {
-        //Existe la compra con ese ID?
         Purchase purchase = purchaseRepository.findById(purchaseId)
                 .orElseThrow(() -> new ResourceNotFoundException("Purchase", "ID", purchaseId));
         purchaseRepository.deleteById(purchaseId);
     }
 
+    //ver donde meter esto
+    private List<DetailsPurchase> mapDetailsFromShoppingCart(ShoppingCart shoppingCart, Purchase purchase) {
+        return shoppingCart.getDetailsShoppingCarts().stream()
+                .map(detail -> {
+                    DetailsPurchase detailsPurchase = new DetailsPurchase();
+                    detailsPurchase.setTravelBundle(detail.getTravelBundle());
+                    detailsPurchase.setQuantity(detail.getQuantity());
+                    detailsPurchase.setTotalPrice(detail.getTotalPrice());
+                    detailsPurchase.setPurchase(purchase);
+                    return detailsPurchase;
+                })
+                .toList();
+    }
 }
 
