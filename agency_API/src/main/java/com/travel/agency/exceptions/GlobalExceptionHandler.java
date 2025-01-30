@@ -32,8 +32,7 @@ public class GlobalExceptionHandler {
                 new ErrorResponseDTO(HttpStatus.UNAUTHORIZED.value(),
                         e.getMessage(),
                         e.getClass().getSimpleName())
-        )
-                ;
+        );
     }
 
     @ExceptionHandler(UsernameNotFoundException.class)
@@ -47,10 +46,22 @@ public class GlobalExceptionHandler {
 
     @ExceptionHandler(BadCredentialsException.class)
     public ResponseEntity<ErrorResponseDTO> handleBadCredentials(BadCredentialsException e) {
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(new ErrorResponseDTO
-                (HttpStatus.NOT_FOUND.value(), e.getMessage(), e.getClass().getSimpleName()));
+        return ResponseEntity.status(HttpStatus.NOT_FOUND).body(
+                new ErrorResponseDTO(HttpStatus.NOT_FOUND.value(), 
+                        e.getMessage(), 
+                        e.getClass().getSimpleName())
+        );
     }
 
+    @ExceptionHandler(UnauthorizedAccessException.class)
+    public ResponseEntity<ErrorResponseDTO> handleBadCredentials(UnauthorizedAccessException e) {
+        return ResponseEntity.status(HttpStatus.FORBIDDEN).body(
+                new ErrorResponseDTO(HttpStatus.FORBIDDEN.value(), 
+                        e.getMessage(), 
+                        e.getClass().getSimpleName())
+        );
+    }
+    
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public ResponseEntity<?> handleValidationException(MethodArgumentNotValidException e) {
         Map<String, String> errors = new HashMap<>();
