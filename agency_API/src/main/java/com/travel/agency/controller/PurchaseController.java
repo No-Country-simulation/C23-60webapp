@@ -26,7 +26,7 @@ public class PurchaseController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/create")
+    @PostMapping("/buy")
     public ResponseEntity<?> createPurchaseController(
             @RequestHeader("Authorization") String token) {
         String username = jwtUtil.extractUsername(token);

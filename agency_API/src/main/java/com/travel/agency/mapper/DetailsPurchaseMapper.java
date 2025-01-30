@@ -2,7 +2,6 @@ package com.travel.agency.mapper;
 
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.entities.DetailsPurchase;
-import com.travel.agency.model.entities.DetailsShoppingCart;
 import com.travel.agency.model.entities.Purchase;
 import com.travel.agency.model.entities.ShoppingCart;
 
@@ -33,15 +32,6 @@ public class DetailsPurchaseMapper {
                 .collect(Collectors.toList());
     }
 
-//    //convertir de detailsShoppingCart a detailsPurchase
-//    public static DetailsPurchaseDTO converterFromDetailsCart(DetailsShoppingCart detailsShoppingCart) {
-//        return new DetailsPurchaseDTO(
-//                detailsShoppingCart.getId(),
-//                detailsShoppingCart.getTravelBundle().getTitle(),
-//                detailsShoppingCart.getQuantity(),
-//                detailsShoppingCart.getTotalPrice() * detailsShoppingCart.getQuantity()
-//        );
-//    }
     public static List<DetailsPurchase> convertCartDetailsToPurchaseDetails(ShoppingCart shoppingCart, Purchase purchase) {
         return shoppingCart.getDetailsShoppingCarts().stream()
                 .map(cartDetail -> new DetailsPurchase(
@@ -51,6 +41,5 @@ public class DetailsPurchaseMapper {
                         purchase
                 )).collect(Collectors.toList());
     }
-
 
 }
