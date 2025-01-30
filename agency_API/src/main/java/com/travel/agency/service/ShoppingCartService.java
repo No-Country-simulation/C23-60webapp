@@ -3,6 +3,7 @@ package com.travel.agency.service;
 import com.travel.agency.mapper.ShoppingCartMapper;
 import com.travel.agency.model.DTO.ShoppingCart.AddToShoppingCartDTO;
 import com.travel.agency.model.DTO.ShoppingCart.ShoppingCartDTO;
+import com.travel.agency.model.DTO.ShoppingCart.UpdateDetailsShoppingCartDTO;
 import com.travel.agency.model.entities.DetailsShoppingCart;
 import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.TravelBundle;
@@ -39,17 +40,51 @@ public class ShoppingCartService {
         return ShoppingCartMapper.toDTO(shoppingCart);
     }
 
-    public ShoppingCartDTO AddToShoppingCart(AddToShoppingCartDTO addToShoppingCartDTO) {
+    public ShoppingCart getShoppingCartEntity() {
         User user = authService.getUser();
-        ShoppingCart shoppingCart = user.getShoppingCart();
+        return user.getShoppingCart();
+    }
+
+    private void updateShoppingCartTotal(ShoppingCart shoppingCart) {
+        double total = shoppingCart.getDetailsShoppingCarts().stream()
+                .mapToDouble(DetailsShoppingCart::getTotalPrice)
+                .sum();
+        shoppingCart.setTotalPrice(total);
+    }
+
+    public ShoppingCartDTO AddToShoppingCart(AddToShoppingCartDTO addToShoppingCartDTO) {
+        ShoppingCart shoppingCart = this.getShoppingCartEntity();
         TravelBundle travelBundle = travelBundleService.findById(addToShoppingCartDTO.travelBundleId());
 
         if (travelBundle.getAvailableBundles() < addToShoppingCartDTO.quantity()) {
             throw new RuntimeException("Not enough available travel bundles");
         }
-        DetailsShoppingCart details = detailsShoppingCartService.createShoppingCart(shoppingCart, travelBundle, addToShoppingCartDTO);
+        detailsShoppingCartService.createDetailsShoppingCart(shoppingCart, travelBundle, addToShoppingCartDTO);
+        updateShoppingCartTotal(shoppingCart);
+        shoppingCartRepository.save(shoppingCart);
+        return ShoppingCartMapper.toDTO(shoppingCart);
+    }
 
-        shoppingCart.setTotalPrice(details.getTotalPrice() + shoppingCart.getTotalPrice());
+    public ShoppingCartDTO updateDetailShoppingCart(Long detailsId, UpdateDetailsShoppingCartDTO dto) {
+        ShoppingCart shoppingCart = this.getShoppingCartEntity();
+        detailsShoppingCartService.updateDetailsShoppingCart(detailsId, shoppingCart, dto);
+        updateShoppingCartTotal(shoppingCart);
+        shoppingCartRepository.save(shoppingCart);
+        return ShoppingCartMapper.toDTO(shoppingCart);
+    }
+
+    public ShoppingCartDTO deleteFromShoppingCart(Long detailsId) {
+        ShoppingCart shoppingCart = this.getShoppingCartEntity();
+        detailsShoppingCartService.deleteDetailsShoppingCart(detailsId, shoppingCart);
+        updateShoppingCartTotal(shoppingCart);
+        shoppingCartRepository.save(shoppingCart);
+        return ShoppingCartMapper.toDTO(shoppingCart);
+    }
+
+    public ShoppingCartDTO clearShoppingCart() {
+        ShoppingCart shoppingCart = this.getShoppingCartEntity();
+        detailsShoppingCartService.deleteAllDetailsFromShoppingCart(shoppingCart);
+        shoppingCart.setTotalPrice(0.0);
         shoppingCartRepository.save(shoppingCart);
         return ShoppingCartMapper.toDTO(shoppingCart);
     }
