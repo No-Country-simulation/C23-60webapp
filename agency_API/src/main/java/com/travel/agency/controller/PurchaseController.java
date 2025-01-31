@@ -1,9 +1,6 @@
 package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
-import com.travel.agency.model.entities.DetailsPurchase;
-import com.travel.agency.model.entities.Purchase;
-import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.service.PurchaseService;
 import com.travel.agency.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;

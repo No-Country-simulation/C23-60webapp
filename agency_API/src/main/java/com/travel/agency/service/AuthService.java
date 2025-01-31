@@ -10,6 +10,7 @@ import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -36,7 +37,7 @@ public class AuthService {
     private final ShoppingCartService ShoppingCartService;
 
     @Autowired
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authManager, JwtUtil jwtUtil, CustomUserDetailsService userDetailsService, com.travel.agency.service.ShoppingCartService shoppingCartService) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authManager, JwtUtil jwtUtil, CustomUserDetailsService userDetailsService, @Lazy ShoppingCartService shoppingCartService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authManager = authManager;
@@ -61,9 +62,9 @@ public class AuthService {
         User user = MapperUtil.toEntity(userRegisterDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Optional<User> isAdminRegistered = userRepository.findByEmail("admin@gmail.com");
-        if(!isAdminRegistered.isPresent() && userRegisterDTO.email().equals("admin@gmail.com")){
+        if (!isAdminRegistered.isPresent() && userRegisterDTO.email().equals("admin@gmail.com")) {
             user.setRoles(Set.of(Role.ADMIN));
-        }else {
+        } else {
             user.setRoles(Set.of(Role.USER));
         }
         user.setRegisterDate(LocalDate.now());

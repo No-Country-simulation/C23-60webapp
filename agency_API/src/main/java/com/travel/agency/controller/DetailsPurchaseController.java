@@ -1,7 +1,6 @@
 package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
-import com.travel.agency.model.entities.DetailsPurchase;
 import com.travel.agency.service.DetailsPurchaseService;
 import com.travel.agency.utils.JwtUtil;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -11,7 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/detailsPurchase")
+@RequestMapping("/detailsPurchases")
 public class DetailsPurchaseController {
 
     private final DetailsPurchaseService detailsPurchaseService;
@@ -23,12 +22,23 @@ public class DetailsPurchaseController {
         this.jwtUtil = jwtUtil;
     }
 
-    @PostMapping("/transfer/{purchaseId}")
-    public ResponseEntity<List<DetailsPurchaseDTO>> transferDetailsToPurchase(
+
+    @GetMapping("/purchase/{purchaseId}")
+    public ResponseEntity<List<DetailsPurchaseDTO>> getDetailsByPurchaseIdController(
             @PathVariable Long purchaseId,
             @RequestHeader("Authorization") String token) {
         String username = jwtUtil.extractUsername(token);
-        List<DetailsPurchaseDTO> detailsPurchase = detailsPurchaseService.createDetailsFromShoppingCart(purchaseId, username);
+        List<DetailsPurchaseDTO> detailsPurchase = detailsPurchaseService.getDetailsByPurchaseId(purchaseId, username);
+        return ResponseEntity.ok(detailsPurchase);
+    }
+
+    @GetMapping("/{detailId}")
+    public ResponseEntity<DetailsPurchaseDTO> getDetailById(
+            @PathVariable Long detailId,
+            @RequestHeader("Authorization") String token) {
+
+        String username = jwtUtil.extractUsername(token);
+        DetailsPurchaseDTO detailsPurchase = detailsPurchaseService.getDetailById(detailId, username);
         return ResponseEntity.ok(detailsPurchase);
     }
 
