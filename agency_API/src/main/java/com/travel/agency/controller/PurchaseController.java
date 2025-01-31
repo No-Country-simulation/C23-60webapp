@@ -2,7 +2,7 @@ package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.service.PurchaseService;
-import com.travel.agency.utils.JwtUtil;
+import com.travel.agency.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,18 +15,18 @@ import java.util.List;
 public class PurchaseController {
 
     private final PurchaseService purchaseService;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
 
     @Autowired
-    public PurchaseController(PurchaseService purchaseService, JwtUtil jwtUtil) {
+    public PurchaseController(PurchaseService purchaseService, JwtService jwtService) {
         this.purchaseService = purchaseService;
-        this.jwtUtil = jwtUtil;
+        this.jwtService = jwtService;
     }
 
     @PostMapping("/buy")
     public ResponseEntity<?> createPurchaseController(
             @RequestHeader("Authorization") String token) {
-        String username = jwtUtil.extractUsername(token);
+        String username = jwtService.extractUsername(token);
         PurchaseDTO purchaseDTO = purchaseService.createPurchase(username);
         return ResponseEntity.ok(purchaseDTO);
     }
@@ -45,7 +45,7 @@ public class PurchaseController {
 
     @GetMapping("/user-purchases")
     public ResponseEntity<?> getPurchasesByUsernameController(@RequestHeader("Authorization") String token) {
-        String username = jwtUtil.extractUsername(token);
+        String username = jwtService.extractUsername(token);
         List<PurchaseDTO> userPurchases = purchaseService.searchPurchaseByUser(username);
         return ResponseEntity.ok(userPurchases);
     }

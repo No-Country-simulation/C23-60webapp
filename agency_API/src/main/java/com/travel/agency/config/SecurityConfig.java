@@ -39,9 +39,11 @@ public class SecurityConfig {
                                 "/v3/api-docs/**",
                                 "/swagger-ui/**",
                                 "/swagger-ui.html",
-                                "travel-bundle/all",
+                                "/travel-bundle/all",
+                                "/travel-bundle/{id}",
                                 "/rating/travelBundle/",
-                                "/rating/user-ratings").permitAll()
+                                "/rating/user-ratings",
+                                "/images/**").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManagement ->

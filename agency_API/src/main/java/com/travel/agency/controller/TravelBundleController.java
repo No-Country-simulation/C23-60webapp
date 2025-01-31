@@ -2,15 +2,11 @@ package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.TravelBundle.*;
 import com.travel.agency.service.TravelBundleService;
-import com.travel.agency.utils.JwtUtil;
-import jakarta.validation.Valid;
+import com.travel.agency.service.JwtService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -19,11 +15,11 @@ import org.springframework.web.bind.annotation.RestController;
 public class TravelBundleController {
 
     private final TravelBundleService travelBundleService;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
 
-    public TravelBundleController(TravelBundleService travelBundleService, JwtUtil jwtUtil) {
+    public TravelBundleController(TravelBundleService travelBundleService, JwtService jwtService) {
         this.travelBundleService = travelBundleService;
-        this.jwtUtil = jwtUtil;
+        this.jwtService = jwtService;
     }
 
     @GetMapping("/{id}")
