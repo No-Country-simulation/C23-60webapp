@@ -5,7 +5,6 @@ import com.travel.agency.model.DTO.user.UserLoginDTO;
 import com.travel.agency.model.DTO.user.UserRegisterDTO;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.UserRepository;
-import com.travel.agency.utils.JwtUtil;
 import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
@@ -32,16 +31,16 @@ public class AuthService {
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
     private final AuthenticationManager authManager;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
     private final CustomUserDetailsService userDetailsService;
     private final ShoppingCartService ShoppingCartService;
 
     @Autowired
-    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authManager, JwtUtil jwtUtil, CustomUserDetailsService userDetailsService, @Lazy ShoppingCartService shoppingCartService) {
+    public AuthService(UserRepository userRepository, PasswordEncoder passwordEncoder, AuthenticationManager authManager, JwtService jwtService, CustomUserDetailsService userDetailsService, @Lazy ShoppingCartService shoppingCartService) {
         this.userRepository = userRepository;
         this.passwordEncoder = passwordEncoder;
         this.authManager = authManager;
-        this.jwtUtil = jwtUtil;
+        this.jwtService = jwtService;
         this.userDetailsService = userDetailsService;
         ShoppingCartService = shoppingCartService;
     }
@@ -82,6 +81,6 @@ public class AuthService {
         } catch (AuthenticationException e) {
             throw new BadCredentialsException("User does not exists or credentials are wrong");
         }
-        return this.jwtUtil.generateToken(this.userDetailsService.loadUserByUsername(userLoginDTO.email()));
+        return this.jwtService.generateToken(this.userDetailsService.loadUserByUsername(userLoginDTO.email()));
     }
 }

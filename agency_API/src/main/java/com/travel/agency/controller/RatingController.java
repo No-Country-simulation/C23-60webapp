@@ -4,7 +4,7 @@ import com.travel.agency.model.DTO.rating.CreateRatingDTO;
 import com.travel.agency.model.DTO.rating.RatingDTO;
 import com.travel.agency.model.DTO.rating.UpdateRating;
 import com.travel.agency.service.RatingService;
-import com.travel.agency.utils.JwtUtil;
+import com.travel.agency.service.JwtService;
 import jakarta.validation.Valid;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,10 +17,10 @@ import java.util.List;
 @RequestMapping("/rating")
 public class RatingController {
     private final RatingService ratingService;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
 
-    public RatingController(JwtUtil jwtUtil, RatingService ratingService) {
-        this.jwtUtil = jwtUtil;
+    public RatingController(JwtService jwtService, RatingService ratingService) {
+        this.jwtService = jwtService;
         this.ratingService = ratingService;
     }
 
@@ -29,7 +29,7 @@ public class RatingController {
     public ResponseEntity<?> createRatingController(
             @RequestHeader("Authorization") String token,
             @Valid @RequestBody CreateRatingDTO createRatingDTO) {
-        String username = jwtUtil.extractUsername(token);
+        String username = jwtService.extractUsername(token);
         RatingDTO createdRating = ratingService.createRating(createRatingDTO, username);
         return new ResponseEntity<>(createdRating, HttpStatus.CREATED);
     }
@@ -51,7 +51,7 @@ public class RatingController {
     //ver por usuario
     @GetMapping("/user-ratings")
     public ResponseEntity<List<RatingDTO>> getRatingByUsernameController(@RequestHeader("Authorization") String token) {
-        String username = jwtUtil.extractUsername(token);
+        String username = jwtService.extractUsername(token);
         List<RatingDTO> ratingDTOList = ratingService.searchRatingsByUser(username);
         return ResponseEntity.ok(ratingDTOList);
     }
@@ -66,7 +66,7 @@ public class RatingController {
     //actualizar?
     @PutMapping("/update")
     public ResponseEntity<RatingDTO> updateRatingController(@RequestHeader("Authorization") String token, @RequestBody @Valid UpdateRating updateRating) {
-        String username = jwtUtil.extractUsername(token);
+        String username = jwtService.extractUsername(token);
         RatingDTO createdRating = ratingService.updateRating(updateRating, username);
         return new ResponseEntity<>(createdRating, HttpStatus.ACCEPTED);
     }

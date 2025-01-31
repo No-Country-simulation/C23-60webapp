@@ -24,11 +24,13 @@ public class TravelBundleService {
 
     private final TravelBundleRepository travelBundleRepository;
     private final UserRepository userRepository;
+    private final ImageService imageService;
 
     @Autowired
-    public TravelBundleService(TravelBundleRepository travelBundleRepository, UserRepository userRepository) {
+    public TravelBundleService(TravelBundleRepository travelBundleRepository, UserRepository userRepository, ImageService imageService) {
         this.travelBundleRepository = travelBundleRepository;
         this.userRepository = userRepository;
+        this.imageService = imageService;
     }
 
     public TravelBundleDTO getTravelBundle(Long id) {
@@ -41,6 +43,7 @@ public class TravelBundleService {
         return TravelBundleMapper.toDTOList(travelBundles);
     }
 
+    //Este metodo puede ser simplificado.
     @Transactional
     public void createTravelBundle(TravelBundleRequestDTO travelBundleRequestDTO,
                                    List<MultipartFile> images) {
@@ -61,10 +64,8 @@ public class TravelBundleService {
         //Mapea los datos de MultipartFile en objetos de tipo Image
         List<Image> imageList = images.stream().map(images1 -> {
             try {
-                return new Image(
-                        images1.getOriginalFilename(),
-                        images1.getContentType(),
-                        images1.getBytes(),
+                return this.imageService.createImage(
+                        images1,
                         travelBundle
                 );
             } catch (IOException e) {
