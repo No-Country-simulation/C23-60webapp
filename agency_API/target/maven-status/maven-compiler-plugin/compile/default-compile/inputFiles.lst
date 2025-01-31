@@ -12,13 +12,13 @@ C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\enums\Status.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\GlobalExceptionHandler.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\ResourceNotFoundException.java
+C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\exceptions\UnauthorizedAccessException.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\interfaces\GenericInterface.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\DetailsPurchaseMapper.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\DetailsShoppingCartMapper.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\ShoppingCartMapper.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\TravelBundleMapper.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseDTO.java
-C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseRequestDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\ErrorResponseDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\image\ImageDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\purchase\PurchaseDTO.java
@@ -28,6 +28,7 @@ C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\ShoppingCart\AddToShoppingCartDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\ShoppingCart\DetailsShoppingCartDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\ShoppingCart\ShoppingCartDTO.java
+C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\ShoppingCart\UpdateDetailsShoppingCartDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\TravelBundle\TravelBundleRequestDTO.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\user\GeneratedTokenDTO.java

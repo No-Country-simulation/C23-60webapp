@@ -47,6 +47,7 @@ com\travel\agency\model\DTO\user\MinUserDTO.class
 com\travel\agency\model\DTO\ErrorResponseDTO.class
 com\travel\agency\validation\ValidDateRange.class
 com\travel\agency\config\SecurityConfig.class
+com\travel\agency\exceptions\UnauthorizedAccessException.class
 com\travel\agency\model\DTO\user\UserLoginDTO.class
 com\travel\agency\service\PurchaseService.class
 com\travel\agency\model\DTO\TravelBundle\TravelBundleRequestDTO.class
@@ -65,6 +66,6 @@ com\travel\agency\utils\JwtUtil.class
 com\travel\agency\repository\RatingRepository.class
 com\travel\agency\model\entities\ShoppingCart.class
 com\travel\agency\utils\MapperUtil.class
-com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseRequestDTO.class
+com\travel\agency\model\DTO\ShoppingCart\UpdateDetailsShoppingCartDTO.class
 com\travel\agency\model\DTO\purchase\PurchaseDTO.class
 com\travel\agency\exceptions\ResourceNotFoundException.class

@@ -4,13 +4,9 @@ import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.mapper.DetailsPurchaseMapper;
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.entities.DetailsPurchase;
-import com.travel.agency.model.entities.Purchase;
-import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.DetailsPurchaseRepository;
-import com.travel.agency.repository.PurchaseRepository;
-import com.travel.agency.repository.ShoppingCartRepository;
-import jakarta.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -20,35 +16,29 @@ public class DetailsPurchaseService {
 
 
     private final DetailsPurchaseRepository detailsPurchaseRepository;
-    private final ShoppingCartService shoppingCartService;
-    private final PurchaseRepository purchaseRepository;
     private final AuthService authService;
 
-    public DetailsPurchaseService(DetailsPurchaseRepository detailsPurchaseRepository, ShoppingCartService shoppingCartService, PurchaseRepository purchaseRepository, AuthService authService) {
+    @Autowired
+    public DetailsPurchaseService(DetailsPurchaseRepository detailsPurchaseRepository, AuthService authService) {
         this.detailsPurchaseRepository = detailsPurchaseRepository;
-        this.shoppingCartService = shoppingCartService;
         this.authService = authService;
 
-        this.purchaseRepository = purchaseRepository;
     }
 
-    @Transactional
-    public List<DetailsPurchaseDTO> createDetailsFromShoppingCart(Long purchaseId, String username) {
+
+    public List<DetailsPurchaseDTO> getDetailsByPurchaseId(Long purchaseId, String username) {
         User user = authService.getUser();
-        ShoppingCart shoppingCart = user.getShoppingCart();
-        if (shoppingCart == null || shoppingCart.getDetailsShoppingCarts().isEmpty()) {
-            throw new IllegalStateException("Shopping cart is empty");
-        }
-        Purchase purchase = purchaseRepository.findById(purchaseId)
-                .orElseThrow(() -> new ResourceNotFoundException("Purchase", "ID", purchaseId));
-        //Convvertir y guardar cada detaaleCarrito a DetalleCompra
-        List<DetailsPurchase> detailsPurchases = DetailsPurchaseMapper.convertCartDetailsToPurchaseDetails(shoppingCart, purchase);
-        detailsPurchaseRepository.saveAll(detailsPurchases);
-
-        //devolverDTos
-        return DetailsPurchaseMapper.toDTOList(detailsPurchases);
+        // Verificar que la compra pertenece al usuario autenticado
+        List<DetailsPurchase> details = detailsPurchaseRepository.findByPurchase_IdAndPurchase_User_Id(purchaseId, user.getId());
+        return DetailsPurchaseMapper.toDTOList(details);
 
     }
 
 
+    public DetailsPurchaseDTO getDetailById(Long detailId, String username) {
+        User user = authService.getUser();
+        DetailsPurchase detail = detailsPurchaseRepository.findByIdAndPurchase_User_Id(detailId, user.getId())
+                .orElseThrow(() -> new ResourceNotFoundException("DetailsPurchase", "ID", detailId));
+        return new DetailsPurchaseDTO(detail);
+    }
 }
