@@ -9,7 +9,6 @@ import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.DetailsPurchaseRepository;
 import com.travel.agency.repository.PurchaseRepository;
-import com.travel.agency.repository.ShoppingCartRepository;
 import com.travel.agency.repository.UserRepository;
 import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
@@ -24,23 +23,20 @@ import java.util.List;
 public class PurchaseService {
 
     private final PurchaseRepository purchaseRepository;
-    ;
     private final UserRepository userRepository;
-    private final ShoppingCartRepository shoppingCartRepository;
     private final AuthService authService;
     private final ShoppingCartService shoppingCartService;
     private final DetailsPurchaseRepository detailsPurchaseRepository;
 
-    public PurchaseService(PurchaseRepository purchaseRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository, AuthService authService, ShoppingCartService shoppingCartService, DetailsPurchaseRepository detailsPurchaseRepository) {
+    public PurchaseService(PurchaseRepository purchaseRepository, UserRepository userRepository, AuthService authService, ShoppingCartService shoppingCartService, DetailsPurchaseRepository detailsPurchaseRepository) {
         this.purchaseRepository = purchaseRepository;
         this.userRepository = userRepository;
-        this.shoppingCartRepository = shoppingCartRepository;
         this.authService = authService;
         this.shoppingCartService = shoppingCartService;
         this.detailsPurchaseRepository = detailsPurchaseRepository;
     }
 
-    //CREAR COMPRA O "FACTURA DE COMPRA"
+    //Compra o factura
     @Transactional
     public PurchaseDTO createPurchase(String username) {
         User user = userRepository.findByUsername(username)
@@ -76,7 +72,6 @@ public class PurchaseService {
         return MapperUtil.purchaseMapperDto(purchaseList);
     }
 
-    // Ver compra por ID
     public PurchaseDTO searchPurchaseById(Long idPurchase) {
         // Buscar la compra por ID
         Purchase purchase = purchaseRepository.findById(idPurchase)
@@ -84,14 +79,13 @@ public class PurchaseService {
         return new PurchaseDTO(purchase);
     }
 
-    // Ver compras por user
     public List<PurchaseDTO> searchPurchaseByUser(String username) {
         User user = authService.getUser();
         List<Purchase> purchaseList = user.getPurchases();
         return MapperUtil.purchaseMapperDto(purchaseList);
     }
 
-    //  ELIMINAR  compra entera  o VACIAR CARRITO
+    //borrar compra solo para admin?
     @Transactional
     public void deletePurchaseById(Long purchaseId) {
         Purchase purchase = purchaseRepository.findById(purchaseId)

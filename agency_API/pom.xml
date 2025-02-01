@@ -10,7 +10,7 @@
     </parent>
     <groupId>com.travel</groupId>
     <artifactId>agency</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <version>0.0.1</version>
     <name>explora+</name>
     <description>Explora+ travel agency API</description>
     <url/>
@@ -122,10 +122,10 @@
                 <artifactId>maven-compiler-plugin</artifactId>
             </plugin>
             <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
+                  <groupId>org.springframework.boot</groupId>
+                  <artifactId>spring-boot-maven-plugin</artifactId>
 
-            </plugin>
+              </plugin>
         </plugins>
     </build>
 
