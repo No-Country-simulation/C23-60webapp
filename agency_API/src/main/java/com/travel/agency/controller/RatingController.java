@@ -12,10 +12,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/rating")
-@CrossOrigin(origins = "http://localhost:5173/")
 public class RatingController {
     private final RatingService ratingService;
     private final JwtService jwtService;
