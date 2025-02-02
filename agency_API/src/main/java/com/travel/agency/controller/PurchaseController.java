@@ -9,10 +9,9 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
+@CrossOrigin(origins = "http://localhost:5173")
 @RestController
 @RequestMapping("/purchases")
-@CrossOrigin(origins = "http://localhost:5173/")
 public class PurchaseController {
 
     private final PurchaseService purchaseService;
