@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/rating")
+@CrossOrigin(origins = "http://localhost:5137")
 public class RatingController {
     private final RatingService ratingService;
     private final JwtService jwtService;
