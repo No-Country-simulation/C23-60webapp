@@ -1,10 +1,10 @@
-package com.travel.agency.utils;
+package com.travel.agency.service;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.security.Keys;
 import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 
 import javax.crypto.KeyGenerator;
 import javax.crypto.SecretKey;
@@ -15,8 +15,8 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.function.Function;
 
-@Component
-public class JwtUtil {
+@Service
+public class JwtService {
 
    // @Value(value = "${jwt.secret.key}")
     private final static String SECRET_KEY = generateSecretKey();
@@ -34,7 +34,8 @@ public class JwtUtil {
 
     public String generateToken(UserDetails userDetails) {
         Map<String,Object> claims = new HashMap<>();
-        claims.put("ROLE",userDetails.getAuthorities());
+        //Prueba
+        //claims.put("ROLE",userDetails.getAuthorities());
         return Jwts.builder().claims()
                 .add(claims)
                 .subject(userDetails.getUsername())

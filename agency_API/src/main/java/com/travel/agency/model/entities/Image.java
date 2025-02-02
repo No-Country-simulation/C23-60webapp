@@ -20,7 +20,7 @@ public class Image {
     private String contentType;
     @Lob
     @Column(columnDefinition = "MEDIUMBLOB")
-    private byte[] imageData;
+    private String imageData;
     //VER PARA EL MANEJO DE LLEVAR Y TRAER LAS IMGS DE BACK A FRONT Y VICEVERSA
      // tipo de la imagen (por ejemplo, "image/jpeg", "image/png")
 
@@ -29,7 +29,7 @@ public class Image {
     @JoinColumn(name = "travel_bundle_id")
     private TravelBundle travelBundle;
 
-    public Image(String filename, String contentType, byte[] imageData, TravelBundle travelBundle) {
+    public Image(String filename, String contentType, String imageData, TravelBundle travelBundle) {
         this.filename = filename;
         this.contentType = contentType;
         this.imageData = imageData;

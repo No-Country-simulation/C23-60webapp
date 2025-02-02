@@ -1,9 +1,8 @@
 package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
-import com.travel.agency.model.entities.DetailsPurchase;
 import com.travel.agency.service.DetailsPurchaseService;
-import com.travel.agency.utils.JwtUtil;
+import com.travel.agency.service.JwtService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -11,24 +10,35 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("/detailsPurchase")
+@RequestMapping("/detailsPurchases")
 public class DetailsPurchaseController {
 
     private final DetailsPurchaseService detailsPurchaseService;
-    private final JwtUtil jwtUtil;
+    private final JwtService jwtService;
 
     @Autowired
-    public DetailsPurchaseController(DetailsPurchaseService detailsPurchaseService, JwtUtil jwtUtil) {
+    public DetailsPurchaseController(DetailsPurchaseService detailsPurchaseService, JwtService jwtService) {
         this.detailsPurchaseService = detailsPurchaseService;
-        this.jwtUtil = jwtUtil;
+        this.jwtService = jwtService;
     }
 
-    @PostMapping("/transfer/{purchaseId}")
-    public ResponseEntity<List<DetailsPurchaseDTO>> transferDetailsToPurchase(
+
+    @GetMapping("/purchase/{purchaseId}")
+    public ResponseEntity<List<DetailsPurchaseDTO>> getDetailsByPurchaseIdController(
             @PathVariable Long purchaseId,
             @RequestHeader("Authorization") String token) {
-        String username = jwtUtil.extractUsername(token);
-        List<DetailsPurchaseDTO> detailsPurchase = detailsPurchaseService.createDetailsFromShoppingCart(purchaseId, username);
+        String username = jwtService.extractUsername(token);
+        List<DetailsPurchaseDTO> detailsPurchase = detailsPurchaseService.getDetailsByPurchaseId(purchaseId, username);
+        return ResponseEntity.ok(detailsPurchase);
+    }
+
+    @GetMapping("/{detailId}")
+    public ResponseEntity<DetailsPurchaseDTO> getDetailById(
+            @PathVariable Long detailId,
+            @RequestHeader("Authorization") String token) {
+
+        String username = jwtService.extractUsername(token);
+        DetailsPurchaseDTO detailsPurchase = detailsPurchaseService.getDetailById(detailId, username);
         return ResponseEntity.ok(detailsPurchase);
     }
 
