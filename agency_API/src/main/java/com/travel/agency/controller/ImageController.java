@@ -3,10 +3,14 @@ package com.travel.agency.controller;
 import com.travel.agency.model.entities.Image;
 import com.travel.agency.service.ImageService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
@@ -24,19 +28,23 @@ public class ImageController {
     @GetMapping
     public ResponseEntity<?> getImages(){
         List<Image> images = this.imageService.getAllImages();
-        String imgType = images.stream().map(Image::getContentType).toString();
-        MediaType mediaType = MediaType.valueOf(imgType);
+        if (images.isEmpty()) {
+            return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+        }
         return ResponseEntity.status(HttpStatus.OK)
-                .contentType(mediaType)
                 .body(images);
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<?> getImageById(@PathVariable Long id){
-        Image img = this.imageService.getImageById(id);
-        return ResponseEntity.status(HttpStatus.OK)
-                .contentType(MediaType.valueOf(img.getContentType()))
-                .body(img);
+    public ResponseEntity<byte[]> getImage(@PathVariable Long id) {
+        Image image = imageService.getImageById(id);
+        // Decode base64 string to byte array
+        byte[] imageBytes = imageService.decodeImage(image);
+        return ResponseEntity.ok()
+                .contentType(MediaType.parseMediaType(image.getContentType()))
+                .header(HttpHeaders.CONTENT_DISPOSITION,
+                        "filename=\"" + image.getFilename() + "\"")
+                .body(imageBytes);
     }
 
 }
