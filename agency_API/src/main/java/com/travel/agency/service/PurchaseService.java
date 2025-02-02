@@ -2,6 +2,7 @@ package com.travel.agency.service;
 
 import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.mapper.DetailsPurchaseMapper;
+import com.travel.agency.mapper.PurchaseMapper;
 import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.model.entities.DetailsPurchase;
@@ -9,9 +10,6 @@ import com.travel.agency.model.entities.Purchase;
 import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.PurchaseRepository;
-import com.travel.agency.repository.ShoppingCartRepository;
-import com.travel.agency.repository.UserRepository;
-import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -23,22 +21,16 @@ import java.util.List;
 public class PurchaseService {
 
     private final PurchaseRepository purchaseRepository;
-    ;
-    private final UserRepository userRepository;
-    private final ShoppingCartRepository shoppingCartRepository;
     private final AuthService authService;
     private final ShoppingCartService shoppingCartService;
 
-    public PurchaseService(PurchaseRepository purchaseRepository, UserRepository userRepository, ShoppingCartRepository shoppingCartRepository, AuthService authService, ShoppingCartService shoppingCartService) {
+    public PurchaseService(PurchaseRepository purchaseRepository, AuthService authService, ShoppingCartService shoppingCartService) {
         this.purchaseRepository = purchaseRepository;
-        this.userRepository = userRepository;
-        this.shoppingCartRepository = shoppingCartRepository;
         this.authService = authService;
         this.shoppingCartService = shoppingCartService;
     }
 
 
-    //CREAR COMPRA O "FACTURA DE COMPRA"
     @Transactional
     public PurchaseDTO createPurchase(String username) {
         User user = authService.getUser();
@@ -65,13 +57,13 @@ public class PurchaseService {
         return new PurchaseDTO(savedPurchase);
     }
 
-    //Ver todas las compras
+
     public List<PurchaseDTO> getAllPurchases() {
         List<Purchase> purchaseList = purchaseRepository.findAll();
-        return MapperUtil.purchaseMapperDto(purchaseList);
+        return PurchaseMapper.purchaseMapperDto(purchaseList);
     }
 
-    // Ver compra por ID
+
     public PurchaseDTO searchPurchaseById(Long idPurchase) {
         // Buscar la compra por ID
         Purchase purchase = purchaseRepository.findById(idPurchase)
@@ -79,14 +71,13 @@ public class PurchaseService {
         return new PurchaseDTO(purchase);
     }
 
-    // Ver compras por user
     public List<PurchaseDTO> searchPurchaseByUser(String username) {
         User user = authService.getUser();
         List<Purchase> purchaseList = user.getPurchases();
-        return MapperUtil.purchaseMapperDto(purchaseList);
+        return PurchaseMapper.purchaseMapperDto(purchaseList);
     }
 
-    //  ELIMINAR  compra entera  o VACIAR CARRITO
+    //  ELIMINAR  compra entera , dejar? solo admin
     @Transactional
     public void deletePurchaseById(Long purchaseId) {
         Purchase purchase = purchaseRepository.findById(purchaseId)
