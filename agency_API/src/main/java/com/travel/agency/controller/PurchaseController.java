@@ -12,6 +12,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/purchases")
+@CrossOrigin(origins = "http://localhost:5137")
 public class PurchaseController {
 
     private final PurchaseService purchaseService;
