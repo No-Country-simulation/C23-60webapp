@@ -17,7 +17,7 @@ import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
-import java.util.Optional;
+
 
 @Service
 
@@ -75,7 +75,7 @@ public class RatingService {
 
     @Transactional
     public void deleteRatingByIc(Long ratingId) {
-        Rating rating = ratingRepository.findById(ratingId)
+        ratingRepository.findById(ratingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Rating", "ID", ratingId));
         ratingRepository.deleteById(ratingId);
     }
@@ -91,7 +91,7 @@ public class RatingService {
     public RatingDTO updateRating(UpdateRating updateRating, String username) {
         Rating rating = ratingRepository.getReferenceById(updateRating.id());
         TravelBundle travelBundle = travelBundleRepository.findById(updateRating.travelBundleId())
-                        .orElse(null);
+                .orElse(null);
         rating.updateRating(updateRating, travelBundle);
         Rating updatedRating = ratingRepository.save(rating);
         return MapperUtil.toRatingDTO(updatedRating);

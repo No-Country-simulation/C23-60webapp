@@ -3,6 +3,7 @@ C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AdminController.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AuthController.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\DetailsPurchaseController.java
+C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\ImageController.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\PurchaseController.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\RatingController.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\ShoppingCartController.java
@@ -50,6 +51,7 @@ C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\entities\User.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\DetailsPurchaseRepository.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\DetailsShoppingCartRepository.java
+C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\ImageRepository.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\PurchaseRepository.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\RatingRepository.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\repository\ShoppingCartRepository.java
@@ -59,13 +61,14 @@ C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\CustomUserDetailsService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\DetailsPurchaseService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\DetailsShoppingCartService.java
+C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\ImageService.java
+C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\JwtService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\PurchaseService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\RatingService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\ShoppingCartService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\TravelBundleService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\service\UserService.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtFilter.java
-C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\JwtUtil.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\utils\MapperUtil.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\DateRangeValidator.java
 C:\Users\Flor\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\validation\ValidDateRange.java

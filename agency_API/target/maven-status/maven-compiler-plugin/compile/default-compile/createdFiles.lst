@@ -3,10 +3,12 @@ com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseDTO.class
 com\travel\agency\model\DTO\user\UpdateUserRolesDTO.class
 com\travel\agency\validation\DateRangeValidator.class
 com\travel\agency\controller\AdminController.class
+com\travel\agency\repository\ImageRepository.class
 com\travel\agency\controller\AuthController.class
 com\travel\agency\mapper\ShoppingCartMapper.class
 com\travel\agency\service\ShoppingCartService.class
 com\travel\agency\controller\UserPanelController.class
+com\travel\agency\service\JwtService.class
 com\travel\agency\model\entities\DetailsPurchase.class
 com\travel\agency\model\DTO\ShoppingCart\ShoppingCartDTO.class
 com\travel\agency\model\DTO\rating\RatingDTO.class
@@ -26,6 +28,7 @@ com\travel\agency\service\AuthService.class
 com\travel\agency\model\DTO\user\UserRegisterDTO.class
 com\travel\agency\controller\RatingController.class
 com\travel\agency\repository\UserRepository.class
+com\travel\agency\controller\ImageController.class
 com\travel\agency\service\DetailsShoppingCartService.class
 com\travel\agency\model\DTO\image\ImageDTO.class
 com\travel\agency\mapper\TravelBundleMapper.class
@@ -57,12 +60,12 @@ com\travel\agency\model\DTO\user\UserDTO.class
 com\travel\agency\repository\TravelBundleRepository.class
 com\travel\agency\repository\DetailsPurchaseRepository.class
 com\travel\agency\model\entities\Rating.class
+com\travel\agency\service\ImageService.class
 com\travel\agency\model\entities\Purchase.class
 com\travel\agency\repository\ShoppingCartRepository.class
 com\travel\agency\model\entities\DetailsShoppingCart.class
 com\travel\agency\model\DTO\user\GeneratedTokenDTO.class
 com\travel\agency\mapper\DetailsPurchaseMapper.class
-com\travel\agency\utils\JwtUtil.class
 com\travel\agency\repository\RatingRepository.class
 com\travel\agency\model\entities\ShoppingCart.class
 com\travel\agency\utils\MapperUtil.class
