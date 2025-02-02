@@ -9,7 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/travel-bundle")
-@CrossOrigin(origins = "http://localhost:5137")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class TravelBundleController {
 
     private final TravelBundleService travelBundleService;
