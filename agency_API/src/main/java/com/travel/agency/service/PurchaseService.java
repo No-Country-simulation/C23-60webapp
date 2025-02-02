@@ -48,11 +48,10 @@ public class PurchaseService {
         //asociar y guradar compra con detalles
         purchase.setDetailsPurchase(detailsPurchases);
         Purchase savedPurchase = purchaseRepository.save(purchase);
+        
         // Limpiar el carrito después de realizar la compra
-        shoppingCartService.clearShoppingCart();
-//        shoppingCart.getDetailsShoppingCarts().clear();
-//        shoppingCart.setTotalPrice(0.0);
-//        shoppingCartRepository.save(shoppingCart);
+        shoppingCartService.clearShoppingCart(); //VER ELIMINACION
+
         List<DetailsPurchaseDTO> detailsPurchaseDTOs = DetailsPurchaseMapper.toDTOList(detailsPurchases);
         return new PurchaseDTO(savedPurchase);
     }
