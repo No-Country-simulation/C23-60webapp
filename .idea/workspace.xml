@@ -5,18 +5,15 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/agency_API/src/main/resources/db/migration/V4__ALTER_IMAGE_DATA.sql" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/sqldialects.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/sqldialects.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AdminController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/AdminController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/DetailsPurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/DetailsPurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/PurchaseController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/RatingController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/RatingController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/ShoppingCartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/ShoppingCartController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/TravelBundleController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/TravelBundleController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/AuthService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/AuthService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/TravelBundleService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/TravelBundleService.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/utils/JwtFilter.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/utils/JwtFilter.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/utils/JwtUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/JwtService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/ImageController.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/controller/ImageController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/image/ImageDTO.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/DTO/image/ImageDTO.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Image.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/model/entities/Image.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/ImageRepository.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/repository/ImageRepository.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/ImageService.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/service/ImageService.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,7 +80,7 @@
     "Spring Boot.AgencyAPI.executor": "Run",
     "Spring Boot.Explora+.executor": "Run",
     "Spring Boot.Explora6.executor": "Run",
-    "git-widget-placeholder": "imageImp",
+    "git-widget-placeholder": "production",
     "ignore.virus.scanning.warn.message": "true",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/Users/Flor/OneDrive/Documents/FLOR/C23-60webapp",

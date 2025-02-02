@@ -10,6 +10,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
+import java.nio.file.NoSuchFileException;
+import java.util.Base64;
 import java.util.List;
 
 @Service
@@ -26,7 +28,7 @@ public class ImageService {
        return new Image(
                multipartFile.getOriginalFilename(),
                multipartFile.getContentType(),
-               multipartFile.getBytes(),
+               Base64.getEncoder().encodeToString(multipartFile.getBytes()),
                travelBundle);
     }
 
@@ -42,4 +44,13 @@ public class ImageService {
     public Image getImageById(Long id){
         return this.imageRepository.findById(id).orElseThrow(()->new EntityNotFoundException("Image not found"));
     }
+
+    public Image getImageByName(String imageName) throws IOException {
+        return this.imageRepository.findByFilename(imageName).orElseThrow(()->new IOException("Image not found"));
+    }
+
+    public byte[] decodeImage(Image img){
+        return Base64.getDecoder().decode(img.getImageData());
+    }
+
 }
