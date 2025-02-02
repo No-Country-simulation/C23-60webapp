@@ -13,7 +13,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/images")
-@CrossOrigin(origins = "http://localhost:5137")
+@CrossOrigin(origins = "http://localhost:5173/")
 public class ImageController {
 
     private final ImageService imageService;
