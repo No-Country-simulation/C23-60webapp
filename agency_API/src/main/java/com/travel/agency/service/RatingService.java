@@ -75,7 +75,7 @@ public class RatingService {
 
     @Transactional
     public void deleteRatingByIc(Long ratingId) {
-        Rating rating = ratingRepository.findById(ratingId)
+        ratingRepository.findById(ratingId)
                 .orElseThrow(() -> new ResourceNotFoundException("Rating", "ID", ratingId));
         ratingRepository.deleteById(ratingId);
     }
