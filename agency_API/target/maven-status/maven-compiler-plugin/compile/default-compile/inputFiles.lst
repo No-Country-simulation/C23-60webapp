@@ -1,5 +1,6 @@
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\AgencyAPI.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\config\SecurityConfig.java
+C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\config\WebConfig.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AdminController.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\AuthController.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\controller\DetailsPurchaseController.java
@@ -17,6 +18,8 @@ C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\interfaces\GenericInterface.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\DetailsPurchaseMapper.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\DetailsShoppingCartMapper.java
+C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\PurchaseMapper.java
+C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\RatingMapper.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\ShoppingCartMapper.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\mapper\TravelBundleMapper.java
 C:\Users\estre\OneDrive\Documents\FLOR\C23-60webapp\agency_API\src\main\java\com\travel\agency\model\DTO\DetailsPurchase\DetailsPurchaseDTO.java

@@ -58,6 +58,7 @@ public class User implements UserDetails {
         this.identityCard = identityCard;
         this.email = email;
         this.username = username;
+        this.password = password;
     }
 
     /**

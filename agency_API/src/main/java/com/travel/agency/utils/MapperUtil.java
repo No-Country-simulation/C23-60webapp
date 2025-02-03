@@ -25,7 +25,7 @@ public class MapperUtil {
                 userRegisterDTO.lastName(),
                 Integer.parseInt(userRegisterDTO.identityCard()),
                 userRegisterDTO.email(),
-                userRegisterDTO.email()
+                userRegisterDTO.password()
         );
     }
 
