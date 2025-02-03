@@ -1,9 +1,9 @@
-// src/pages/RegisterPage.js
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/auth/AuthContext"; // Importar el hook de autenticación
 
 const RegisterPage = () => {
+  const API_URL = "https://exploramas.onrender.com";
   const [confirmPassword, setConfirmPassword] = useState("");
   const [formData, setFormData] = useState({
     firstName: "",
@@ -23,6 +23,7 @@ const RegisterPage = () => {
       [name]: value,
     });
   };
+
   const handleSubmit = async (e) => {
     e.preventDefault();
 
@@ -50,7 +51,7 @@ const RegisterPage = () => {
 
     // Guardar el usuario en la API con el email como clave
     try {
-      const response = await fetch("api/auth/register", {
+      const response = await fetch(`${API_URL}/auth/register`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -70,8 +71,6 @@ const RegisterPage = () => {
     } catch (error) {
       console.error(error);
     }
-
-    // Loguear al usuario inmediatamente
 
     // Limpiar los campos del formulario
     setFormData({
@@ -94,15 +93,15 @@ const RegisterPage = () => {
           <div className="mb-4">
             <label
               className="block text-sm font-semibold text-gray-700 mb-2"
-              htmlFor="name"
+              htmlFor="firstName"
             >
               Nombre
             </label>
             <input
               type="text"
-              id="name"
-              name="name"
-              value={formData.name}
+              id="firstName"
+              name="firstName"
+              value={formData.firstName}
               onChange={handleChange}
               className="w-full px-6 py-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2980b9] focus:ring-opacity-50 transition-all duration-300 ease-in-out"
               placeholder="Ingresa tu nombre"
@@ -122,15 +121,15 @@ const RegisterPage = () => {
               value={formData.lastName}
               onChange={handleChange}
               className="w-full px-6 py-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2980b9] focus:ring-opacity-50 transition-all duration-300 ease-in-out"
-              placeholder="Ingresa tu nombre"
+              placeholder="Ingresa tu apellido"
             />
           </div>
           <div className="mb-4">
             <label
               className="block text-sm font-semibold text-gray-700 mb-2"
-              htmlFor="lastName"
+              htmlFor="identityCard"
             >
-              Dni
+              DNI
             </label>
             <input
               type="text"
@@ -139,7 +138,7 @@ const RegisterPage = () => {
               value={formData.identityCard}
               onChange={handleChange}
               className="w-full px-6 py-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2980b9] focus:ring-opacity-50 transition-all duration-300 ease-in-out"
-              placeholder="Ingresa Dni"
+              placeholder="Ingresa tu DNI"
             />
           </div>
           <div className="mb-4">
@@ -159,7 +158,6 @@ const RegisterPage = () => {
               placeholder="Ingresa tu correo electrónico"
             />
           </div>
-
           <div className="mb-4">
             <label
               className="block text-sm font-semibold text-gray-700 mb-2"
@@ -177,7 +175,6 @@ const RegisterPage = () => {
               placeholder="Ingresa tu contraseña"
             />
           </div>
-
           <div className="mb-6">
             <label
               className="block text-sm font-semibold text-gray-700 mb-2"
@@ -195,7 +192,6 @@ const RegisterPage = () => {
               placeholder="Confirma tu contraseña"
             />
           </div>
-
           <button
             type="submit"
             className="w-full py-3 bg-[#2980b9] text-white rounded-lg hover:bg-[#2980b9]/80 focus:outline-none transition-all duration-300 ease-in-out"
@@ -203,7 +199,6 @@ const RegisterPage = () => {
             Registrarse
           </button>
         </form>
-
         <p className="mt-4 text-center text-sm text-gray-600">
           ¿Ya tienes una cuenta?{" "}
           <a href="/login" className="text-[#3498db] hover:underline">

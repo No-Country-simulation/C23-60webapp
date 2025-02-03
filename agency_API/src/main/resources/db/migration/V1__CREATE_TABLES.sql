@@ -82,6 +82,12 @@ CREATE TABLE IF NOT EXISTS user
     CONSTRAINT pk_user PRIMARY KEY (id)
 );
 
+CREATE TABLE IF NOT EXISTS user_roles (
+    user_id BIGINT NOT NULL,
+    roles ENUM('ADMIN', 'USER') DEFAULT NULL,
+    PRIMARY KEY (user_id),
+    FOREIGN KEY (user_id) REFERENCES user(id));
+
 ALTER TABLE user
     ADD CONSTRAINT uc_user_email UNIQUE (email);
 
