@@ -34,13 +34,16 @@ com\travel\agency\model\DTO\image\ImageDTO.class
 com\travel\agency\mapper\TravelBundleMapper.class
 com\travel\agency\model\entities\Image.class
 com\travel\agency\model\DTO\ShoppingCart\AddToShoppingCartDTO.class
+com\travel\agency\config\WebConfig.class
 com\travel\agency\service\RatingService.class
 com\travel\agency\service\TravelBundleService.class
 com\travel\agency\model\DTO\rating\CreateRatingDTO.class
 com\travel\agency\model\DTO\TravelBundle\TravelBundleDTO.class
+com\travel\agency\mapper\PurchaseMapper.class
 com\travel\agency\model\entities\Discount.class
 com\travel\agency\model\entities\TravelBundle.class
 com\travel\agency\AgencyAPI.class
+com\travel\agency\config\WebConfig$1.class
 com\travel\agency\exceptions\GlobalExceptionHandler.class
 com\travel\agency\controller\PurchaseController.class
 com\travel\agency\repository\DetailsShoppingCartRepository.class
@@ -61,6 +64,7 @@ com\travel\agency\repository\TravelBundleRepository.class
 com\travel\agency\repository\DetailsPurchaseRepository.class
 com\travel\agency\model\entities\Rating.class
 com\travel\agency\service\ImageService.class
+com\travel\agency\mapper\RatingMapper.class
 com\travel\agency\model\entities\Purchase.class
 com\travel\agency\repository\ShoppingCartRepository.class
 com\travel\agency\model\entities\DetailsShoppingCart.class

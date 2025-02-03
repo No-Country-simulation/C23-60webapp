@@ -2,17 +2,15 @@ package com.travel.agency.service;
 
 import com.travel.agency.exceptions.ResourceNotFoundException;
 import com.travel.agency.mapper.DetailsPurchaseMapper;
+import com.travel.agency.mapper.PurchaseMapper;
+import com.travel.agency.model.DTO.DetailsPurchase.DetailsPurchaseDTO;
 import com.travel.agency.model.DTO.purchase.PurchaseDTO;
 import com.travel.agency.model.entities.DetailsPurchase;
 import com.travel.agency.model.entities.Purchase;
 import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.User;
-import com.travel.agency.repository.DetailsPurchaseRepository;
 import com.travel.agency.repository.PurchaseRepository;
-import com.travel.agency.repository.UserRepository;
-import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
@@ -23,25 +21,19 @@ import java.util.List;
 public class PurchaseService {
 
     private final PurchaseRepository purchaseRepository;
-    private final UserRepository userRepository;
     private final AuthService authService;
     private final ShoppingCartService shoppingCartService;
-    private final DetailsPurchaseRepository detailsPurchaseRepository;
 
-    public PurchaseService(PurchaseRepository purchaseRepository, UserRepository userRepository, AuthService authService, ShoppingCartService shoppingCartService, DetailsPurchaseRepository detailsPurchaseRepository) {
+    public PurchaseService(PurchaseRepository purchaseRepository, AuthService authService, ShoppingCartService shoppingCartService) {
         this.purchaseRepository = purchaseRepository;
-        this.userRepository = userRepository;
         this.authService = authService;
         this.shoppingCartService = shoppingCartService;
-        this.detailsPurchaseRepository = detailsPurchaseRepository;
     }
 
-    //Compra o factura
+
     @Transactional
     public PurchaseDTO createPurchase(String username) {
-        User user = userRepository.findByUsername(username)
-                .orElseThrow(() -> new UsernameNotFoundException("User not found"));
-
+        User user = authService.getUser();
         ShoppingCart shoppingCart = user.getShoppingCart();
         if (shoppingCart == null || shoppingCart.getDetailsShoppingCarts().isEmpty()) {
             throw new IllegalStateException("Shopping cart is empty.");
@@ -55,22 +47,21 @@ public class PurchaseService {
         List<DetailsPurchase> detailsPurchases = DetailsPurchaseMapper.convertCartDetailsToPurchaseDetails(shoppingCart, purchase);
         //asociar y guradar compra con detalles
         purchase.setDetailsPurchase(detailsPurchases);
-        //Persistir la compra y detalles
         Purchase savedPurchase = purchaseRepository.save(purchase);
-        detailsPurchaseRepository.saveAll(detailsPurchases);
+        
         // Limpiar el carrito después de realizar la compra
-        shoppingCartService.clearShoppingCart();
-//        shoppingCart.getDetailsShoppingCarts().clear();
-//        shoppingCart.setTotalPrice(0.0);
-//        shoppingCartRepository.save(shoppingCart);
+        shoppingCartService.clearShoppingCart(); //VER ELIMINACION
+
+        List<DetailsPurchaseDTO> detailsPurchaseDTOs = DetailsPurchaseMapper.toDTOList(detailsPurchases);
         return new PurchaseDTO(savedPurchase);
     }
 
-    //Ver todas las compras PARA ADMIN
+
     public List<PurchaseDTO> getAllPurchases() {
         List<Purchase> purchaseList = purchaseRepository.findAll();
-        return MapperUtil.purchaseMapperDto(purchaseList);
+        return PurchaseMapper.purchaseMapperDto(purchaseList);
     }
+
 
     public PurchaseDTO searchPurchaseById(Long idPurchase) {
         // Buscar la compra por ID
@@ -82,10 +73,10 @@ public class PurchaseService {
     public List<PurchaseDTO> searchPurchaseByUser(String username) {
         User user = authService.getUser();
         List<Purchase> purchaseList = user.getPurchases();
-        return MapperUtil.purchaseMapperDto(purchaseList);
+        return PurchaseMapper.purchaseMapperDto(purchaseList);
     }
 
-    //borrar compra solo para admin?
+    //  ELIMINAR  compra entera , dejar? solo admin
     @Transactional
     public void deletePurchaseById(Long purchaseId) {
         Purchase purchase = purchaseRepository.findById(purchaseId)
