@@ -1,5 +1,6 @@
 package com.travel.agency.service;
 
+import com.travel.agency.mapper.UserMapper;
 import com.travel.agency.model.DTO.user.UpdateUserDTO;
 import com.travel.agency.model.DTO.user.UpdateUserRolesDTO;
 import com.travel.agency.model.DTO.user.UserDTO;
@@ -28,7 +29,7 @@ public class UserService {
 
     public List<UserDTO> users() {
         List<User> users = this.userRepository.findAll();
-        return MapperUtil.toDTO(users);
+        return UserMapper.toDTO(users);
     }
 
     @Transactional

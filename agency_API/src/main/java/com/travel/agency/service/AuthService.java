@@ -1,6 +1,7 @@
 package com.travel.agency.service;
 
 import com.travel.agency.enums.Role;
+import com.travel.agency.mapper.UserMapper;
 import com.travel.agency.model.DTO.user.UserLoginDTO;
 import com.travel.agency.model.DTO.user.UserRegisterDTO;
 import com.travel.agency.model.entities.User;
@@ -58,7 +59,7 @@ public class AuthService {
     //Metodo registro chequea si el admin no esta registrado en db.
     @Transactional
     public void register(UserRegisterDTO userRegisterDTO) {
-        User user = MapperUtil.toEntity(userRegisterDTO);
+        User user = UserMapper.toEntity(userRegisterDTO);
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         Optional<User> isAdminRegistered = userRepository.findByEmail("admin@gmail.com");
         if (!isAdminRegistered.isPresent() && userRegisterDTO.email().equals("admin@gmail.com")) {
