@@ -20,3 +20,4 @@ RUN apk add --no-cache curl && \
 EXPOSE 8080
 # Usa dockerize para esperar a MySQL
 ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "app.jar"]p", "-b"]
+#Haciendo un cambio para que me lo tome
