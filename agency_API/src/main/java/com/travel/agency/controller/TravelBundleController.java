@@ -2,7 +2,6 @@ package com.travel.agency.controller;
 
 import com.travel.agency.model.DTO.TravelBundle.*;
 import com.travel.agency.service.TravelBundleService;
-import com.travel.agency.service.JwtService;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,11 +12,9 @@ import org.springframework.web.bind.annotation.*;
 public class TravelBundleController {
 
     private final TravelBundleService travelBundleService;
-    private final JwtService jwtService;
 
-    public TravelBundleController(TravelBundleService travelBundleService, JwtService jwtService) {
+    public TravelBundleController(TravelBundleService travelBundleService) {
         this.travelBundleService = travelBundleService;
-        this.jwtService = jwtService;
     }
 
     @GetMapping("/{id}")

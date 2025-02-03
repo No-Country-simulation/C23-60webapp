@@ -16,7 +16,6 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDateTime;
 import java.util.List;
 
-
 @Service
 public class PurchaseService {
 
@@ -29,7 +28,6 @@ public class PurchaseService {
         this.authService = authService;
         this.shoppingCartService = shoppingCartService;
     }
-
 
     @Transactional
     public PurchaseDTO createPurchase(String username) {
@@ -48,20 +46,16 @@ public class PurchaseService {
         //asociar y guradar compra con detalles
         purchase.setDetailsPurchase(detailsPurchases);
         Purchase savedPurchase = purchaseRepository.save(purchase);
-        
         // Limpiar el carrito después de realizar la compra
         shoppingCartService.clearShoppingCart(); //VER ELIMINACION
-
         List<DetailsPurchaseDTO> detailsPurchaseDTOs = DetailsPurchaseMapper.toDTOList(detailsPurchases);
         return new PurchaseDTO(savedPurchase);
     }
-
 
     public List<PurchaseDTO> getAllPurchases() {
         List<Purchase> purchaseList = purchaseRepository.findAll();
         return PurchaseMapper.purchaseMapperDto(purchaseList);
     }
-
 
     public PurchaseDTO searchPurchaseById(Long idPurchase) {
         // Buscar la compra por ID
@@ -85,4 +79,3 @@ public class PurchaseService {
     }
 
 }
-

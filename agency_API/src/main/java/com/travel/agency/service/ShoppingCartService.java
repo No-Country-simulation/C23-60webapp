@@ -9,6 +9,8 @@ import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.TravelBundle;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.ShoppingCartRepository;
+import jakarta.transaction.Transactional;
+import java.util.List;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -52,6 +54,7 @@ public class ShoppingCartService {
         shoppingCart.setTotalPrice(total);
     }
 
+    @Transactional
     public ShoppingCartDTO AddToShoppingCart(AddToShoppingCartDTO addToShoppingCartDTO) {
         ShoppingCart shoppingCart = this.getShoppingCartEntity();
         TravelBundle travelBundle = travelBundleService.findById(addToShoppingCartDTO.travelBundleId());
@@ -65,6 +68,7 @@ public class ShoppingCartService {
         return ShoppingCartMapper.toDTO(shoppingCart);
     }
 
+    @Transactional
     public ShoppingCartDTO updateDetailShoppingCart(Long detailsId, UpdateDetailsShoppingCartDTO dto) {
         ShoppingCart shoppingCart = this.getShoppingCartEntity();
         detailsShoppingCartService.updateDetailsShoppingCart(detailsId, shoppingCart, dto);
@@ -81,8 +85,11 @@ public class ShoppingCartService {
         return ShoppingCartMapper.toDTO(shoppingCart);
     }
 
+    @Transactional
     public ShoppingCartDTO clearShoppingCart() {
         ShoppingCart shoppingCart = this.getShoppingCartEntity();
+        List<DetailsShoppingCart> detailsList = shoppingCart.getDetailsShoppingCarts();
+        shoppingCart.getDetailsShoppingCarts().clear();
         detailsShoppingCartService.deleteAllDetailsFromShoppingCart(shoppingCart);
         shoppingCart.setTotalPrice(0.0);
         shoppingCartRepository.save(shoppingCart);

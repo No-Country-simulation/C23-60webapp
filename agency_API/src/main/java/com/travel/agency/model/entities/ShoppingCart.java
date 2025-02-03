@@ -26,7 +26,7 @@ public class ShoppingCart {
     //Precio total deducido de cada uno de los paquetes de viaje en detailsPurchase
     private Double totalPrice = 0.0;
     private LocalDateTime purchaseDate;
-    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "shoppingCart", cascade = CascadeType.ALL,orphanRemoval = true, fetch = FetchType.LAZY)
     //Almacena la cantidad de paquetes de viaje que ha comprado el usuario.
     private List<DetailsShoppingCart> detailsShoppingCarts = new ArrayList<>();
 
