@@ -11,6 +11,8 @@ import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.ShoppingCartRepository;
 import jakarta.transaction.Transactional;
 import java.util.List;
+import java.util.Set;
+import java.util.stream.Collectors;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -32,7 +34,6 @@ public class ShoppingCartService {
         ShoppingCart shoppingCart = new ShoppingCart();
         shoppingCart.setUser(user);
         shoppingCart.setTotalPrice(0.0);
-        shoppingCart.setPurchaseDate(null);
         shoppingCartRepository.save(shoppingCart);
     }
 
@@ -77,6 +78,21 @@ public class ShoppingCartService {
         return ShoppingCartMapper.toDTO(shoppingCart);
     }
 
+    @Transactional
+    public void updateTravelUpdateShoppingCart(TravelBundle travelBundle) {
+        List<DetailsShoppingCart> detailsList = detailsShoppingCartService.travelDetailsShoppingCart(travelBundle);
+        detailsShoppingCartService.updateAllDetailsOfTravelBundle(detailsList, travelBundle);
+
+        Set<ShoppingCart> cartsToUpdate = detailsList.stream()
+                .map(DetailsShoppingCart::getShoppingCart)
+                .collect(Collectors.toSet());
+
+        for (ShoppingCart shoppingCart : cartsToUpdate) {
+            updateShoppingCartTotal(shoppingCart);
+        }
+        shoppingCartRepository.saveAll(cartsToUpdate);
+    }
+
     public ShoppingCartDTO deleteFromShoppingCart(Long detailsId) {
         ShoppingCart shoppingCart = this.getShoppingCartEntity();
         detailsShoppingCartService.deleteDetailsShoppingCart(detailsId, shoppingCart);
@@ -88,7 +104,6 @@ public class ShoppingCartService {
     @Transactional
     public ShoppingCartDTO clearShoppingCart() {
         ShoppingCart shoppingCart = this.getShoppingCartEntity();
-        List<DetailsShoppingCart> detailsList = shoppingCart.getDetailsShoppingCarts();
         shoppingCart.getDetailsShoppingCarts().clear();
         detailsShoppingCartService.deleteAllDetailsFromShoppingCart(shoppingCart);
         shoppingCart.setTotalPrice(0.0);
@@ -96,4 +111,15 @@ public class ShoppingCartService {
         return ShoppingCartMapper.toDTO(shoppingCart);
     }
 
+    @Transactional
+    public void deleteTravelUpdateShoppingCart(TravelBundle travelBundle) {
+        List<DetailsShoppingCart> detailsList = detailsShoppingCartService.travelDetailsShoppingCart(travelBundle);
+        for (DetailsShoppingCart detail : detailsList) {
+            ShoppingCart shoppingCart = detail.getShoppingCart();
+            shoppingCart.getDetailsShoppingCarts().remove(detail);
+            shoppingCart.setTotalPrice(shoppingCart.getTotalPrice() - detail.getTotalPrice());
+            shoppingCartRepository.save(shoppingCart);
+        }
+        detailsShoppingCartService.deleteAllDetailsOfTravelBundle(detailsList);
+    }
 }

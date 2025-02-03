@@ -22,7 +22,6 @@ public class DetailsShoppingCart {
     private Double totalPrice;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "travel_bundles_id", nullable = false)
-    //Almacena el paquete de viaje unitario que el usuario quiere comprar.
     private TravelBundle travelBundle;
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "shopping_cart_id", nullable = false)

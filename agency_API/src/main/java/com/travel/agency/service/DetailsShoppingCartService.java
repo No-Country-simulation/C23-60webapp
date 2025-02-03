@@ -9,6 +9,7 @@ import com.travel.agency.model.entities.DetailsShoppingCart;
 import com.travel.agency.model.entities.ShoppingCart;
 import com.travel.agency.model.entities.TravelBundle;
 import com.travel.agency.repository.DetailsShoppingCartRepository;
+import jakarta.transaction.Transactional;
 import java.util.List;
 import org.springframework.stereotype.Service;
 
@@ -19,6 +20,19 @@ public class DetailsShoppingCartService {
 
     public DetailsShoppingCartService(DetailsShoppingCartRepository detailsShoppingCartRepository) {
         this.detailsShoppingCartRepository = detailsShoppingCartRepository;
+    }
+
+    public DetailsShoppingCart findValideDetails(Long detailsId, ShoppingCart shoppingCart) {
+        DetailsShoppingCart details = detailsShoppingCartRepository.findById(detailsId)
+                .orElseThrow(() -> new ResourceNotFoundException("DetailsShoppingCart", "Id", detailsId));
+        if (!details.getShoppingCart().equals(shoppingCart)) {
+            throw new UnauthorizedAccessException("This detail does not belong to your shopping cart.");
+        }
+        return details;
+    }
+
+    public List<DetailsShoppingCart> travelDetailsShoppingCart(TravelBundle travelBundle) {
+        return detailsShoppingCartRepository.findByTravelBundle(travelBundle);
     }
 
     public void createDetailsShoppingCart(ShoppingCart shoppingCart, TravelBundle travelBundle, AddToShoppingCartDTO addToShoppingCartDTO) {
@@ -35,18 +49,17 @@ public class DetailsShoppingCartService {
         detailsShoppingCartRepository.save(details);
     }
 
+    @Transactional
+    public void updateAllDetailsOfTravelBundle(List<DetailsShoppingCart> detailsList, TravelBundle travelBundle) {
+        for (DetailsShoppingCart detail : detailsList) {
+            detail.setTotalPrice(detail.getQuantity() * travelBundle.getUnitaryPrice());
+        }
+        detailsShoppingCartRepository.saveAll(detailsList);
+    }
+
     public void deleteDetailsShoppingCart(Long detailsId, ShoppingCart shoppingCart) {
         DetailsShoppingCart details = this.findValideDetails(detailsId, shoppingCart);
         detailsShoppingCartRepository.delete(details);
-    }
-
-    public DetailsShoppingCart findValideDetails(Long detailsId, ShoppingCart shoppingCart) {
-        DetailsShoppingCart details = detailsShoppingCartRepository.findById(detailsId)
-                .orElseThrow(() -> new ResourceNotFoundException("DetailsShoppingCart", "Id", detailsId));
-        if (!details.getShoppingCart().equals(shoppingCart)) {
-            throw new UnauthorizedAccessException("This detail does not belong to your shopping cart.");
-        }
-        return details;
     }
 
     public void deleteAllDetailsFromShoppingCart(ShoppingCart shoppingCart) {
@@ -54,4 +67,7 @@ public class DetailsShoppingCartService {
         detailsShoppingCartRepository.deleteAll(detailsList);
     }
 
+    public void deleteAllDetailsOfTravelBundle(List<DetailsShoppingCart> detailsList) {
+        detailsShoppingCartRepository.deleteAll(detailsList);
+    }
 }

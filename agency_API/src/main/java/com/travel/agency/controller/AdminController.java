@@ -59,6 +59,21 @@ public class AdminController {
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
+    @PutMapping(value = "/travel-bundles/{id}", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public ResponseEntity<?> updateTravelBundle(
+            @PathVariable Long id,
+            @RequestPart @Valid TravelBundleRequestDTO travelBundleRequestDTO) {
+        this.travelBundleService.updateTravelBundle(id,travelBundleRequestDTO);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+    
+    @DeleteMapping(value = "/travel-bundles/{id}")
+    public ResponseEntity<?> deleteTravelBundle(@PathVariable Long id) {
+        this.travelBundleService.deleteTravelBundle(id);
+        return ResponseEntity.ok().body("Travel Bundle deleted successfully");
+    }
+    
+    
     @DeleteMapping("/images/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
         this.imageService.deteleImage(id);
