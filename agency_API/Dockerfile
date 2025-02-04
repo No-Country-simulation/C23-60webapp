@@ -1,8 +1,8 @@
 ##Construir front
 FROM node:22.8.0 AS build-frontend
 WORKDIR /app
-COPY ../explora-mas/package.json ./
-COPY ../explora-mas/package-lock.json ./
+COPY explora-mas/package.json ./
+COPY explora-mas/package-lock.json ./
 RUN npm install
 COPY ../explora-mas ./
 RUN npm run build
