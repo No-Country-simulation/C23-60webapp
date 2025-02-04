@@ -43,7 +43,13 @@ public class SecurityConfig {
                                 "/travel-bundle/{id}",
                                 "/rating/travelBundle/",
                                 "/rating/user-ratings",
-                                "/images/**").permitAll()
+                                "/images/**",
+                                "/home",
+                                "/static/**",
+                                "/assets/**",
+                                "/manifest.json",
+                                "/favicon.ico",
+                                "/logo192.png").permitAll()
                                 .requestMatchers("/admin/**").hasRole("ADMIN")
                         .anyRequest().authenticated())
                 .sessionManagement(sessionManagement ->
