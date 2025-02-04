@@ -11,8 +11,8 @@ RUN npm run build
 FROM maven:3.8.3-openjdk-17 AS build
 WORKDIR /app
 # Se copia el pom y directorio src
-COPY pom.xml .
-COPY src ./src
+COPY agency_API/pom.xml .
+COPY agency_API/src ./src
 #Creo archivo .jar
 RUN mvn clean package -DskipTests
 
