@@ -35,25 +35,13 @@ const RegisterPage = () => {
         body: JSON.stringify(data),
       });
 
-      if (response.status === 500) {
-        setError(
-          "Error interno del servidor. Por favor, intenta nuevamente más tarde.",
-        );
-        alert("Error en la solicitud");
-        return;
+      if (response.status === 201) {
+        login(data);
+        alert("Registro exitoso");
+        navigate("/");
       }
 
-      const json = await response.json();
-      console.log(json);
-
-      if (!response.ok) {
-        setError(json.message || "Error en la solicitud"); // Manejar otros errores
-        return;
-      }
-
-      login(data);
-      alert("Registro exitoso");
-      navigate("/"); // Redirigir al home o la página principal
+      // Redirigir al home o la página principal
     } catch (error) {
       console.error(error);
       setError("Ocurrió un error al conectarse al servidor.");
