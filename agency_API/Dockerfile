@@ -1,4 +1,4 @@
-##Construir front
+# Build the React frontend
 FROM node:22.8.0 AS build-frontend
 WORKDIR /app
 COPY explora-mas/package.json ./
@@ -7,27 +7,23 @@ RUN npm install
 COPY explora-mas ./
 RUN npm run build
 
-#Etapa de construccion / build
-#Imagen de maven con jdk17 para compilar
-FROM maven:3.8.3-openjdk-17 AS build
+# Build the Spring Boot backend
+FROM maven:3.8.3-openjdk-17 AS build-backend
 WORKDIR /app
-# Se copia el pom y directorio src
 COPY agency_API/pom.xml .
 COPY agency_API/src ./src
-#Creo archivo .jar
 RUN mvn clean package -DskipTests
 
-#Etapa Runtime
-#Imagen de JRE
+# Runtime stage
 FROM eclipse-temurin:17-jre-alpine
 WORKDIR /app
-#Se copia el .jar que se contruyo anres
-COPY --from=build /app/target/*.jar app.jar
-# Instalar dockerize, herramienta para hacer que la app espere a que mysql este OK
+
+# Copy the Spring Boot jar file
+COPY --from=build-backend /app/target/*.jar app.jar
+
+# Copy the frontend build to the appropriate directory
 COPY --from=build-frontend /app/build ./static
-RUN apk add --no-cache curl && \
-    curl -sSL https://github.com/jwilder/dockerize/releases/download/v0.6.1/dockerize-linux-amd64-v0.6.1.tar.gz | tar -xz -C /usr/local/bin
 EXPOSE 8080
-# Usa dockerize para esperar a MySQL
-ENTRYPOINT ["java", "-Dspring.profiles.active=prod", "-jar", "app.jar"]
-#Haciendo un cambio para que me lo tome
+
+# Using prod properties
+ENTRYPOINT ["dockerize", "java", "-Dspring.profiles.active=prod", "-jar", "app.jar"]
