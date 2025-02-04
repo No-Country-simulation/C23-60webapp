@@ -1,43 +1,52 @@
-// src/pages/LoginPage.js
-import React, { useState } from "react";
+import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../components/auth/AuthContext";
+import { useForm } from "react-hook-form";
 
 const LoginPage = () => {
-  const [formData, setFormData] = useState({
-    email: "",
-    password: "",
-  });
-  const { login } = useAuth();
+  const API_URL = "https://exploramas.onrender.com"; // URL de la API
+  const [error, setError] = useState(null); // Estado para manejar errores
+  const { login } = useAuth(); // Context para el login
   const navigate = useNavigate();
 
-  const handleChange = (e) => {
-    const { value, name } = e.target;
-    setFormData({
-      ...formData,
-      [name]: value,
-    });
-  };
+  // Configurando el useForm
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm();
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
+  const onSubmit = async (data) => {
+    try {
+      const response = await fetch(`${API_URL}/auth/login`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(data),
+      });
 
-    const user = {
-      email: formData.email,
-      password: formData.password,
-    };
-
-    if (storedUser) {
-      const user = JSON.parse(storedUser);
-      if (user.password === password) {
-        login(user); // Logueamos al usuario en el contexto
-        alert("Inicio de sesión exitoso");
-        navigate("/"); // Redirigimos al home
-      } else {
-        alert("Contraseña incorrecta");
+      if (response.status === 500) {
+        setError(
+          "Error interno del servidor. Por favor, intenta nuevamente más tarde.",
+        );
+        return;
       }
-    } else {
-      alert("Usuario no encontrado");
+
+      const json = await response.json();
+
+      if (!response.ok) {
+        setError(json.message || "Error en la solicitud"); // Manejar errores de la API
+        return;
+      }
+
+      // Si el login es exitoso, guardar el usuario en el contexto y redirigir
+      login(json.user); // Suponiendo que la API devuelve el objeto del usuario
+      alert("Inicio de sesión exitoso");
+      navigate("/"); // Redirigir al home
+    } catch (error) {
+      console.error(error);
+      setError("Ocurrió un error al conectarse al servidor.");
     }
   };
 
@@ -47,7 +56,12 @@ const LoginPage = () => {
         <h2 className="text-3xl sm:text-4xl font-semibold text-center text-gray-800 mb-6">
           Iniciar sesión
         </h2>
-        <form onSubmit={handleSubmit}>
+        {error && (
+          <div className="mb-4 p-4 bg-red-100 border border-red-400 text-red-700 rounded-lg">
+            {error}
+          </div>
+        )}
+        <form onSubmit={handleSubmit(onSubmit)}>
           <div className="mb-4">
             <label
               className="block text-sm font-semibold text-gray-700 mb-2"
@@ -58,12 +72,21 @@ const LoginPage = () => {
             <input
               type="email"
               id="email"
-              name="email"
+              {...register("email", {
+                required: "El correo electrónico es obligatorio",
+                pattern: {
+                  value: /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i,
+                  message: "Correo electrónico no válido",
+                },
+              })}
               className="w-full px-6 py-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2980b9] focus:ring-opacity-50 transition-all duration-300 ease-in-out"
               placeholder="Ingresa tu correo electrónico"
-              value={formData.email}
-              onChange={handleChange}
             />
+            {errors.email && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.email.message}
+              </p>
+            )}
           </div>
 
           <div className="mb-6">
@@ -76,12 +99,21 @@ const LoginPage = () => {
             <input
               type="password"
               id="password"
-              name="password"
+              {...register("password", {
+                required: "La contraseña es obligatoria",
+                minLength: {
+                  value: 6,
+                  message: "La contraseña debe tener al menos 6 caracteres",
+                },
+              })}
               className="w-full px-6 py-3 border border-gray-300 rounded-lg text-gray-800 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-[#2980b9] focus:ring-opacity-50 transition-all duration-300 ease-in-out"
               placeholder="Ingresa tu contraseña"
-              value={formData.password}
-              onChange={handleChange}
             />
+            {errors.password && (
+              <p className="text-red-500 text-sm mt-1">
+                {errors.password.message}
+              </p>
+            )}
           </div>
 
           <button
