@@ -4,7 +4,7 @@ WORKDIR /app
 COPY explora-mas/package.json ./
 COPY explora-mas/package-lock.json ./
 RUN npm install
-COPY ../explora-mas ./
+COPY explora-mas ./
 RUN npm run build
 
 #Etapa de construccion / build
