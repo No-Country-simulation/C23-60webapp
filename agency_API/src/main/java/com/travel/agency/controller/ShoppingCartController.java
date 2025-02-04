@@ -4,7 +4,6 @@ import com.travel.agency.model.DTO.ShoppingCart.AddToShoppingCartDTO;
 import com.travel.agency.model.DTO.ShoppingCart.ShoppingCartDTO;
 import com.travel.agency.model.DTO.ShoppingCart.UpdateDetailsShoppingCartDTO;
 import com.travel.agency.service.ShoppingCartService;
-import com.travel.agency.service.JwtService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -15,11 +14,9 @@ import org.springframework.web.bind.annotation.*;
 public class ShoppingCartController {
 
     private final ShoppingCartService shoppingCartService;
-    private final JwtService jwtService;
 
-    public ShoppingCartController(ShoppingCartService shoppingCartService, JwtService jwtService) {
+    public ShoppingCartController(ShoppingCartService shoppingCartService) {
         this.shoppingCartService = shoppingCartService;
-        this.jwtService = jwtService;
     }
 
     @GetMapping

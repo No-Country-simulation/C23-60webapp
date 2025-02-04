@@ -18,8 +18,9 @@ public class DetailsPurchaseMapper {
         }
         DetailsPurchaseDTO dto = new DetailsPurchaseDTO(
                 detailsPurchase.getId(),
-                detailsPurchase.getTravelBundle().getTitle(),
+                detailsPurchase.getTravelBundleTitle(),
                 detailsPurchase.getQuantity(),
+                detailsPurchase.getUnitPrice(),
                 detailsPurchase.getTotalPrice()
         );
         return dto;
@@ -35,8 +36,9 @@ public class DetailsPurchaseMapper {
     public static List<DetailsPurchase> convertCartDetailsToPurchaseDetails(ShoppingCart shoppingCart, Purchase purchase) {
         return shoppingCart.getDetailsShoppingCarts().stream()
                 .map(cartDetail -> new DetailsPurchase(
-                        cartDetail.getTravelBundle(),
+                        cartDetail.getTravelBundle().getTitle(),
                         cartDetail.getQuantity(),
+                        cartDetail.getTravelBundle().getUnitaryPrice(),
                         cartDetail.getTotalPrice(),
                         purchase
                 )).collect(Collectors.toList());

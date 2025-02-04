@@ -6,7 +6,6 @@ import com.travel.agency.model.DTO.user.UserLoginDTO;
 import com.travel.agency.model.DTO.user.UserRegisterDTO;
 import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.UserRepository;
-import com.travel.agency.utils.MapperUtil;
 import jakarta.transaction.Transactional;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;

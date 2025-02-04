@@ -6,12 +6,14 @@ public record DetailsPurchaseDTO(
         Long id,
         String travelBundleName,
         Integer quantity,
+        Double unitaryPrice,
         Double totalPrice) {
     public DetailsPurchaseDTO(DetailsPurchase detailsPurchase) {
         this(
                 detailsPurchase.getId(),
-                detailsPurchase.getTravelBundle().getTitle(),
+                detailsPurchase.getTravelBundleTitle(),
                 detailsPurchase.getQuantity(),
+                detailsPurchase.getUnitPrice(),
                 detailsPurchase.getTotalPrice()
         );
 

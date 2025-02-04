@@ -27,16 +27,6 @@ public class TravelBundleController {
         return ResponseEntity.ok(travelBundleDTO);
 
     }
-/*
-    @PostMapping("/create")
-    public ResponseEntity<?> createTravelBundle(
-            @RequestHeader("Authorization") String token,
-            @Valid @RequestBody TravelBundleRequestDTO travelBundleRequestDTO
-    ) {
-        String userName = jwtUtil.extractUsername(token);
-        TravelBundleDTO travelBundleDTO = travelBundleService.createTravelBundle(travelBundleRequestDTO,userName);
-        return ResponseEntity.ok(travelBundleDTO);
-    }*/
 
     @GetMapping("/all")
     public ResponseEntity<?> getAll(){
