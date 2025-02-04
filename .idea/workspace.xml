@@ -4,17 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/java/com/travel/agency/config/SecurityConfig.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/application-prod.properties" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/resources/application-prod.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/classes/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/maven-status/maven-compiler-plugin/compile/default-compile/createdFiles.lst" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/agency_API/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" beforeDir="false" afterPath="$PROJECT_DIR$/agency_API/target/maven-status/maven-compiler-plugin/compile/default-compile/inputFiles.lst" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/explora-mas/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/explora-mas/package-lock.json" afterDir="false" />
-    </list>
+    <list default="true" id="5700c17b-703a-4d2e-ba3e-0f536a5cf3b1" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -160,7 +150,7 @@
       <workItem from="1738162723861" duration="763000" />
       <workItem from="1738517653509" duration="327000" />
       <workItem from="1738696818205" duration="431000" />
-      <workItem from="1738704041985" duration="4518000" />
+      <workItem from="1738704041985" duration="7874000" />
     </task>
     <servers />
   </component>
