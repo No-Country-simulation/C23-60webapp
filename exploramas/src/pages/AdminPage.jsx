@@ -18,15 +18,18 @@ const AdminPage = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [products, setProducts] = useState([]);
 
+
+  const token = localStorage.getItem("token")?.trim() || "";
+  /*
   useEffect(() => {
     const fetchProducts = async () => {
       try {
-        const response = await fetch(
-          `${API_URL}/admin/travel-bundles/create-travel-bundle`,
-          {
-            method: "GET",
+        const response = await fetch(`${API_URL}/admin/users`, {
+          method: "GET",
+          headers: {
+            Authorization: `Bearer ${token}`,
           },
-        );
+        });
 
         if (response.status === 201) {
           console.log("Get hecho con éxito");
@@ -45,6 +48,7 @@ const AdminPage = () => {
     fetchProducts();
   }, []);
 
+  */
   const handleImageChange = (e) => {
     const file = e.target.files[0];
     if (file) {
@@ -58,15 +62,28 @@ const AdminPage = () => {
 
   const onSubmit = async (data) => {
     const formData = new FormData();
-    Object.keys(data).forEach((key) => {
-      if (key === "discounts") {
-        formData.append(key, JSON.stringify(data[key]));
-      } else if (key === "image") {
-        formData.append(key, data[key][0]);
-      } else {
-        formData.append(key, data[key]);
-      }
-    });
+
+    // Crear un objeto con los datos del DTO
+    const dto = {
+      title: data.name,
+      description: data.description,
+      destiny: data.destiny,
+      startDate: data.startDate,
+      endDate: data.endDate,
+      availableBundles: data.avaidableBundles,
+      unitaryPrice: data.price,
+    };
+
+    // Convertir DTO a JSON y agregarlo a FormData
+    formData.append(
+      "travelBundleRequestDTO",
+      new Blob([JSON.stringify(dto)], { type: "application/json" })
+    );
+
+    // Agregar imagen como lista de archivos
+    if (data.image && data.image.length > 0) {
+      formData.append("images", data.image[0]);
+    }
 
     try {
       const response = await fetch(
@@ -74,7 +91,10 @@ const AdminPage = () => {
         {
           method: "POST",
           body: formData,
-        },
+          headers: {
+            Authorization: `Bearer ${token}`,
+          },
+        }
       );
 
       if (response.status === 201) {
@@ -84,9 +104,6 @@ const AdminPage = () => {
       if (!response.ok) {
         throw new Error("Error al agregar el producto");
       }
-
-      const newProduct = await response.json();
-      setProducts([...products, newProduct]);
 
       reset();
       setImagePreview(null);
@@ -101,7 +118,7 @@ const AdminPage = () => {
         `${API_URL}/admin/travel-bundles/${productId}`,
         {
           method: "DELETE",
-        },
+        }
       );
 
       if (response.status === 201) {
@@ -113,7 +130,7 @@ const AdminPage = () => {
       }
 
       const updatedProducts = products.filter(
-        (product) => product.id !== productId,
+        (product) => product.id !== productId
       );
       setProducts(updatedProducts);
     } catch (error) {

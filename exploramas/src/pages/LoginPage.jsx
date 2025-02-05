@@ -26,27 +26,22 @@ const LoginPage = () => {
         body: JSON.stringify(data),
       });
 
-      if (response.status === 201) {
-        // Si el login es exitoso, guardar el usuario en el contexto y redirigir
-        login(json.user); // Suponiendo que la API devuelve el objeto del usuario
-        alert("Inicio de sesión exitoso");
-        navigate("/"); // Redirigir al home
-      }
+      const json = await response.json(); 
 
-      if (response.status === 500) {
-        setError(
-          "Error interno del servidor. Por favor, intenta nuevamente más tarde.",
-        );
-        return;
-      }
+        console.log("Respuesta del servidor:", json); // Verifica el contenido recibido
 
-      if (!response.ok) {
-        setError(json.message || "Error en la solicitud"); // Manejar errores de la API
-        return;
-      }
+        if (response.ok) {
+            console.log("Token recibido:", json.token); // Ahora sí verás el token
+            login(json.token);
+            alert("Inicio de sesión exitoso");
+            navigate("/");
+            return;
+        }
+
+        setError(json.message || "Error en la solicitud"); 
     } catch (error) {
-      console.error(error);
-      setError("Ocurrió un error al conectarse al servidor.");
+        console.error(error);
+        setError("Ocurrió un error al conectarse al servidor.");
     }
   };
 

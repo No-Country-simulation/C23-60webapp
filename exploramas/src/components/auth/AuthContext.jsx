@@ -21,14 +21,14 @@ export const AuthProvider = ({ children }) => {
     }
   }, []);
 
-  const login = (userData) => {
-    localStorage.setItem("user", JSON.stringify(userData)); // Guardar el usuario en localStorage
-    setUser(userData); // Establecer el usuario en el estado
+  const login = (token) => {
+    localStorage.setItem("token", token);
+    setUser(token); // Establecer el usuario en el estado
   };
 
   const logout = () => {
     setUser(null); // Limpiar el estado del usuario en el contexto
-    localStorage.removeItem("user"); // Eliminar el usuario del localStorage
+    localStorage.removeItem("token"); // Eliminar el usuario del localStorage
   };
 
   return (

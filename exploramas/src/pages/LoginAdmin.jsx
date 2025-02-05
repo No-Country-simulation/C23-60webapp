@@ -25,7 +25,7 @@ const LoginAdmin = ({ setIsAuthenticated }) => {
 
       if (response.ok) {
         const result = await response.json();
-        login(result.token); // Asumiendo que el backend devuelve un token
+        //login(result.token); 
         setIsAuthenticated(true);
         navigate("/admin");
       } else {
