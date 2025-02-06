@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
-import { useLocation, useNavigate } from 'react-router-dom';
+import React, { useState, useEffect } from "react";
+import { Link, useLocation, useNavigate } from "react-router-dom"; // Importa Link desde react-router-dom
 
 const MyBookings = () => {
   const location = useLocation();
@@ -8,20 +8,22 @@ const MyBookings = () => {
   const [showLoginAlert, setShowLoginAlert] = useState(false); // Estado para mostrar el mensaje
 
   // Comprobación si el usuario está logueado
-  const isLoggedIn = !!localStorage.getItem('user');
+  const isLoggedIn = !!localStorage.getItem("user");
 
   useEffect(() => {
-    const savedBookings = JSON.parse(localStorage.getItem('bookings')) || [];
+    const savedBookings = JSON.parse(localStorage.getItem("bookings")) || [];
     setBookings(savedBookings);
 
     // Si se recibe una nueva reserva, agregamos la nueva reserva a la lista
     if (location.state?.newBooking) {
       const newBooking = location.state.newBooking;
-      const isBookingExist = savedBookings.some(booking => booking.id === newBooking.id);
+      const isBookingExist = savedBookings.some(
+        (booking) => booking.id === newBooking.id,
+      );
       if (!isBookingExist) {
         const updatedBookings = [...savedBookings, newBooking];
         setBookings(updatedBookings);
-        localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+        localStorage.setItem("bookings", JSON.stringify(updatedBookings));
       }
     }
   }, [location.state?.newBooking]);
@@ -29,7 +31,7 @@ const MyBookings = () => {
   const handleRemoveBooking = (index) => {
     const updatedBookings = bookings.filter((_, i) => i !== index);
     setBookings(updatedBookings);
-    localStorage.setItem('bookings', JSON.stringify(updatedBookings));
+    localStorage.setItem("bookings", JSON.stringify(updatedBookings));
   };
 
   const handleSelectBooking = (booking) => {
@@ -40,19 +42,24 @@ const MyBookings = () => {
       }, 5000); // El cartel desaparece después de 5 segundos
       return;
     }
-    navigate('/seleccion-pasajes', { state: { booking } });
+    navigate("/seleccion-pasajes", { state: { booking } });
   };
 
   const handleCreateNewBooking = () => {
-    navigate('/packages'); // Ruta para crear una nueva reserva
+    navigate("/packages"); // Ruta para crear una nueva reserva
   };
 
   if (bookings.length === 0) {
     return (
       <div className="min-h-screen bg-gray-50 flex flex-col justify-center items-center px-4">
         <div className="text-center">
-          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">¡Aún no tienes reservas!</h1>
-          <p className="text-gray-600 mb-6">Parece que aún no has reservado ningún viaje. ¿Qué tal si eliges uno ahora?</p>
+          <h1 className="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">
+            ¡Aún no tienes reservas!
+          </h1>
+          <p className="text-gray-600 mb-6">
+            Parece que aún no has reservado ningún viaje. ¿Qué tal si eliges uno
+            ahora?
+          </p>
           <button
             onClick={handleCreateNewBooking}
             className="w-full sm:w-auto py-3 bg-[rgb(26,54,93)] text-white rounded-md hover:bg-[rgb(26,54,93,0.8)] min-w-[220px]"
@@ -70,17 +77,30 @@ const MyBookings = () => {
         {/* Banner de alerta si el usuario no está logueado */}
         {showLoginAlert && (
           <div className="bg-red-500 text-white text-center py-3 rounded-md mb-6">
-            <p>Debes estar logueado para poder realizar una compra. <strong><a href="/login" className="underline">Iniciar sesión</a></strong></p>
+            <p>
+              Debes estar logueado para poder realizar una compra.{" "}
+              <strong>
+                <Link to="/login" className="underline">
+                  Iniciar sesión
+                </Link>{" "}
+                {/* Enlace a la ruta /login */}
+              </strong>
+            </p>
           </div>
         )}
 
-        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8">Tus Reservas</h1>
+        <h1 className="text-3xl sm:text-4xl font-bold text-center mb-8">
+          Tus Reservas
+        </h1>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
           {bookings.map((booking, index) => (
-            <div key={index} className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col">
+            <div
+              key={index}
+              className="bg-white shadow-md rounded-lg overflow-hidden flex flex-col"
+            >
               <div className="relative">
                 <img
-                  src={booking.image || 'https://via.placeholder.com/400x250'}
+                  src={booking.image || "https://via.placeholder.com/400x250"}
                   alt={booking.name}
                   className="w-full h-48 sm:h-60 object-cover rounded-t-lg"
                 />

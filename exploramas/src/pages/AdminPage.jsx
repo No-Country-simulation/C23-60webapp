@@ -18,7 +18,6 @@ const AdminPage = () => {
   const [imagePreview, setImagePreview] = useState(null);
   const [products, setProducts] = useState([]);
 
-
   const token = localStorage.getItem("token")?.trim() || "";
   /*
   useEffect(() => {
@@ -77,7 +76,7 @@ const AdminPage = () => {
     // Convertir DTO a JSON y agregarlo a FormData
     formData.append(
       "travelBundleRequestDTO",
-      new Blob([JSON.stringify(dto)], { type: "application/json" })
+      new Blob([JSON.stringify(dto)], { type: "application/json" }),
     );
 
     // Agregar imagen como lista de archivos
@@ -94,11 +93,15 @@ const AdminPage = () => {
           headers: {
             Authorization: `Bearer ${token}`,
           },
-        }
+        },
       );
 
       if (response.status === 201) {
         console.log("Post hecho con éxito");
+      }
+
+      if (response.status === 403) {
+        alert("Error con el servidor");
       }
 
       if (!response.ok) {
@@ -118,7 +121,7 @@ const AdminPage = () => {
         `${API_URL}/admin/travel-bundles/${productId}`,
         {
           method: "DELETE",
-        }
+        },
       );
 
       if (response.status === 201) {
@@ -130,7 +133,7 @@ const AdminPage = () => {
       }
 
       const updatedProducts = products.filter(
-        (product) => product.id !== productId
+        (product) => product.id !== productId,
       );
       setProducts(updatedProducts);
     } catch (error) {
