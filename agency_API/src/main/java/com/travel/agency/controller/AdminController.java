@@ -19,7 +19,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/admin")
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*")
+@CrossOrigin(origins = "https://exploramas-five.vercel.app/", allowedHeaders = "*")
 public class AdminController {
 
     private final UserService userService;
@@ -63,17 +63,17 @@ public class AdminController {
     public ResponseEntity<?> updateTravelBundle(
             @PathVariable Long id,
             @RequestPart @Valid TravelBundleRequestDTO travelBundleRequestDTO) {
-        this.travelBundleService.updateTravelBundle(id,travelBundleRequestDTO);
+        this.travelBundleService.updateTravelBundle(id, travelBundleRequestDTO);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
-    
+
     @DeleteMapping(value = "/travel-bundles/{id}")
     public ResponseEntity<?> deleteTravelBundle(@PathVariable Long id) {
         this.travelBundleService.deleteTravelBundle(id);
         return ResponseEntity.ok().body("Travel Bundle deleted successfully");
     }
-    
-    
+
+
     @DeleteMapping("/images/{id}")
     public ResponseEntity<?> deleteById(@PathVariable Long id) {
         this.imageService.deteleImage(id);

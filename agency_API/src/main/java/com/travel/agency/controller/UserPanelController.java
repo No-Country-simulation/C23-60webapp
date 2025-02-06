@@ -8,7 +8,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*")
+@CrossOrigin(origins = "https://exploramas-five.vercel.app/", allowedHeaders = "*")
 @RestController
 @RequestMapping("/user")
 public class UserPanelController {
@@ -21,13 +21,13 @@ public class UserPanelController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<?> updateUserDetails(@PathVariable Long id, @RequestBody @Valid UpdateUserDTO updateUserDTO){
-        this.userService.updateUserDetails(updateUserDTO,id);
+    public ResponseEntity<?> updateUserDetails(@PathVariable Long id, @RequestBody @Valid UpdateUserDTO updateUserDTO) {
+        this.userService.updateUserDetails(updateUserDTO, id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deleteUser(@PathVariable Long id){
+    public ResponseEntity<?> deleteUser(@PathVariable Long id) {
         this.userService.deleteUser(id);
         return ResponseEntity.status(HttpStatus.OK).build();
     }
