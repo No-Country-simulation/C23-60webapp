@@ -8,7 +8,7 @@ import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*")
+@CrossOrigin(origins = "https://exploramas-five.vercel.app/", allowedHeaders = "*")
 @RestController
 @RequestMapping("/shopping-cart")
 public class ShoppingCartController {
@@ -41,7 +41,7 @@ public class ShoppingCartController {
     public ResponseEntity<?> updateDetailShoppingCart(
             @PathVariable Long id,
             @Valid @RequestBody UpdateDetailsShoppingCartDTO dto) {
-        ShoppingCartDTO shoppingCartDTO = shoppingCartService.updateDetailShoppingCart(id,dto);
+        ShoppingCartDTO shoppingCartDTO = shoppingCartService.updateDetailShoppingCart(id, dto);
         if (shoppingCartDTO == null) {
             return ResponseEntity.notFound().build();
         }
@@ -57,7 +57,7 @@ public class ShoppingCartController {
         }
         return ResponseEntity.ok(shoppingCartDTO);
     }
-    
+
     @PutMapping("/clean")
     public ResponseEntity<?> cleanShoppingCart() {
         ShoppingCartDTO shoppingCartDTO = shoppingCartService.clearShoppingCart();

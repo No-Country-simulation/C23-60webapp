@@ -11,7 +11,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-@CrossOrigin(origins = "http://localhost:5173")
+@CrossOrigin(origins = "https://exploramas-five.vercel.app/")
 @RestController
 @RequestMapping("/auth")
 public class AuthController {
@@ -24,7 +24,7 @@ public class AuthController {
     }
 
     @PostMapping("/login")
-        public ResponseEntity<GeneratedTokenDTO> login(@RequestBody @Valid UserLoginDTO userLoginDTO) {
+    public ResponseEntity<GeneratedTokenDTO> login(@RequestBody @Valid UserLoginDTO userLoginDTO) {
         String jwtToken = this.authService.verify(userLoginDTO);
         return ResponseEntity.status(HttpStatus.OK).body(new GeneratedTokenDTO(jwtToken));
     }
