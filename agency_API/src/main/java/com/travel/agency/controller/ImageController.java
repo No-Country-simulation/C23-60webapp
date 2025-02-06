@@ -11,7 +11,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@CrossOrigin(origins = "http://localhost:5173", allowedHeaders = "*")
+@CrossOrigin(origins = "https://exploramas-five.vercel.app/", allowedHeaders = "*")
 @RestController
 @RequestMapping("/images")
 public class ImageController {
@@ -24,7 +24,7 @@ public class ImageController {
     }
 
     @GetMapping
-    public ResponseEntity<?> getImages(){
+    public ResponseEntity<?> getImages() {
         List<Image> images = this.imageService.getAllImages();
         if (images.isEmpty()) {
             return ResponseEntity.status(HttpStatus.NO_CONTENT).build();

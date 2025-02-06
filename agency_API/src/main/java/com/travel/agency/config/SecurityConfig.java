@@ -41,6 +41,7 @@ public class SecurityConfig {
                                 "/swagger-ui.html",
                                 "/travel-bundle/all",
                                 "/travel-bundle/{id}",
+                                "/travel-bundle/destiny",
                                 "/rating/travelBundle/",
                                 "/rating/user-ratings",
                                 "/images/**").permitAll()

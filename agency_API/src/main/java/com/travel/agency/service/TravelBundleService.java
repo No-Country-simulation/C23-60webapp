@@ -11,12 +11,12 @@ import com.travel.agency.model.entities.User;
 import com.travel.agency.repository.TravelBundleRepository;
 import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.Lazy;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.IOException;
 import java.util.List;
-import org.springframework.context.annotation.Lazy;
 
 @Service
 public class TravelBundleService {
@@ -56,7 +56,7 @@ public class TravelBundleService {
     //Este metodo puede ser simplificado.
     @Transactional
     public void createTravelBundle(TravelBundleRequestDTO travelBundleRequestDTO,
-            List<MultipartFile> images) {
+                                   List<MultipartFile> images) {
         //Se obtiene el usuario admin logueado en ese momento.
         User user = authService.getUser();
         TravelBundle travelBundle = TravelBundleMapper.toEntity(travelBundleRequestDTO);
@@ -104,4 +104,8 @@ public class TravelBundleService {
         }
     }
 
+    public List<TravelBundleDTO> getTravelsByDestiny(String destiny) {
+        List<TravelBundle> travelBundleList = travelBundleRepository.findByDestiny(destiny);
+        return TravelBundleMapper.toDTOList(travelBundleList);
+    }
 }

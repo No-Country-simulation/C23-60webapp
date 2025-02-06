@@ -15,7 +15,7 @@ public class WebConfig {
             public void addCorsMappings(CorsRegistry registry) {
                 registry.addMapping("/**")
                         .allowedOrigins(
-                                "http://localhost:5173",            // Frontend local
+                                "https://exploramas-five.vercel.app/",   // Frontend
                                 "https://exploramas.onrender.com"   // Frontend en Render
                         )
                         .allowedMethods("GET", "POST", "PUT", "DELETE")

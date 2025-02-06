@@ -1,5 +1,7 @@
 package com.travel.agency.utils;
 
+import java.text.Normalizer;
+import java.util.Locale;
 import java.util.function.Function;
 
 
@@ -15,4 +17,3 @@ public class MapperUtil {
     }
 
 }
-
